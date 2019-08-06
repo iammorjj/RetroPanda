@@ -42,7 +42,7 @@ public:
     virtual ~CEntity();
     
 public:
-    virtual bool OnLoad(char* File, int Width, int Height, int MaxFrames);
+    virtual bool OnLoad(const char* File, int Width, int Height, int MaxFrames);
     
     virtual void OnLoop();
     

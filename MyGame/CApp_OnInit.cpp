@@ -18,15 +18,15 @@ bool CApp::OnInit() {
         return false;
     }
     
-    if((Surf_Background = CSurface::OnLoad(Constants::BACKGROUND_IMG)) == NULL) {
+    if((Surf_Background = CSurface::OnLoad(Constants::BACKGROUND_IMG.c_str())) == NULL) {
         return false;
     }
     
-    if(!Conveyor.OnLoad(Constants::CONVEYOR_IMG, Constants::CONVEYOR_WIDTH, Constants::CONVEYOR_HEIGHT, Constants::CONVEYOR_MAX_FRAMES)) {
+    if(!Conveyor.OnLoad(Constants::CONVEYOR_IMG.c_str(), Constants::CONVEYOR_WIDTH, Constants::CONVEYOR_HEIGHT, Constants::CONVEYOR_MAX_FRAMES)) {
         return false;
     }
     
-    if(!Hero.OnLoad(Constants::HERO_IMG, Constants::HERO_WIDTH, Constants::HERO_HEIGHT, Constants::HERO_MAX_FRAMES)) {
+    if(!Hero.OnLoad(Constants::HERO_IMG.c_str(), Constants::HERO_WIDTH, Constants::HERO_HEIGHT, Constants::HERO_MAX_FRAMES)) {
         return false;
     }
     
