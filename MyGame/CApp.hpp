@@ -1,6 +1,6 @@
 //
 //  CApp.hpp
-//  SDL_Test1
+//  MyGame
 //
 //  Created by Alexander Mordovsky on 27/07/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
@@ -11,15 +11,32 @@
 
 #include <SDL/SDL.h>
 
+#include "Constants.h"
 #include "CSurface.hpp"
+#include "CAnimation.hpp"
+#include "CEntity.hpp"
+#include "CConveyor.hpp"
+#include "CHero.hpp"
 
 class CApp {
 private:
     bool            Running;
     
     SDL_Surface*    Surf_Display;
+    SDL_Surface*    Surf_Background;
     
-    SDL_Surface*    Surf_Test;
+    SDL_Surface*    Surf_Conveyor;
+    
+    CEntity         Burger;
+    
+    CConveyor       Conveyor;
+    
+    CHero           Hero;
+    
+//    
+//    const int SCREEN_WIDTH = 640;
+//    const int SCREEN_HEIGHT = 480;
+//    const int SCREEN_BPP = 32;
     
 public:
     CApp();

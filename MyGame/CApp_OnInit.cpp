@@ -1,6 +1,6 @@
 //
 //  CApp_OnInit.cpp
-//  SDL_Test1
+//  MyGame
 //
 //  Created by Alexander Mordovsky on 27/07/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
@@ -9,17 +9,29 @@
 #include "CApp.hpp"
 
 bool CApp::OnInit() {
-    if(SDL_Init(SDL_INIT_EVERYTHING) < 0) {
+    //Initialize all SDL subsystems
+    if(SDL_Init( SDL_INIT_EVERYTHING ) < 0) {
+        return false;
+    }
+
+    if((Surf_Display = SDL_SetVideoMode( Constants::SCREEN_WIDTH, Constants::SCREEN_HEIGHT, Constants::SCREEN_BPP, SDL_HWSURFACE | SDL_DOUBLEBUF)) == NULL) {
         return false;
     }
     
-    if((Surf_Display = SDL_SetVideoMode(640, 480, 32, SDL_HWSURFACE | SDL_DOUBLEBUF)) == NULL) {
+    if((Surf_Background = CSurface::OnLoad(Constants::BACKGROUND_IMG)) == NULL) {
         return false;
     }
     
-    if((Surf_Test = CSurface::OnLoad("/Users/alexandermordovsky/Documents/XCodeProjects/SDL_Test1/SDL_Test1/2706-21.jpg")) == NULL) {
+    if(!Conveyor.OnLoad(Constants::CONVEYOR_IMG, Constants::CONVEYOR_WIDTH, Constants::CONVEYOR_HEIGHT, Constants::CONVEYOR_MAX_FRAMES)) {
         return false;
     }
+    
+    if(!Hero.OnLoad(Constants::HERO_IMG, Constants::HERO_WIDTH, Constants::HERO_HEIGHT, Constants::HERO_MAX_FRAMES)) {
+        return false;
+    }
+    
+    CEntity::EntityList.push_back(&Conveyor);
+    CEntity::EntityList.push_back(&Hero);
     
     return true;
 }

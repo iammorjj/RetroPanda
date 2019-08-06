@@ -1,6 +1,6 @@
 //
 //  CApp.cpp
-//  SDL_Test1
+//  MyGame
 //
 //  Created by Alexander Mordovsky on 27/07/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
@@ -10,7 +10,8 @@
 
 CApp::CApp() {
     Surf_Display = NULL;
-    Surf_Test = NULL;
+    Surf_Background = NULL;
+    Surf_Conveyor = NULL;
     
     Running = true;
 }

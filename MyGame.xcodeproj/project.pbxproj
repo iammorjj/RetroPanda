@@ -7,22 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D022BA8B22F97DA4000662C0 /* conveyorAfterGimp.png in Resources */ = {isa = PBXBuildFile; fileRef = D022BA8A22F97DA4000662C0 /* conveyorAfterGimp.png */; };
+		D022BA8E22F98080000662C0 /* backgroundx2.png in Resources */ = {isa = PBXBuildFile; fileRef = D022BA8C22F9807F000662C0 /* backgroundx2.png */; };
+		D022BA9422F99A54000662C0 /* pandax2.png in Resources */ = {isa = PBXBuildFile; fileRef = D022BA9322F99A53000662C0 /* pandax2.png */; };
+		D022BA9A22F9A9B1000662C0 /* CHero.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D022BA9822F9A9B1000662C0 /* CHero.cpp */; };
+		D022BA9E22F9AEF3000662C0 /* conveyorx2.png in Resources */ = {isa = PBXBuildFile; fileRef = D022BA9D22F9AEF3000662C0 /* conveyorx2.png */; };
 		D02A821822EC5A9E004602AF /* CApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02A821622EC5A9E004602AF /* CApp.cpp */; };
 		D02A821B22EC5B26004602AF /* CApp_OnInit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02A821922EC5B26004602AF /* CApp_OnInit.cpp */; };
 		D02A821E22EC5B37004602AF /* CApp_OnEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02A821C22EC5B37004602AF /* CApp_OnEvent.cpp */; };
 		D02A822122EC5B43004602AF /* CApp_OnLoop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02A821F22EC5B43004602AF /* CApp_OnLoop.cpp */; };
 		D02A822422EC5B55004602AF /* CApp_OnRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02A822222EC5B55004602AF /* CApp_OnRender.cpp */; };
 		D02A822722EC5B64004602AF /* CApp_OnCleanup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02A822522EC5B64004602AF /* CApp_OnCleanup.cpp */; };
-		D02DEF0B22EFB2C900891651 /* lion.png in Resources */ = {isa = PBXBuildFile; fileRef = D02DEF0A22EFB2C900891651 /* lion.png */; };
-		D02DEF0D22EFB4D600891651 /* iconfinder_Preview_131689.png in Resources */ = {isa = PBXBuildFile; fileRef = D02DEF0C22EFB4D600891651 /* iconfinder_Preview_131689.png */; };
-		D02DEF0F22EFBDAC00891651 /* 2706-21.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D02DEF0E22EFBDAC00891651 /* 2706-21.jpg */; };
 		D02DEF1022EFC12900891651 /* SDL_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D02DEF0822EFB15800891651 /* SDL_image.framework */; };
+		D02DEF1322F7814700891651 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = D02DEF1222F7814700891651 /* background.png */; };
 		D042FE0622ECF47300209814 /* CSurface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D042FE0422ECF47300209814 /* CSurface.cpp */; };
-		D042FE0822ECF86E00209814 /* grid.bmp in Resources */ = {isa = PBXBuildFile; fileRef = D042FE0722ECF86E00209814 /* grid.bmp */; };
 		D09B976122EA2AD700B6DF3A /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = D09B975F22EA2AD700B6DF3A /* SDLMain.m */; };
 		D09B976422EA2B2B00B6DF3A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09B976322EA2B2B00B6DF3A /* Cocoa.framework */; };
 		D09B976622EA2B4000B6DF3A /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09B976522EA2B4000B6DF3A /* SDL.framework */; };
 		D09B976822EA31F600B6DF3A /* SDL_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09B976722EA31F600B6DF3A /* SDL_ttf.framework */; };
+		D0AE221922F9599F00B62486 /* conveyor.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AE221822F9599F00B62486 /* conveyor.png */; };
+		D0AE221C22F95AE400B62486 /* CAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0AE221A22F95AE400B62486 /* CAnimation.cpp */; };
+		D0AE222222F9651F00B62486 /* CEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0AE222022F9651F00B62486 /* CEntity.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +43,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D022BA8A22F97DA4000662C0 /* conveyorAfterGimp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = conveyorAfterGimp.png; sourceTree = "<group>"; };
+		D022BA8C22F9807F000662C0 /* backgroundx2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundx2.png; sourceTree = "<group>"; };
+		D022BA9122F981C5000662C0 /* CConveyor.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CConveyor.hpp; sourceTree = "<group>"; };
+		D022BA9322F99A53000662C0 /* pandax2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pandax2.png; sourceTree = "<group>"; };
+		D022BA9822F9A9B1000662C0 /* CHero.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CHero.cpp; sourceTree = "<group>"; };
+		D022BA9922F9A9B1000662C0 /* CHero.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CHero.hpp; sourceTree = "<group>"; };
+		D022BA9D22F9AEF3000662C0 /* conveyorx2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = conveyorx2.png; sourceTree = "<group>"; };
 		D02A821622EC5A9E004602AF /* CApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CApp.cpp; sourceTree = "<group>"; };
 		D02A821722EC5A9E004602AF /* CApp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CApp.hpp; sourceTree = "<group>"; };
 		D02A821922EC5B26004602AF /* CApp_OnInit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CApp_OnInit.cpp; sourceTree = "<group>"; };
@@ -46,18 +58,21 @@
 		D02A822222EC5B55004602AF /* CApp_OnRender.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CApp_OnRender.cpp; sourceTree = "<group>"; };
 		D02A822522EC5B64004602AF /* CApp_OnCleanup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CApp_OnCleanup.cpp; sourceTree = "<group>"; };
 		D02DEF0822EFB15800891651 /* SDL_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_image.framework; path = ../../../../../Library/Frameworks/SDL_image.framework; sourceTree = "<group>"; };
-		D02DEF0A22EFB2C900891651 /* lion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lion.png; path = ../../../../Downloads/lion.png; sourceTree = "<group>"; };
-		D02DEF0C22EFB4D600891651 /* iconfinder_Preview_131689.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconfinder_Preview_131689.png; sourceTree = "<group>"; };
-		D02DEF0E22EFBDAC00891651 /* 2706-21.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "2706-21.jpg"; sourceTree = "<group>"; };
+		D02DEF1222F7814700891651 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		D042FE0422ECF47300209814 /* CSurface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CSurface.cpp; sourceTree = "<group>"; };
 		D042FE0522ECF47300209814 /* CSurface.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CSurface.hpp; sourceTree = "<group>"; };
-		D042FE0722ECF86E00209814 /* grid.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = grid.bmp; sourceTree = "<group>"; };
 		D09B975522EA29C400B6DF3A /* MyGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MyGame; sourceTree = BUILT_PRODUCTS_DIR; };
 		D09B975F22EA2AD700B6DF3A /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDLMain.m; sourceTree = "<group>"; };
 		D09B976022EA2AD700B6DF3A /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDLMain.h; sourceTree = "<group>"; };
 		D09B976322EA2B2B00B6DF3A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D09B976522EA2B4000B6DF3A /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = ../../../../../Library/Frameworks/SDL.framework; sourceTree = "<group>"; };
 		D09B976722EA31F600B6DF3A /* SDL_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_ttf.framework; path = ../../../../../Library/Frameworks/SDL_ttf.framework; sourceTree = "<group>"; };
+		D0AE221722F9570700B62486 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		D0AE221822F9599F00B62486 /* conveyor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = conveyor.png; sourceTree = "<group>"; };
+		D0AE221A22F95AE400B62486 /* CAnimation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CAnimation.cpp; sourceTree = "<group>"; };
+		D0AE221B22F95AE400B62486 /* CAnimation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CAnimation.hpp; sourceTree = "<group>"; };
+		D0AE222022F9651F00B62486 /* CEntity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CEntity.cpp; sourceTree = "<group>"; };
+		D0AE222122F9651F00B62486 /* CEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CEntity.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +90,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D02DEF1122F77F0E00891651 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				D022BA9D22F9AEF3000662C0 /* conveyorx2.png */,
+				D022BA9322F99A53000662C0 /* pandax2.png */,
+				D022BA8C22F9807F000662C0 /* backgroundx2.png */,
+				D022BA8A22F97DA4000662C0 /* conveyorAfterGimp.png */,
+				D0AE221822F9599F00B62486 /* conveyor.png */,
+				D02DEF1222F7814700891651 /* background.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		D09B974C22EA29C400B6DF3A = {
 			isa = PBXGroup;
 			children = (
@@ -95,14 +123,14 @@
 		D09B975722EA29C400B6DF3A /* MyGame */ = {
 			isa = PBXGroup;
 			children = (
-				D02DEF0E22EFBDAC00891651 /* 2706-21.jpg */,
-				D02DEF0C22EFB4D600891651 /* iconfinder_Preview_131689.png */,
-				D02DEF0A22EFB2C900891651 /* lion.png */,
-				D042FE0722ECF86E00209814 /* grid.bmp */,
+				D02DEF1122F77F0E00891651 /* Assets */,
+				D0AE221722F9570700B62486 /* Constants.h */,
 				D02A821622EC5A9E004602AF /* CApp.cpp */,
 				D02A821722EC5A9E004602AF /* CApp.hpp */,
 				D02A821922EC5B26004602AF /* CApp_OnInit.cpp */,
 				D02A821C22EC5B37004602AF /* CApp_OnEvent.cpp */,
+				D0AE221A22F95AE400B62486 /* CAnimation.cpp */,
+				D0AE221B22F95AE400B62486 /* CAnimation.hpp */,
 				D042FE0422ECF47300209814 /* CSurface.cpp */,
 				D042FE0522ECF47300209814 /* CSurface.hpp */,
 				D02A821F22EC5B43004602AF /* CApp_OnLoop.cpp */,
@@ -110,6 +138,11 @@
 				D02A822522EC5B64004602AF /* CApp_OnCleanup.cpp */,
 				D09B976022EA2AD700B6DF3A /* SDLMain.h */,
 				D09B975F22EA2AD700B6DF3A /* SDLMain.m */,
+				D0AE222022F9651F00B62486 /* CEntity.cpp */,
+				D0AE222122F9651F00B62486 /* CEntity.hpp */,
+				D022BA9122F981C5000662C0 /* CConveyor.hpp */,
+				D022BA9822F9A9B1000662C0 /* CHero.cpp */,
+				D022BA9922F9A9B1000662C0 /* CHero.hpp */,
 			);
 			path = MyGame;
 			sourceTree = "<group>";
@@ -182,10 +215,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D02DEF0D22EFB4D600891651 /* iconfinder_Preview_131689.png in Resources */,
-				D02DEF0F22EFBDAC00891651 /* 2706-21.jpg in Resources */,
-				D02DEF0B22EFB2C900891651 /* lion.png in Resources */,
-				D042FE0822ECF86E00209814 /* grid.bmp in Resources */,
+				D0AE221922F9599F00B62486 /* conveyor.png in Resources */,
+				D02DEF1322F7814700891651 /* background.png in Resources */,
+				D022BA9422F99A54000662C0 /* pandax2.png in Resources */,
+				D022BA9E22F9AEF3000662C0 /* conveyorx2.png in Resources */,
+				D022BA8E22F98080000662C0 /* backgroundx2.png in Resources */,
+				D022BA8B22F97DA4000662C0 /* conveyorAfterGimp.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,7 +231,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0AE222222F9651F00B62486 /* CEntity.cpp in Sources */,
 				D09B976122EA2AD700B6DF3A /* SDLMain.m in Sources */,
+				D022BA9A22F9A9B1000662C0 /* CHero.cpp in Sources */,
 				D042FE0622ECF47300209814 /* CSurface.cpp in Sources */,
 				D02A821822EC5A9E004602AF /* CApp.cpp in Sources */,
 				D02A821B22EC5B26004602AF /* CApp_OnInit.cpp in Sources */,
@@ -204,6 +241,7 @@
 				D02A822422EC5B55004602AF /* CApp_OnRender.cpp in Sources */,
 				D02A822722EC5B64004602AF /* CApp_OnCleanup.cpp in Sources */,
 				D02A821E22EC5B37004602AF /* CApp_OnEvent.cpp in Sources */,
+				D0AE221C22F95AE400B62486 /* CAnimation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

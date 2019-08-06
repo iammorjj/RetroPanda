@@ -1,6 +1,6 @@
 //
 //  CSurface.cpp
-//  SDL_Test1
+//  MyGame
 //
 //  Created by Alexander Mordovsky on 27/07/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
@@ -11,7 +11,7 @@
 CSurface::CSurface() {
 }
 
-SDL_Surface* CSurface::OnLoad(char* File) {    
+SDL_Surface* CSurface::OnLoad(const char* File) {
     SDL_Surface* Surf_Temp = NULL;
     SDL_Surface* Surf_Return = NULL;
     
@@ -19,7 +19,7 @@ SDL_Surface* CSurface::OnLoad(char* File) {
         return NULL;
     }
     
-    Surf_Return = SDL_DisplayFormat(Surf_Temp);
+    Surf_Return = SDL_DisplayFormatAlpha(Surf_Temp);
     SDL_FreeSurface(Surf_Temp);
     
     return Surf_Return;

@@ -1,6 +1,6 @@
 //
 //  CApp_OnCleanup.cpp
-//  SDL_Test1
+//  MyGame
 //
 //  Created by Alexander Mordovsky on 27/07/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
@@ -9,7 +9,17 @@
 #include "CApp.hpp"
 
 void CApp::OnCleanup() {
-    SDL_FreeSurface(Surf_Test);
+    for(int i = 0;i < CEntity::EntityList.size();i++) {
+        if(!CEntity::EntityList[i]) continue;
+        
+        CEntity::EntityList[i]->OnCleanup();
+    }
+    
+    CEntity::EntityList.clear();
+    
+    //SDL_FreeSurface(Surf_Conveyor);
+    SDL_FreeSurface(Surf_Background);
     SDL_FreeSurface(Surf_Display);
+    
     SDL_Quit();
 }
