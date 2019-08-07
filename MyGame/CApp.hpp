@@ -17,6 +17,7 @@
 #include "CEntity.hpp"
 #include "CConveyor.hpp"
 #include "CHero.hpp"
+#include "CBurger.hpp"
 
 class CApp {
 private:
@@ -27,7 +28,7 @@ private:
     
     SDL_Surface*    Surf_Conveyor;
     
-    CEntity         Burger;
+    CBurger         Burger;
     
     CConveyor       Conveyor;
     

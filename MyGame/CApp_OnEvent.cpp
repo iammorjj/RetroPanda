@@ -17,6 +17,9 @@ void CApp::OnEvent(SDL_Event* Event) {
             case SDLK_4: Hero.MoveRightDown(); break;
             case SDLK_5: Hero.MoveRightMid(); break;
             case SDLK_6: Hero.MoveRightUp(); break;
+                
+            case SDLK_LEFT: Burger.moveLeft(); break;
+            case SDLK_RIGHT: Burger.moveRight(); break;
             default:;
         }
     }

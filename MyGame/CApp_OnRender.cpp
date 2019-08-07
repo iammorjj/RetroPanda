@@ -11,10 +11,6 @@
 void CApp::OnRender() {
     CSurface::OnDraw(Surf_Display, Surf_Background, 0, 0);
     
-//    CSurface::OnDraw(Surf_Display, Surf_Conveyor, Constants::BACKGROUND_WIDTH-Constants::CONVEYOR_WIDTH, Constants::BACKGROUND_HEIGHT/2.0, conveyor.GetCurrentFrame() * Constants::CONVEYOR_WIDTH, 0, Constants::CONVEYOR_WIDTH, Constants::CONVEYOR_HEIGHT);
-//    CSurface::OnDraw(Surf_Display, Surf_Conveyor, 97, 97, conveyor.GetCurrentFrame() * Constants::CONVEYOR_WIDTH, 0, Constants::CONVEYOR_WIDTH, Constants::CONVEYOR_HEIGHT);
-//
-    
     for(int i = 0;i < CEntity::EntityList.size();i++) {
         if(!CEntity::EntityList[i]) continue;
         

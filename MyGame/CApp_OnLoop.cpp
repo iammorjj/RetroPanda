@@ -15,5 +15,4 @@ void CApp::OnLoop() {
         CEntity::EntityList[i]->OnLoop();
     }
     
-    //conveyor.OnAnimate();
 }

@@ -17,7 +17,6 @@ void CApp::OnCleanup() {
     
     CEntity::EntityList.clear();
     
-    //SDL_FreeSurface(Surf_Conveyor);
     SDL_FreeSurface(Surf_Background);
     SDL_FreeSurface(Surf_Display);
     

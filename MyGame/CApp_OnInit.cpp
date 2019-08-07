@@ -30,8 +30,13 @@ bool CApp::OnInit() {
         return false;
     }
     
+    if(!Burger.OnLoad(Constants::BURGER_IMG.c_str(), Constants::BURGER_WIDTH, Constants::BURGER_HEIGHT, Constants::BURGER_MAX_FRAMES)) {
+        return false;
+    }
+    
     CEntity::EntityList.push_back(&Conveyor);
     CEntity::EntityList.push_back(&Hero);
+    CEntity::EntityList.push_back(&Burger);
     
     return true;
 }
