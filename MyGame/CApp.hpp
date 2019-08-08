@@ -20,24 +20,21 @@
 #include "CBurger.hpp"
 
 class CApp {
+    
 private:
     bool            Running;
+    bool            GameOver;
     
     SDL_Surface*    Surf_Display;
     SDL_Surface*    Surf_Background;
     
-    SDL_Surface*    Surf_Conveyor;
-    
+    CHero           Hero;
     CBurger         Burger;
-    
     CConveyor       Conveyor;
     
-    CHero           Hero;
-    
-//    
-//    const int SCREEN_WIDTH = 640;
-//    const int SCREEN_HEIGHT = 480;
-//    const int SCREEN_BPP = 32;
+private:
+    bool isWindowInit();
+    bool isRecourceInit();
     
 public:
     CApp();
@@ -54,6 +51,10 @@ public:
     void OnRender();
     
     void OnCleanup();
+    
+private:
+    void StartGame();
+    
 };
 
 #endif

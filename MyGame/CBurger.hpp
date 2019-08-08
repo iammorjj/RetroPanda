@@ -10,25 +10,98 @@
 #define CBurger_hpp
 
 #include "CEntity.hpp"
+#include "Conveyor.hpp"
+#include <vector>
 
 class CBurger: public CEntity {
+    
+private:
+    int     level;
+    
+    int     frameRate; //Milliseconds
+    
+    long    oldTime;
+    
+private:
+    std::vector<Conveyor> conveyor;
+    
 public:
     
-    const int VERTICAL_DISTANCE_BETWEEN_BURGERS = 80;
-    const int LEFT_SIDE_COORD = 40;
-    const int RIGHT_SIDE_COORD = Constants::SCREEN_WIDTH - Constants::BURGER_WIDTH + 12;
-    const int TOP_COORD = 120;
+    CBurger();
+    
+    void addBurgerToRandomConveyor() {
+        
+        LOCATION location = (LOCATION) (rand() % CONSTANTS::CONVEYORS_NUM);
+        
+        // debug
+        location = RIGHT_UP;
+        
+        conveyor[location].addBurger();
+        
+    }
     
     void OnRender(SDL_Surface* Surf_Display) {
         if(Surf_Entity == NULL || Surf_Display == NULL) return;
-
-        CSurface::OnDraw(Surf_Display, Surf_Entity, LEFT_SIDE_COORD + X,
-                         TOP_COORD,
-                         0, 0, Width, Height);
+        
+        for(auto conv: conveyor) {
+            for(auto burg: conv.burger) {
+                CSurface::OnDraw(Surf_Display, Surf_Entity, burg.coord.x,
+                                 burg.coord.y,
+                                 0, 0, Width, Height);
+            }
+        }
     }
     
-    void moveLeft() { X -= 2; }
-    void moveRight() { X += 2; }
+    void moveLeft() {
+        for(auto &conv: conveyor)
+            for(auto &burg: conv.burger)
+                burg.coord.x -= 2;
+    }
+    
+    void moveRight() {
+        for(auto &conv: conveyor)
+            for(auto &burg: conv.burger)
+                burg.coord.x += 2;
+    }
+    
+    void moveUp() {
+        for(auto &conv: conveyor)
+            for(auto &burg: conv.burger)
+                burg.coord.y -= 1;
+        
+        addBurgerToRandomConveyor();
+    }
+    
+    void moveDown() {
+        for(auto &conv: conveyor)
+            for(auto &burg: conv.burger)
+                burg.coord.y += 1;
+    }
+    
+    void SetUpLevel1() { level = 1; }
+    
+    void setLevel(int l) { level = l; }
+    
+    void StartMove() {
+        
+        if(oldTime + this->frameRate > SDL_GetTicks())
+            return;
+
+        oldTime = SDL_GetTicks();
+        
+        //moveFromLeftSide();
+        moveFromRightSide();
+    }
+    
+    void moveFromLeftSide() { moveRight(); moveDown(); }
+    void moveFromRightSide() { moveLeft(); moveDown(); }
+    
+    void printCoordinate() { printf("X coordinate is %f\nY coordinate is %f\n", X, Y); }
+    
+    void OnLoop() {
+        if(level > 0)
+            StartMove();
+    }
 };
 
 #endif /* CBurger_hpp */

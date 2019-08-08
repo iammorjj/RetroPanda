@@ -10,14 +10,15 @@
 #define CConveyor_hpp
 
 #include "CEntity.hpp"
+#include <queue>
 
 class CConveyor: public CEntity {
 public:
     
-    const int VERTICAL_DISTANCE_BETWEEN_CONVEYORS = 80;
-    const int LEFT_SIDE_COORD = -12;
-    const int RIGHT_SIDE_COORD = Constants::SCREEN_WIDTH - Constants::CONVEYOR_WIDTH + 12;
-    const int TOP_COORD = 140;
+    const int VERTICAL_DISTANCE_BETWEEN_CONVEYORS = 75;
+    const int LEFT_SIDE_COORD = -30;
+    const int RIGHT_SIDE_COORD = CONSTANTS::SCREEN_WIDTH - CONSTANTS::CONVEYOR_WIDTH + -LEFT_SIDE_COORD;
+    const int TOP_COORD = 120;
     
     void OnRender(SDL_Surface* Surf_Display) {
         if(Surf_Entity == NULL || Surf_Display == NULL) return;

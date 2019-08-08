@@ -7,3 +7,5 @@
 //
 
 #include "Conveyor.hpp"
+
+int Conveyor::locationInitCounter = 0;

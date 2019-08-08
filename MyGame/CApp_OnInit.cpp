@@ -8,35 +8,42 @@
 
 #include "CApp.hpp"
 
-bool CApp::OnInit() {
-    //Initialize all SDL subsystems
-    if(SDL_Init( SDL_INIT_EVERYTHING ) < 0) {
-        return false;
-    }
+using namespace CONSTANTS;
 
-    if((Surf_Display = SDL_SetVideoMode( Constants::SCREEN_WIDTH, Constants::SCREEN_HEIGHT, Constants::SCREEN_BPP, SDL_HWSURFACE | SDL_DOUBLEBUF)) == NULL) {
-        return false;
+bool CApp::OnInit() {
+    if(isWindowInit() && isRecourceInit()) {
+        CEntity::EntityList.push_back(&Conveyor);
+        CEntity::EntityList.push_back(&Burger);
+        CEntity::EntityList.push_back(&Hero);
+        
+        return true;
     }
     
-    if((Surf_Background = CSurface::OnLoad(Constants::BACKGROUND_IMG.c_str())) == NULL) {
+    return false;
+}
+
+bool CApp::isWindowInit() {
+    if(SDL_Init( SDL_INIT_EVERYTHING ) < 0)
         return false;
-    }
     
-    if(!Conveyor.OnLoad(Constants::CONVEYOR_IMG.c_str(), Constants::CONVEYOR_WIDTH, Constants::CONVEYOR_HEIGHT, Constants::CONVEYOR_MAX_FRAMES)) {
+    if((Surf_Display = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_HWSURFACE | SDL_DOUBLEBUF)) == NULL)
         return false;
-    }
     
-    if(!Hero.OnLoad(Constants::HERO_IMG.c_str(), Constants::HERO_WIDTH, Constants::HERO_HEIGHT, Constants::HERO_MAX_FRAMES)) {
+    return true;
+}
+
+bool CApp::isRecourceInit() {
+    if((Surf_Background = CSurface::OnLoad(BACKGROUND_IMG.c_str())) == NULL)
         return false;
-    }
     
-    if(!Burger.OnLoad(Constants::BURGER_IMG.c_str(), Constants::BURGER_WIDTH, Constants::BURGER_HEIGHT, Constants::BURGER_MAX_FRAMES)) {
+    if(!Conveyor.OnLoad(CONVEYOR_IMG.c_str(), CONVEYOR_WIDTH, CONVEYOR_HEIGHT, CONVEYOR_MAX_FRAMES))
         return false;
-    }
     
-    CEntity::EntityList.push_back(&Conveyor);
-    CEntity::EntityList.push_back(&Hero);
-    CEntity::EntityList.push_back(&Burger);
+    if(!Hero.OnLoad(HERO_IMG.c_str(), HERO_WIDTH, HERO_HEIGHT, HERO_MAX_FRAMES))
+        return false;
+    
+    if(!Burger.OnLoad(BURGER_IMG.c_str(), BURGER::BURGER_WIDTH, BURGER::BURGER_HEIGHT, BURGER::BURGER_MAX_FRAMES))
+        return false;
     
     return true;
 }

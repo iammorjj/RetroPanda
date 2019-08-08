@@ -12,7 +12,11 @@
 #include <string>
 #include <iostream>
 
-namespace Constants
+enum LOCATION {LEFT_DOWN,LEFT_MID,LEFT_UP,
+    RIGHT_DOWN,RIGHT_MID,RIGHT_UP
+};
+
+namespace CONSTANTS
 {
     const int SCREEN_WIDTH = 144*2;
     const int SCREEN_HEIGHT = 240*2;
@@ -21,24 +25,43 @@ namespace Constants
     const int BACKGROUND_WIDTH = 144*2;
     const int BACKGROUND_HEIGHT = 240*2;
     
+    const int CONVEYORS_NUM = 6;
+    
     const int CONVEYOR_WIDTH = 60*2;
     const int CONVEYOR_HEIGHT = 60*2;
     const int CONVEYOR_MAX_FRAMES = 16;
     
-    const int HERO_WIDTH = 100*2;
-    const int HERO_HEIGHT = 100*2;
+    const int HERO_WIDTH = 100*2.5;
+    const int HERO_HEIGHT = 100*2.5;
     const int HERO_MAX_FRAMES = 4;
-    
-    const int BURGER_WIDTH = 60*2;
-    const int BURGER_HEIGHT = 60*2;
-    const int BURGER_MAX_FRAMES = 1;
     
     const std::string PATH = "/Users/alexandermordovsky/Documents/XCodeProjects/MyGame/MyGame/Assets/";
     
     const std::string BACKGROUND_IMG = PATH+"backgroundx2.png";
     const std::string CONVEYOR_IMG = PATH+"conveyorx2.png";
-    const std::string HERO_IMG = PATH+"pandax2.png";
+    const std::string HERO_IMG = PATH+"pandax25.png";
     const std::string BURGER_IMG = PATH+"burgerx2.png";
+    
+    namespace BURGER {
+        const int BURGER_WIDTH = 60*2;
+        const int BURGER_HEIGHT = 60*2;
+        const int BURGER_MAX_FRAMES = 1;
+        
+        const int VERTICAL_DISTANCE_BETWEEN_BURGERS = 75;
+        const int LEFT_SIDE_COORD = 40;
+        const int RIGHT_SIDE_COORD = SCREEN_WIDTH - BURGER_WIDTH + 12;
+        const int TOP_COORD = 120;
+        
+        const int START_BURGER_X_LEFT = -74;
+        const int START_BURGER_X_RIGHT = BACKGROUND_WIDTH - BURGER_WIDTH - START_BURGER_X_LEFT;
+        const int START_BURGER_Y_UP = 80;
+        
+//        const int STOP_BURGER_X_LEFT = 15;
+//        const int STOP_BURGER_Y_LEFT = -1;
+        
+        
+        
+    }
 }
 
 #endif /* Constants_h */

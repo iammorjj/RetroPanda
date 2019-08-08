@@ -15,8 +15,8 @@ class CHero: public CEntity {
 public:
 
     CHero() {
-        X = Constants::SCREEN_WIDTH / 2.0 - Constants::HERO_WIDTH / 2.0;
-        Y = Constants::SCREEN_HEIGHT - Constants::HERO_HEIGHT - 20;
+        X = CONSTANTS::SCREEN_WIDTH / 2.0 - CONSTANTS::HERO_WIDTH / 2.0;
+        Y = CONSTANTS::SCREEN_HEIGHT - CONSTANTS::HERO_HEIGHT - 20;
     }
     
     void OnRender(SDL_Surface* Surf_Display) {
@@ -32,6 +32,7 @@ public:
     void MoveRightDown() { CurrentFrameRow = 1; }
     void MoveRightMid() { CurrentFrameRow = 3; }
     void MoveRightUp() { CurrentFrameRow = 5; }
+    
 };
 
 #endif /* CHero_hpp */

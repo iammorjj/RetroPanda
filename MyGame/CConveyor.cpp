@@ -6,4 +6,4 @@
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
 //
 
-#include <stdio.h>
+#include "CConveyor.hpp"

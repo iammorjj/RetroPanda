@@ -11,9 +11,13 @@
 CApp::CApp() {
     Surf_Display = NULL;
     Surf_Background = NULL;
-    Surf_Conveyor = NULL;
     
     Running = true;
+    GameOver = true;
+}
+
+void CApp::StartGame() {
+    Burger.SetUpLevel1();
 }
 
 int CApp::OnExecute() {
@@ -35,10 +39,4 @@ int CApp::OnExecute() {
     OnCleanup();
     
     return 0;
-}
-
-int main(int argc, char* argv[]) {
-    CApp theApp;
-    
-    return theApp.OnExecute();
 }

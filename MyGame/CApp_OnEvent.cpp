@@ -9,8 +9,16 @@
 #include "CApp.hpp"
 
 void CApp::OnEvent(SDL_Event* Event) {
+    
     if(Event->type == SDL_KEYDOWN) {
+        
+        if(GameOver) {
+            GameOver = false;
+            StartGame();
+        }
+        
         switch(Event->key.keysym.sym) {
+                
             case SDLK_1: Hero.MoveLeftDown(); break;
             case SDLK_2: Hero.MoveLeftMid(); break;
             case SDLK_3: Hero.MoveLeftUp(); break;
@@ -18,13 +26,20 @@ void CApp::OnEvent(SDL_Event* Event) {
             case SDLK_5: Hero.MoveRightMid(); break;
             case SDLK_6: Hero.MoveRightUp(); break;
                 
+            case SDLK_9: Burger.setLevel(0); break;
+            case SDLK_0: Burger.printCoordinate(); break;
+                
             case SDLK_LEFT: Burger.moveLeft(); break;
             case SDLK_RIGHT: Burger.moveRight(); break;
+            case SDLK_UP: Burger.moveUp(); break;
+            case SDLK_DOWN: Burger.moveDown(); break;
+                
             default:;
         }
     }
     
-    else if(Event->type == SDL_QUIT) {
+    if(Event->type == SDL_QUIT) {
         Running = false;
     }
+    
 }
