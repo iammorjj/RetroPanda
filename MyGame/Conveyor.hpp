@@ -26,16 +26,24 @@ public:
 public:
     Burger(LOCATION location) {
         switch(location) {
-            case LEFT_DOWN: coord = Coordinate(CONSTANTS::BURGER::START_BURGER_X_LEFT, CONSTANTS::BURGER::START_BURGER_Y_UP + CONSTANTS::BURGER::VERTICAL_DISTANCE_BETWEEN_BURGERS * 2);
+            case LEFT_DOWN:
+                coord = Coordinate(CONSTANTS::BURGER::START_BURGER_X_LEFT, CONSTANTS::BURGER::START_BURGER_Y_UP + CONSTANTS::BURGER::VERTICAL_DISTANCE_BETWEEN_BURGERS * 2);
                 break;
-            case LEFT_MID: coord = Coordinate(CONSTANTS::BURGER::START_BURGER_X_LEFT, CONSTANTS::BURGER::START_BURGER_Y_UP + CONSTANTS::BURGER::VERTICAL_DISTANCE_BETWEEN_BURGERS);
+            case LEFT_MID:
+                coord = Coordinate(CONSTANTS::BURGER::START_BURGER_X_LEFT, CONSTANTS::BURGER::START_BURGER_Y_UP + CONSTANTS::BURGER::VERTICAL_DISTANCE_BETWEEN_BURGERS);
                 break;
-            case LEFT_UP: coord = Coordinate(CONSTANTS::BURGER::START_BURGER_X_LEFT, CONSTANTS::BURGER::START_BURGER_Y_UP);
+            case LEFT_UP:
+                coord = Coordinate(CONSTANTS::BURGER::START_BURGER_X_LEFT, CONSTANTS::BURGER::START_BURGER_Y_UP);
                 break;
                 
-            case RIGHT_DOWN: break;
-            case RIGHT_MID: break;
-            case RIGHT_UP: coord = Coordinate(CONSTANTS::BURGER::START_BURGER_X_RIGHT, CONSTANTS::BURGER::START_BURGER_Y_UP);
+            case RIGHT_DOWN:
+                coord = Coordinate(CONSTANTS::BURGER::START_BURGER_X_RIGHT, CONSTANTS::BURGER::START_BURGER_Y_UP + CONSTANTS::BURGER::VERTICAL_DISTANCE_BETWEEN_BURGERS * 2);
+                break;
+            case RIGHT_MID:
+                coord = Coordinate(CONSTANTS::BURGER::START_BURGER_X_RIGHT, CONSTANTS::BURGER::START_BURGER_Y_UP + CONSTANTS::BURGER::VERTICAL_DISTANCE_BETWEEN_BURGERS);
+                break;
+            case RIGHT_UP:
+                coord = Coordinate(CONSTANTS::BURGER::START_BURGER_X_RIGHT, CONSTANTS::BURGER::START_BURGER_Y_UP);
                 break;
         }
     }
@@ -52,6 +60,13 @@ public:
     Conveyor() { location = (LOCATION) locationInitCounter++; }
     void addBurger() {
         burger.push_back(Burger(location));
+    }
+    
+    bool isLeftSide() {
+        return location == LEFT_DOWN || location == LEFT_MID || location == LEFT_UP;
+    }
+    bool isRightSide() {
+        return location == RIGHT_DOWN || location == RIGHT_MID || location == RIGHT_UP;
     }
 };
 

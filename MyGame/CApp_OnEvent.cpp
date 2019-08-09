@@ -26,6 +26,8 @@ void CApp::OnEvent(SDL_Event* Event) {
             case SDLK_5: Hero.MoveRightMid(); break;
             case SDLK_6: Hero.MoveRightUp(); break;
                 
+            case SDLK_a: Burger.addBurgerToRandomConveyor(); break;
+                
             case SDLK_9: Burger.setLevel(0); break;
             case SDLK_0: Burger.printCoordinate(); break;
                 

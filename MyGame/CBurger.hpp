@@ -34,7 +34,7 @@ public:
         LOCATION location = (LOCATION) (rand() % CONSTANTS::CONVEYORS_NUM);
         
         // debug
-        location = RIGHT_UP;
+        //location = LEFT_UP;
         
         conveyor[location].addBurger();
         
@@ -54,22 +54,22 @@ public:
     
     void moveLeft() {
         for(auto &conv: conveyor)
-            for(auto &burg: conv.burger)
-                burg.coord.x -= 2;
+            if(conv.isRightSide())
+                for(auto &burg: conv.burger)
+                    burg.coord.x -= 2;
     }
     
     void moveRight() {
         for(auto &conv: conveyor)
-            for(auto &burg: conv.burger)
-                burg.coord.x += 2;
+            if(conv.isLeftSide())
+                for(auto &burg: conv.burger)
+                    burg.coord.x += 2;
     }
     
     void moveUp() {
-        for(auto &conv: conveyor)
-            for(auto &burg: conv.burger)
-                burg.coord.y -= 1;
-        
-        addBurgerToRandomConveyor();
+//        for(auto &conv: conveyor)
+//            for(auto &burg: conv.burger)
+//                burg.coord.y -= 1;
     }
     
     void moveDown() {
@@ -89,8 +89,9 @@ public:
 
         oldTime = SDL_GetTicks();
         
-        //moveFromLeftSide();
-        moveFromRightSide();
+        moveRight();
+        moveLeft();
+        moveDown();
     }
     
     void moveFromLeftSide() { moveRight(); moveDown(); }
