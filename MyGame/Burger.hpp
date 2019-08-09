@@ -73,6 +73,20 @@ public:
                 
         }
     }
+    
+    bool isGameOver() {
+        return !canMoveDown();
+    }
+    
+    bool isTakenByHero() {
+        if(coord.x > HERO_CAN_TAKE_X_LEFT && coord.x < HERO_CAN_TAKE_X_RIGHT) {
+            //CONSTANTS::score++;
+            return true;
+        }
+        
+        return false;
+    }
+    
 };
 
 #endif /* Burger_hpp */

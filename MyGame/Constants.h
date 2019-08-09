@@ -18,6 +18,9 @@ enum Location {LEFT_DOWN,LEFT_MID,LEFT_UP,
 
 namespace CONSTANTS
 {
+    // NOT CONSTANT FUCK REPLACE IT
+    //int score = 0;
+    
     const int SCREEN_WIDTH = 144*2;
     const int SCREEN_HEIGHT = 240*2;
     const int SCREEN_BPP = 32;
@@ -58,9 +61,9 @@ namespace CONSTANTS
         
         const int STOP_BURGER_X_LEFT = 20;
         const int STOP_BURGER_X_RIGHT = BACKGROUND_WIDTH - BURGER_WIDTH - STOP_BURGER_X_LEFT;
-        const int STOP_BURGER_Y_UP = 165;
-        
-        
+        const int HERO_CAN_TAKE_X_LEFT = STOP_BURGER_X_LEFT - 5;
+        const int HERO_CAN_TAKE_X_RIGHT = STOP_BURGER_X_RIGHT + 5;
+        const int STOP_BURGER_Y_UP = 165;        
         
     }
 }

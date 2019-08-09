@@ -14,17 +14,13 @@
 #include <vector>
 
 class CBurger: public CEntity {
-    
 private:
     int     level;
-    
     int     frameRate; //Milliseconds
-    
     long    oldTime;
     
 private:
     std::vector<Conveyor> conveyor;
-    
 public:
     
     CBurger();
@@ -98,6 +94,22 @@ public:
         moveRight();
         moveLeft();
         moveDown();
+        
+        checkCollisions();
+    }
+    
+    void checkCollisions() {
+        for(auto &conv: conveyor) {
+            if(conv.burger.empty())
+                continue;
+            
+            auto burger = conv.burger.back();
+            if(burger.isGameOver()) {
+                level = 0;
+            } else if(burger.isTakenByHero()) {
+                conv.burger.pop_back();
+            }
+        }
     }
 
     void printCoordinate(int xx, int yy) { printf("X coordinate is %d\nY coordinate is %d\n", xx, yy); }
