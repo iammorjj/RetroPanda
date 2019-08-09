@@ -31,7 +31,7 @@ public:
     
     void addBurgerToRandomConveyor() {
         
-        LOCATION location = (LOCATION) (rand() % CONSTANTS::CONVEYORS_NUM);
+        Location location = (Location) (rand() % CONSTANTS::CONVEYORS_NUM);
         
         // debug
         //location = LEFT_UP;
@@ -56,34 +56,40 @@ public:
         for(auto &conv: conveyor)
             if(conv.isRightSide())
                 for(auto &burg: conv.burger)
-                    burg.coord.x -= 2;
+                    if(burg.canMoveSideway())
+                        burg.coord.x -= 2;
     }
     
     void moveRight() {
         for(auto &conv: conveyor)
             if(conv.isLeftSide())
                 for(auto &burg: conv.burger)
-                    burg.coord.x += 2;
+                    if(burg.canMoveSideway())
+                        burg.coord.x += 2;
     }
     
     void moveUp() {
-//        for(auto &conv: conveyor)
-//            for(auto &burg: conv.burger)
-//                burg.coord.y -= 1;
+        for(auto &conv: conveyor)
+            for(auto &burg: conv.burger) {
+                if(burg.coord.y > CONSTANTS::BURGER::STOP_BURGER_Y_UP)
+                burg.coord.y -= 1;
+            }
     }
     
     void moveDown() {
         for(auto &conv: conveyor)
             for(auto &burg: conv.burger)
-                burg.coord.y += 1;
+                if(burg.canMoveDown())
+                    burg.coord.y += 1;
     }
     
     void SetUpLevel1() { level = 1; }
     
     void setLevel(int l) { level = l; }
     
+    
+    
     void StartMove() {
-        
         if(oldTime + this->frameRate > SDL_GetTicks())
             return;
 
@@ -93,11 +99,8 @@ public:
         moveLeft();
         moveDown();
     }
-    
-    void moveFromLeftSide() { moveRight(); moveDown(); }
-    void moveFromRightSide() { moveLeft(); moveDown(); }
-    
-    void printCoordinate() { printf("X coordinate is %f\nY coordinate is %f\n", X, Y); }
+
+    void printCoordinate(int xx, int yy) { printf("X coordinate is %d\nY coordinate is %d\n", xx, yy); }
     
     void OnLoop() {
         if(level > 0)

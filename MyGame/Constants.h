@@ -12,7 +12,7 @@
 #include <string>
 #include <iostream>
 
-enum LOCATION {LEFT_DOWN,LEFT_MID,LEFT_UP,
+enum Location {LEFT_DOWN,LEFT_MID,LEFT_UP,
     RIGHT_DOWN,RIGHT_MID,RIGHT_UP
 };
 
@@ -56,8 +56,9 @@ namespace CONSTANTS
         const int START_BURGER_X_RIGHT = BACKGROUND_WIDTH - BURGER_WIDTH - START_BURGER_X_LEFT;
         const int START_BURGER_Y_UP = 80;
         
-//        const int STOP_BURGER_X_LEFT = 15;
-//        const int STOP_BURGER_Y_LEFT = -1;
+        const int STOP_BURGER_X_LEFT = 20;
+        const int STOP_BURGER_X_RIGHT = BACKGROUND_WIDTH - BURGER_WIDTH - STOP_BURGER_X_LEFT;
+        const int STOP_BURGER_Y_UP = 165;
         
         
         
