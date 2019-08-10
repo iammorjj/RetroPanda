@@ -53,8 +53,6 @@ public:
     
     void OnCleanup();
     
-private:
-    void StartGame();
     
 };
 

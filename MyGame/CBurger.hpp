@@ -23,6 +23,11 @@ private:
     int oldTimeGameOver;
     bool gameOverHidding;
     
+    int frameRateGravity;
+    long long oldTimeGravity;
+    
+    Uint32 createNewBurgerDelay;
+    SDL_TimerID createNewBurgerTimer;
 public:
     
     std::vector<Burger> burger[CONSTANTS::CONVEYORS_NUM];
@@ -69,7 +74,7 @@ public:
     void gravity() {
         for(int location = LEFT_DOWN; location <= RIGHT_UP; ++location) {
             for(auto &burg: burger[location]) {
-                if(burg.canMoveDown())
+                if(!burg.canMoveSideway() && burg.canMoveDown())
                     burg.y += 2;
             }
         }
@@ -112,8 +117,6 @@ public:
                 if(burg.canMoveDown()) {
                     if(burg.canMoveSideway())
                         burg.y += 1;
-                    else
-                        burg.y += 2; // gravity
                 }
             }
         }
@@ -126,14 +129,11 @@ public:
                 if(burg.canMoveDown()) {
                     if(burg.canMoveSideway())
                         burg.y += 1;
-                    else
-                        burg.y += 2; // gravity
                 }
             }
         }
     }
     
-    void SetUpLevel1() { level = 1; }
     
     void setLevel(int l) { level = l; }
     
@@ -142,13 +142,22 @@ public:
     
     
     void StartMove() {
-        if(oldTime + this->frameRate > SDL_GetTicks())
-            return;
-
-        oldTime = SDL_GetTicks();
         
-        moveFromLeft();
-        moveFromRight();
+        
+        
+        if(oldTime + this->frameRate < SDL_GetTicks()) {
+            oldTime = SDL_GetTicks();
+            
+            moveFromLeft();
+            moveFromRight();
+        }
+        
+        if(oldTimeGravity + this->frameRateGravity < SDL_GetTicks()) {
+            oldTimeGravity = SDL_GetTicks();
+            
+            gravity();
+        }
+        
     }
     
     void checkGameOverCollisions() {
@@ -161,12 +170,16 @@ public:
                 GLOBAL::GameOver = true;
         }
     }
+    
+    void createBurgers(CBurger* Burger);
 
     void printCoordinate(int xx, int yy) { printf("X coordinate is %d\nY coordinate is %d\n", xx, yy); }
     
     void OnLoop() {
-        if(!GLOBAL::GameOver)
+        if(!GLOBAL::GameOver) {
+            createBurgers(this);
             StartMove();
+        }
     }
 };
 

@@ -15,10 +15,6 @@ CApp::CApp() {
     Running = true;
 }
 
-void CApp::StartGame() {
-    Burger.SetUpLevel1();
-}
-
 int CApp::OnExecute() {
     if(OnInit() == false) {
         return -1;
