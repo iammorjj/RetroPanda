@@ -16,6 +16,10 @@ enum Location {LEFT_DOWN,LEFT_MID,LEFT_UP,
     RIGHT_DOWN,RIGHT_MID,RIGHT_UP
 };
 
+namespace GLOBAL {
+    extern bool GameOver;
+}
+
 namespace CONSTANTS
 {
     // NOT CONSTANT FUCK REPLACE IT

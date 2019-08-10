@@ -11,16 +11,19 @@
 
 void CApp::OnLoop() {
     
+    for(int i = 0;i < CEntity::EntityList.size();i++) {
+        if(!CEntity::EntityList[i]) continue;
+        
+        CEntity::EntityList[i]->OnLoop();
+    }
+    
+    // refactor this place pls
     if(Burger.hasBurger(Hero.location) &&
        LocationClass::isHeroCollision(Burger.burger[Hero.location].back())) {
         Burger.burger[Hero.location].pop_back();
         //score++;
     }
     
-    for(int i = 0;i < CEntity::EntityList.size();i++) {
-        if(!CEntity::EntityList[i]) continue;
-        
-        CEntity::EntityList[i]->OnLoop();
-    }
+    Burger.checkGameOverCollisions();
     
 }

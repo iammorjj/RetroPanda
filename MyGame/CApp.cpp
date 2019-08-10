@@ -13,7 +13,6 @@ CApp::CApp() {
     Surf_Background = NULL;
     
     Running = true;
-    GameOver = true;
 }
 
 void CApp::StartGame() {

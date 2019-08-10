@@ -23,7 +23,6 @@ class CApp {
     
 private:
     bool            Running;
-    bool            GameOver;
     
     SDL_Surface*    Surf_Display;
     SDL_Surface*    Surf_Background;
@@ -40,6 +39,8 @@ public:
     CApp();
     
     int OnExecute();
+    
+    //static bool            GameOver;
     
 public:
     bool OnInit();

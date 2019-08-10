@@ -19,12 +19,16 @@ private:
     int     frameRate; //Milliseconds
     long    oldTime;
     
+    int gameOverHidingBurgersRate;
+    int oldTimeGameOver;
+    bool gameOverHidding;
+    
 public:
     
     std::vector<Burger> burger[CONSTANTS::CONVEYORS_NUM];
     
     CBurger();
-    
+
     void addBurgerToRandomConveyor() {
         
         Location location = (Location) (rand() % CONSTANTS::CONVEYORS_NUM);
@@ -35,18 +39,40 @@ public:
         burger[location].push_back(Burger(location));
     }
     
+    bool checkHide = false;
+    
     void OnRender(SDL_Surface* Surf_Display) {
         for(int location = LEFT_DOWN; location <= RIGHT_UP; ++location) {
             for(auto burg: burger[location]) {
-                CSurface::OnDraw(Surf_Display, Surf_Entity, burg.x,
+                if(GLOBAL::GameOver)
+                    gameOver();
+                if(!gameOverHidding)
+                    CSurface::OnDraw(Surf_Display, Surf_Entity, burg.x,
                                  burg.y,
                                  0, 0, Width, Height);
             }
         }
     }
     
+    void gameOver() {
+        if(oldTimeGameOver + this->gameOverHidingBurgersRate > SDL_GetTicks())
+            return;
+        
+        oldTimeGameOver = SDL_GetTicks();
+        gameOverHidding = !gameOverHidding;
+    }
+    
     bool hasBurger(Location location) {
         return !burger[location].empty();
+    }
+    
+    void gravity() {
+        for(int location = LEFT_DOWN; location <= RIGHT_UP; ++location) {
+            for(auto &burg: burger[location]) {
+                if(burg.canMoveDown())
+                    burg.y += 2;
+            }
+        }
     }
     
     void moveLeft() {
@@ -79,12 +105,30 @@ public:
         }
     }
     
-    void moveDown() {
+    void moveDownLeftSide() {
         
-        for(int location = LEFT_DOWN; location <= RIGHT_UP; ++location) {
+        for(int location = LEFT_DOWN; location <= LEFT_UP; ++location) {
             for(auto &burg: burger[location]) {
-                if(burg.canMoveDown())
-                    burg.y += 1;
+                if(burg.canMoveDown()) {
+                    if(burg.canMoveSideway())
+                        burg.y += 1;
+                    else
+                        burg.y += 2; // gravity
+                }
+            }
+        }
+    }
+    
+    void moveDownRightSide() {
+        
+        for(int location = RIGHT_DOWN; location <= RIGHT_UP; ++location) {
+            for(auto &burg: burger[location]) {
+                if(burg.canMoveDown()) {
+                    if(burg.canMoveSideway())
+                        burg.y += 1;
+                    else
+                        burg.y += 2; // gravity
+                }
             }
         }
     }
@@ -93,6 +137,8 @@ public:
     
     void setLevel(int l) { level = l; }
     
+    void moveFromLeft() { moveRight(); moveDownLeftSide(); }
+    void moveFromRight() { moveLeft(); moveDownRightSide(); }
     
     
     void StartMove() {
@@ -101,31 +147,25 @@ public:
 
         oldTime = SDL_GetTicks();
         
-        moveRight();
-        moveLeft();
-        moveDown();
-        
-        checkCollisions();
+        moveFromLeft();
+        moveFromRight();
     }
     
-    void checkCollisions() {
-//        for(auto &conv: conveyor) {
-//            if(conv.burger.empty())
-//                continue;
-//
-//            auto burger = conv.burger.back();
-//            if(burger.isGameOver()) {
-//                level = 0;
-//            } else if(burger.isTakenByHero()) {
-//                conv.burger.pop_back();
-//            }
-//        }
+    void checkGameOverCollisions() {
+        for(auto burger: burger) {
+            if(burger.empty())
+                continue;
+
+            auto burg = burger.back();
+            if(burg.isGameOver())
+                GLOBAL::GameOver = true;
+        }
     }
 
     void printCoordinate(int xx, int yy) { printf("X coordinate is %d\nY coordinate is %d\n", xx, yy); }
     
     void OnLoop() {
-        if(level > 0)
+        if(!GLOBAL::GameOver)
             StartMove();
     }
 };

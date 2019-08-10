@@ -22,4 +22,8 @@ CBurger::CBurger() {
     frameRate = 50; //Milliseconds
     
     oldTime = 0;
+    
+    gameOverHidingBurgersRate = 500;
+    oldTimeGameOver = 0;
+    gameOverHidding = false;
 }
