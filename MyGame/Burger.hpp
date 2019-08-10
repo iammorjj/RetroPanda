@@ -10,6 +10,7 @@
 #define Burger_hpp
 
 #include "Constants.h"
+#include "Location.h"
 
 using namespace CONSTANTS::BURGER;
 
@@ -21,54 +22,51 @@ struct Coordinate {
     }
 };
 
-class Burger {
+class Burger: public LocationClass {
 public:
-    Coordinate coord;
-    Location location;
-public:
-    Burger(Location location) {
+    Burger(Location location = LEFT_DOWN) {
         this->location = location;
         
         switch(location) {
             case LEFT_DOWN:
-                coord = Coordinate(START_BURGER_X_LEFT, START_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS * 2);
+                x = START_BURGER_X_LEFT; y = START_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS * 2;
                 break;
             case LEFT_MID:
-                coord = Coordinate(START_BURGER_X_LEFT, START_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS);
+                x = START_BURGER_X_LEFT; y = START_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS;
                 break;
             case LEFT_UP:
-                coord = Coordinate(START_BURGER_X_LEFT, START_BURGER_Y_UP);
+                x = START_BURGER_X_LEFT; y = START_BURGER_Y_UP;
                 break;
                 
             case RIGHT_DOWN:
-                coord = Coordinate(START_BURGER_X_RIGHT, START_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS * 2);
+                x = START_BURGER_X_RIGHT; y = START_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS * 2;
                 break;
             case RIGHT_MID:
-                coord = Coordinate(START_BURGER_X_RIGHT, START_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS);
+                x = START_BURGER_X_RIGHT; y = START_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS;
                 break;
             case RIGHT_UP:
-                coord = Coordinate(START_BURGER_X_RIGHT, START_BURGER_Y_UP);
+                x = START_BURGER_X_RIGHT; y = START_BURGER_Y_UP;
                 break;
         }
     }
     
     bool canMoveSideway() {
-        return !(coord.x > STOP_BURGER_X_LEFT && coord.x < STOP_BURGER_X_RIGHT);
+        return !(x > STOP_BURGER_X_LEFT && x < STOP_BURGER_X_RIGHT);
     }
     
     bool canMoveDown() {
-        switch(location) {
+        switch(this->location) {
             case LEFT_DOWN:
             case RIGHT_DOWN:
-                if(coord.y < STOP_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS * 2) return true;
+                if(y < STOP_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS * 2) return true;
                 return false;
             case LEFT_MID:
             case RIGHT_MID:
-                if(coord.y < STOP_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS) return true;
+                if(y < STOP_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS) return true;
                 return false;
             case LEFT_UP:
             case RIGHT_UP:
-               if(coord.y < STOP_BURGER_Y_UP) return true;
+               if(y < STOP_BURGER_Y_UP) return true;
                return false;
                 
         }
@@ -79,7 +77,7 @@ public:
     }
     
     bool isTakenByHero() {
-        if(coord.x > HERO_CAN_TAKE_X_LEFT && coord.x < HERO_CAN_TAKE_X_RIGHT) {
+        if(x > HERO_CAN_TAKE_X_LEFT && x < HERO_CAN_TAKE_X_RIGHT) {
             //CONSTANTS::score++;
             return true;
         }

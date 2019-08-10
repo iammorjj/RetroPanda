@@ -13,6 +13,8 @@ std::vector<CEntity*> CEntity::EntityList;
 CEntity::CEntity() {
     Surf_Entity = NULL;
     
+    //location = LEFT_DOWN;
+    
     X = Y = 0.0f;
     
     Width = Height = 0;
@@ -24,6 +26,10 @@ CEntity::CEntity() {
 
 CEntity::~CEntity() {
 }
+
+//static void CheckCollisions(Location HeroLocation, CBurger& BurgerClass) {
+//    
+//}
 
 bool CEntity::OnLoad(const char* File, int Width, int Height, int MaxFrames) {
     if((Surf_Entity = CSurface::OnLoad(File)) == NULL) {

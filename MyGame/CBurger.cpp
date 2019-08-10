@@ -14,7 +14,8 @@ CBurger::CBurger() {
 //    X = START_BURGER_X_LEFT;
 //    Y = START_BURGER_Y_LEFT;
     
-    conveyor.resize(CONSTANTS::CONVEYORS_NUM);
+    //conveyor.resize(CONSTANTS::CONVEYORS_NUM);
+//    burger.resize(CONSTANTS::CONVEYORS_NUM);
     
     level = 0;
     

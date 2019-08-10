@@ -14,8 +14,8 @@
 #include "Constants.h"
 #include "CSurface.hpp"
 #include "CAnimation.hpp"
-#include "CEntity.hpp"
 #include "CConveyor.hpp"
+#include "CEntity.hpp"
 #include "CHero.hpp"
 #include "CBurger.hpp"
 

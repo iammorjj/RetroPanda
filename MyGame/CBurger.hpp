@@ -10,7 +10,7 @@
 #define CBurger_hpp
 
 #include "CEntity.hpp"
-#include "Conveyor.hpp"
+#include "Burger.hpp"
 #include <vector>
 
 class CBurger: public CEntity {
@@ -19,9 +19,9 @@ private:
     int     frameRate; //Milliseconds
     long    oldTime;
     
-private:
-    std::vector<Conveyor> conveyor;
 public:
+    
+    std::vector<Burger> burger[CONSTANTS::CONVEYORS_NUM];
     
     CBurger();
     
@@ -31,52 +31,62 @@ public:
         
         // debug
         //location = LEFT_UP;
-        
-        conveyor[location].addBurger();
-        
+
+        burger[location].push_back(Burger(location));
     }
     
     void OnRender(SDL_Surface* Surf_Display) {
-        if(Surf_Entity == NULL || Surf_Display == NULL) return;
-        
-        for(auto conv: conveyor) {
-            for(auto burg: conv.burger) {
-                CSurface::OnDraw(Surf_Display, Surf_Entity, burg.coord.x,
-                                 burg.coord.y,
+        for(int location = LEFT_DOWN; location <= RIGHT_UP; ++location) {
+            for(auto burg: burger[location]) {
+                CSurface::OnDraw(Surf_Display, Surf_Entity, burg.x,
+                                 burg.y,
                                  0, 0, Width, Height);
             }
         }
     }
     
+    bool hasBurger(Location location) {
+        return !burger[location].empty();
+    }
+    
     void moveLeft() {
-        for(auto &conv: conveyor)
-            if(conv.isRightSide())
-                for(auto &burg: conv.burger)
-                    if(burg.canMoveSideway())
-                        burg.coord.x -= 2;
+        
+        for(int location = RIGHT_DOWN; location <= RIGHT_UP; ++location) {
+            for(auto &burg: burger[location]) {
+                if(burg.canMoveSideway())
+                    burg.x -= 2;
+            }
+        }
     }
     
     void moveRight() {
-        for(auto &conv: conveyor)
-            if(conv.isLeftSide())
-                for(auto &burg: conv.burger)
-                    if(burg.canMoveSideway())
-                        burg.coord.x += 2;
+        
+        for(int location = LEFT_DOWN; location <= LEFT_UP; ++location) {
+            for(auto &burg: burger[location]) {
+                if(burg.canMoveSideway())
+                    burg.x += 2;
+            }
+        }
     }
     
     void moveUp() {
-        for(auto &conv: conveyor)
-            for(auto &burg: conv.burger) {
-                if(burg.coord.y > CONSTANTS::BURGER::STOP_BURGER_Y_UP)
-                burg.coord.y -= 1;
+        
+        for(int location = LEFT_DOWN; location <= RIGHT_UP; ++location) {
+            for(auto &burg: burger[location]) {
+                if(burg.y > CONSTANTS::BURGER::STOP_BURGER_Y_UP)
+                    burg.y -= 1;
             }
+        }
     }
     
     void moveDown() {
-        for(auto &conv: conveyor)
-            for(auto &burg: conv.burger)
+        
+        for(int location = LEFT_DOWN; location <= RIGHT_UP; ++location) {
+            for(auto &burg: burger[location]) {
                 if(burg.canMoveDown())
-                    burg.coord.y += 1;
+                    burg.y += 1;
+            }
+        }
     }
     
     void SetUpLevel1() { level = 1; }
@@ -99,17 +109,17 @@ public:
     }
     
     void checkCollisions() {
-        for(auto &conv: conveyor) {
-            if(conv.burger.empty())
-                continue;
-            
-            auto burger = conv.burger.back();
-            if(burger.isGameOver()) {
-                level = 0;
-            } else if(burger.isTakenByHero()) {
-                conv.burger.pop_back();
-            }
-        }
+//        for(auto &conv: conveyor) {
+//            if(conv.burger.empty())
+//                continue;
+//
+//            auto burger = conv.burger.back();
+//            if(burger.isGameOver()) {
+//                level = 0;
+//            } else if(burger.isTakenByHero()) {
+//                conv.burger.pop_back();
+//            }
+//        }
     }
 
     void printCoordinate(int xx, int yy) { printf("X coordinate is %d\nY coordinate is %d\n", xx, yy); }

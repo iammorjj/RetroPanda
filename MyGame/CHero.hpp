@@ -10,9 +10,10 @@
 #define CHero_hpp
 
 #include "CEntity.hpp"
+#include "Location.h"
 
-class CHero: public CEntity {
-private:
+class CHero: public CEntity, public LocationClass {
+public:
     Location location;
 public:
 
