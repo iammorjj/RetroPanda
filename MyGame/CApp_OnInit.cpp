@@ -33,6 +33,9 @@ bool CApp::isWindowInit() {
 }
 
 bool CApp::isRecourceInit() {
+    if(TTF_Init() < 0 || (font = TTF_OpenFont(FONT.c_str(), 90)) == NULL)
+        return false;
+    
     if((Surf_Background = CSurface::OnLoad(BACKGROUND_IMG.c_str())) == NULL)
         return false;
     

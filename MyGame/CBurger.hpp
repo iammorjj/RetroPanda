@@ -17,7 +17,7 @@ class CBurger: public CEntity {
 private:
     int     level;
     int     frameRate; //Milliseconds
-    long    oldTime;
+    long long    oldTime;
     
     int gameOverHidingBurgersRate;
     int oldTimeGameOver;
@@ -143,10 +143,10 @@ public:
     
     void StartMove() {
         
-        
-        
         if(oldTime + this->frameRate < SDL_GetTicks()) {
             oldTime = SDL_GetTicks();
+            
+            //printf("oldTime %lld\n", oldTime);
             
             moveFromLeft();
             moveFromRight();
@@ -155,9 +155,17 @@ public:
         if(oldTimeGravity + this->frameRateGravity < SDL_GetTicks()) {
             oldTimeGravity = SDL_GetTicks();
             
+            //printf("oldTimeGravity %lld\n", oldTimeGravity);
+            
             gravity();
         }
         
+    }
+    
+    void newGame() {
+        gameOverHidding = false;
+        for(int location = LEFT_DOWN; location <= RIGHT_UP; ++location)
+            burger[location].clear();
     }
     
     void checkGameOverCollisions() {

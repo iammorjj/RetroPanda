@@ -28,7 +28,7 @@ CBurger::CBurger() {
     gameOverHidding = false;
     
     frameRateGravity = 50;
-    frameRateGravity = 0;
+    oldTimeGravity = 0;
     
     createNewBurgerDelay = 3000;
     createNewBurgerTimer = nullptr;

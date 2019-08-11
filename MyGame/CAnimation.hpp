@@ -25,8 +25,6 @@ private:
 public:
     int    MaxFrames;
     
-    bool    Oscillate;
-    
 public:
     CAnimation();
     

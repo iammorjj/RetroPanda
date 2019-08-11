@@ -48,6 +48,7 @@ namespace CONSTANTS
     const std::string CONVEYOR_IMG = PATH+"conveyorx2.png";
     const std::string HERO_IMG = PATH+"pandax25.png";
     const std::string BURGER_IMG = PATH+"burgerx2.png";
+    const std::string FONT = PATH+"acknowtt.ttf";
     
     namespace BURGER {
         const int BURGER_WIDTH = 60*2;
