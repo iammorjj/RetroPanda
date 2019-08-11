@@ -21,6 +21,7 @@
 #include "CEntity.hpp"
 #include "CHero.hpp"
 #include "CBurger.hpp"
+#include "CScore.hpp"
 
 class CApp {
     
@@ -30,15 +31,7 @@ private:
     SDL_Surface*    Surf_Display;
     SDL_Surface*    Surf_Background;
     
-    TTF_Font*       font;
-    SDL_Surface*    Surf_Score_Black;
-    SDL_Surface*    Surf_Score_White;
-    
-    int             score;
-    char            buf[5];
-    
-    SDL_Color       textColorWhite;
-    SDL_Color       textColorBlack;
+    CScore          Score;
     
     CHero           Hero;
     CBurger         Burger;
@@ -52,8 +45,6 @@ public:
     CApp();
     
     int OnExecute();
-    
-    //static bool            GameOver;
     
 public:
     bool OnInit();

@@ -21,7 +21,7 @@ void CApp::OnLoop() {
     if(Burger.hasBurger(Hero.location) &&
        LocationClass::isHeroCollision(Burger.burger[Hero.location].back())) {
         Burger.burger[Hero.location].pop_back();
-        score++;
+        Score.score++;
     }
     
     Burger.checkGameOverCollisions();

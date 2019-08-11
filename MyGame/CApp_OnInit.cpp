@@ -12,6 +12,7 @@ using namespace CONSTANTS;
 
 bool CApp::OnInit() {
     if(isWindowInit() && isRecourceInit()) {
+        CEntity::EntityList.push_back(&Score);
         CEntity::EntityList.push_back(&Conveyor);
         CEntity::EntityList.push_back(&Burger);
         CEntity::EntityList.push_back(&Hero);
@@ -33,10 +34,10 @@ bool CApp::isWindowInit() {
 }
 
 bool CApp::isRecourceInit() {
-    if(TTF_Init() < 0 || (font = TTF_OpenFont(FONT.c_str(), 90)) == NULL)
+    if((Surf_Background = CSurface::OnLoad(BACKGROUND_IMG.c_str())) == NULL)
         return false;
     
-    if((Surf_Background = CSurface::OnLoad(BACKGROUND_IMG.c_str())) == NULL)
+    if(!Score.OnLoad(FONT.c_str(), 90))
         return false;
     
     if(!Conveyor.OnLoad(CONVEYOR_IMG.c_str(), CONVEYOR_WIDTH, CONVEYOR_HEIGHT, CONVEYOR_MAX_FRAMES))

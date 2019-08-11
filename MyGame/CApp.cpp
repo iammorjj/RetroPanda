@@ -12,12 +12,12 @@ CApp::CApp() {
     Surf_Display = NULL;
     Surf_Background = NULL;
     
-    score = 0;
+    //score = 0;
     
-    font = NULL;
-    Surf_Score_Black = Surf_Score_White = NULL;
-    textColorWhite = { 255, 255, 255 };
-    textColorBlack = { 0, 0, 0 };
+//    font = NULL;
+//    Surf_Score_Black = Surf_Score_White = NULL;
+//    textColorWhite = { 255, 255, 255 };
+//    textColorBlack = { 0, 0, 0 };
     
     Running = true;
 }

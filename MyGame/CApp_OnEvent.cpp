@@ -14,7 +14,7 @@ void CApp::OnEvent(SDL_Event* Event) {
         
         if(GLOBAL::GameOver) {
             GLOBAL::GameOver = false;
-            score = 0;
+            Score.score = 0;
             Burger.newGame();
         }
         
