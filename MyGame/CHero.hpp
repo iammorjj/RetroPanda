@@ -17,26 +17,16 @@ public:
     Location location;
 public:
 
-    CHero() {
-        X = CONSTANTS::SCREEN_WIDTH / 2.0 - CONSTANTS::HERO_WIDTH / 2.0;
-        Y = CONSTANTS::SCREEN_HEIGHT - CONSTANTS::HERO_HEIGHT - 20;
-        
-        location = LEFT_DOWN;
-    }
+    CHero();
     
-    void OnRender(SDL_Surface* Surf_Display) {
-        if(Surf_Entity == NULL || Surf_Display == NULL) return;
-
-        CSurface::OnDraw(Surf_Display, Surf_Entity, X, Y,
-                         Anim_Control.GetCurrentFrame() * Width, CurrentFrameRow * Height, Width, Height);
-    }
+    void OnRender(SDL_Surface* Surf_Display);
     
-    void MoveLeftDown() { CurrentFrameRow = 0; location = LEFT_DOWN; }
-    void MoveLeftMid() { CurrentFrameRow = 2; location = LEFT_MID; }
-    void MoveLeftUp() { CurrentFrameRow = 4; location = LEFT_UP; }
-    void MoveRightDown() { CurrentFrameRow = 1; location = RIGHT_DOWN; }
-    void MoveRightMid() { CurrentFrameRow = 3; location = RIGHT_MID; }
-    void MoveRightUp() { CurrentFrameRow = 5; location = RIGHT_UP; }
+    void MoveLeftDown();
+    void MoveLeftMid();
+    void MoveLeftUp();
+    void MoveRightDown();
+    void MoveRightMid();
+    void MoveRightUp();
     
 };
 

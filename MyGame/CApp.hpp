@@ -37,6 +37,8 @@ private:
     CBurger         Burger;
     CConveyor       Conveyor;
     
+    SDL_TimerID     timerLevelUpBurgerSpeedMovement;
+    
 private:
     bool isWindowInit();
     bool isRecourceInit();
@@ -56,8 +58,6 @@ public:
     void OnRender();
     
     void OnCleanup();
-    
-    
 };
 
 #endif

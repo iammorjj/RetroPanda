@@ -11,14 +11,16 @@
 void CApp::OnEvent(SDL_Event* Event) {
     
     if(Event->type == SDL_KEYDOWN) {
-        
         if(GLOBAL::GameOver) {
             GLOBAL::GameOver = false;
+            Burger.changeMovementSpeed(timerLevelUpBurgerSpeedMovement);
             Score.score = 0;
             Burger.newGame();
         }
         
         switch(Event->key.keysym.sym) {
+            
+            case SDLK_q: Running = false; break;
                 
             case SDLK_1: Hero.MoveLeftDown(); break;
             case SDLK_2: Hero.MoveLeftMid(); break;

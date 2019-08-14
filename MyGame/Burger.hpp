@@ -24,67 +24,13 @@ struct Coordinate {
 
 class Burger: public LocationClass {
 public:
-    Burger(Location location = LEFT_DOWN) {
-        this->location = location;
-        
-        switch(location) {
-            case LEFT_DOWN:
-                x = START_BURGER_X_LEFT; y = START_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS * 2;
-                break;
-            case LEFT_MID:
-                x = START_BURGER_X_LEFT; y = START_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS;
-                break;
-            case LEFT_UP:
-                x = START_BURGER_X_LEFT; y = START_BURGER_Y_UP;
-                break;
-                
-            case RIGHT_DOWN:
-                x = START_BURGER_X_RIGHT; y = START_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS * 2;
-                break;
-            case RIGHT_MID:
-                x = START_BURGER_X_RIGHT; y = START_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS;
-                break;
-            case RIGHT_UP:
-                x = START_BURGER_X_RIGHT; y = START_BURGER_Y_UP;
-                break;
-        }
-    }
+    Burger(Location location = LEFT_DOWN);
     
-    bool canMoveSideway() {
-        return !(x > STOP_BURGER_X_LEFT && x < STOP_BURGER_X_RIGHT);
-    }
+    bool canMoveSideway();
     
-    bool canMoveDown() {
-        switch(this->location) {
-            case LEFT_DOWN:
-            case RIGHT_DOWN:
-                if(y < STOP_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS * 2) return true;
-                return false;
-            case LEFT_MID:
-            case RIGHT_MID:
-                if(y < STOP_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS) return true;
-                return false;
-            case LEFT_UP:
-            case RIGHT_UP:
-               if(y < STOP_BURGER_Y_UP) return true;
-               return false;
-                
-        }
-    }
+    bool canMoveDown();
     
-    bool isGameOver() {
-        return !canMoveDown();
-    }
-    
-    bool isTakenByHero() {
-        if(x > HERO_CAN_TAKE_X_LEFT && x < HERO_CAN_TAKE_X_RIGHT) {
-            //CONSTANTS::score++;
-            return true;
-        }
-        
-        return false;
-    }
-    
+    bool isGameOver();
 };
 
 #endif /* Burger_hpp */

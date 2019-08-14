@@ -34,161 +34,42 @@ public:
     
     CBurger();
 
-    void addBurgerToRandomConveyor() {
-        
-        Location location = (Location) (rand() % CONSTANTS::CONVEYORS_NUM);
-        
-        // debug
-        //location = LEFT_UP;
+    void addBurgerToRandomConveyor();
+    
+    void gameOver();
+    
+    bool hasBurger(Location location);
+    
+    void gravity();
 
-        burger[location].push_back(Burger(location));
-    }
+    void moveLeft();
+    void moveRight();
     
-    bool checkHide = false;
+    void moveUp();
     
-    void OnRender(SDL_Surface* Surf_Display) {
-        for(int location = LEFT_DOWN; location <= RIGHT_UP; ++location) {
-            for(auto burg: burger[location]) {
-                if(GLOBAL::GameOver)
-                    gameOver();
-                if(!gameOverHidding)
-                    CSurface::OnDraw(Surf_Display, Surf_Entity, burg.x,
-                                 burg.y,
-                                 0, 0, Width, Height);
-            }
-        }
-    }
+    void moveDownLeftSide();
+    void moveDownRightSide();
+    void moveFromLeft();
+    void moveFromRight();
     
-    void gameOver() {
-        if(oldTimeGameOver + this->gameOverHidingBurgersRate > SDL_GetTicks())
-            return;
-        
-        oldTimeGameOver = SDL_GetTicks();
-        gameOverHidding = !gameOverHidding;
-    }
+    void setLevel(int l);
     
-    bool hasBurger(Location location) {
-        return !burger[location].empty();
-    }
+    void StartMove();
     
-    void gravity() {
-        for(int location = LEFT_DOWN; location <= RIGHT_UP; ++location) {
-            for(auto &burg: burger[location]) {
-                if(!burg.canMoveSideway() && burg.canMoveDown())
-                    burg.y += 2;
-            }
-        }
-    }
+    void newGame();
     
-    void moveLeft() {
-        
-        for(int location = RIGHT_DOWN; location <= RIGHT_UP; ++location) {
-            for(auto &burg: burger[location]) {
-                if(burg.canMoveSideway())
-                    burg.x -= 2;
-            }
-        }
-    }
+    void checkGameOverCollisions();
     
-    void moveRight() {
-        
-        for(int location = LEFT_DOWN; location <= LEFT_UP; ++location) {
-            for(auto &burg: burger[location]) {
-                if(burg.canMoveSideway())
-                    burg.x += 2;
-            }
-        }
-    }
+    void changeMovementSpeed(SDL_TimerID& timer);
     
-    void moveUp() {
-        
-        for(int location = LEFT_DOWN; location <= RIGHT_UP; ++location) {
-            for(auto &burg: burger[location]) {
-                if(burg.y > CONSTANTS::BURGER::STOP_BURGER_Y_UP)
-                    burg.y -= 1;
-            }
-        }
-    }
-    
-    void moveDownLeftSide() {
-        
-        for(int location = LEFT_DOWN; location <= LEFT_UP; ++location) {
-            for(auto &burg: burger[location]) {
-                if(burg.canMoveDown()) {
-                    if(burg.canMoveSideway())
-                        burg.y += 1;
-                }
-            }
-        }
-    }
-    
-    void moveDownRightSide() {
-        
-        for(int location = RIGHT_DOWN; location <= RIGHT_UP; ++location) {
-            for(auto &burg: burger[location]) {
-                if(burg.canMoveDown()) {
-                    if(burg.canMoveSideway())
-                        burg.y += 1;
-                }
-            }
-        }
-    }
-    
-    
-    void setLevel(int l) { level = l; }
-    
-    void moveFromLeft() { moveRight(); moveDownLeftSide(); }
-    void moveFromRight() { moveLeft(); moveDownRightSide(); }
-    
-    
-    void StartMove() {
-        
-        if(oldTime + this->frameRate < SDL_GetTicks()) {
-            oldTime = SDL_GetTicks();
-            
-            //printf("oldTime %lld\n", oldTime);
-            
-            moveFromLeft();
-            moveFromRight();
-        }
-        
-        if(oldTimeGravity + this->frameRateGravity < SDL_GetTicks()) {
-            oldTimeGravity = SDL_GetTicks();
-            
-            //printf("oldTimeGravity %lld\n", oldTimeGravity);
-            
-            gravity();
-        }
-        
-    }
-    
-    void newGame() {
-        gameOverHidding = false;
-        for(int location = LEFT_DOWN; location <= RIGHT_UP; ++location)
-            burger[location].clear();
-    }
-    
-    void checkGameOverCollisions() {
-        for(auto burger: burger) {
-            if(burger.empty())
-                continue;
+    void createBurgers();
 
-            auto burg = burger.back();
-            if(burg.isGameOver())
-                GLOBAL::GameOver = true;
-        }
-    }
+    void printCoordinate(int xx, int yy);
     
-    void createBurgers(CBurger* Burger);
-
-    void printCoordinate(int xx, int yy) { printf("X coordinate is %d\nY coordinate is %d\n", xx, yy); }
+public:
+    void OnLoop();
     
-    void OnLoop() {
-        if(!GLOBAL::GameOver) {
-            createBurgers(this);
-            StartMove();
-        }
-    }
+    void OnRender(SDL_Surface* Surf_Display);
 };
 
 #endif /* CBurger_hpp */
