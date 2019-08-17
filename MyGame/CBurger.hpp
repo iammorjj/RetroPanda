@@ -37,6 +37,8 @@ private:
     
     Uint32 createNewBurgerDelay;
     SDL_TimerID createNewBurgerTimer;
+    
+    bool changeAppearanceSpeed;
 public:
     
     //std::vector<Burger> burger[CONSTANTS::CONVEYORS_NUM];

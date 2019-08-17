@@ -37,6 +37,8 @@ CBurger::CBurger() {
     createNewBurgerDelay = CREATE_NEW_BURGER_DELAY_START;
     createNewBurgerTimer = nullptr;
     
+    changeAppearanceSpeed = false;
+    
     timer.start();
 }
 
@@ -47,12 +49,7 @@ void CBurger::newLevelSpeedMovement() {
 
 void CBurger::newLevelSpeedAppearence() {
     createNewBurgerDelay *= 0.75;
-    if(createNewBurgerTimer && !SDL_RemoveTimer(createNewBurgerTimer)) {
-        printf("timer is not removed, FAULT!\n");
-        return;
-    }
-    createNewBurgerTimer = NULL;
-    createBurgers();
+    changeAppearanceSpeed = true;
 }
 
 void CBurger::addBurgerToRandomConveyor() {
@@ -64,6 +61,12 @@ void CBurger::addBurgerToRandomConveyor() {
     // no vector, need queue
     //burger[location].push_back(Burger(location));
     burger[location].push_front(Burger(location));
+    
+    if(changeAppearanceSpeed && createNewBurgerTimer && SDL_RemoveTimer(createNewBurgerTimer)) {
+        createNewBurgerTimer = NULL;
+        changeAppearanceSpeed = false;
+        createBurgers();
+    }
 }
 
 void CBurger::OnRender(SDL_Surface* Surf_Display) {
@@ -203,6 +206,7 @@ void CBurger::StartMove() {
 
 void CBurger::newGame() {
     gameOverHidding = false;
+    changeAppearanceSpeed = false;
     for(int location = LEFT_DOWN; location <= RIGHT_UP; ++location)
         burger[location].clear();
     xVel = X_VEL_START;
