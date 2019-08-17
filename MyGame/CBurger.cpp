@@ -10,7 +10,16 @@
 
 using namespace CONSTANTS::BURGER;
 
+const int X_VEL_START = 35;
+const int Y_VEL_START = 20;
+const int CREATE_NEW_BURGER_DELAY_START = 2500;
+
 CBurger::CBurger() {
+    xVel = X_VEL_START;
+    yVel = Y_VEL_START;
+    
+    deltaTicks = 0;
+    
     level = 0;
     
     frameRate = 50; //Milliseconds
@@ -24,8 +33,22 @@ CBurger::CBurger() {
     frameRateGravity = FRAME_RATE_GRAVITY;
     oldTimeGravity = 0;
     
-    createNewBurgerDelay = 3000;
+    createNewBurgerDelay = CREATE_NEW_BURGER_DELAY_START;
     createNewBurgerTimer = nullptr;
+    
+    timer.start();
+}
+
+void CBurger::newLevelSpeedMovement() {
+    //xVel *= 1.3;
+    //yVel *= 1.3;
+}
+
+void CBurger::newLevelSpeedAppearence() {
+    createNewBurgerDelay *= 0.8;
+    SDL_RemoveTimer(createNewBurgerTimer);
+    createNewBurgerTimer = NULL;
+    createBurgers();
 }
 
 void CBurger::addBurgerToRandomConveyor() {
@@ -49,7 +72,7 @@ void CBurger::OnRender(SDL_Surface* Surf_Display) {
 void CBurger::gameOver() {
     if(oldTimeGameOver + this->gameOverHidingBurgersRate > SDL_GetTicks())
         return;
-    
+
     oldTimeGameOver = SDL_GetTicks();
     gameOverHidding = !gameOverHidding;
 }
@@ -58,64 +81,70 @@ bool CBurger::hasBurger(Location location) {
     return !burger[location].empty();
 }
 
-void CBurger::gravity() {
+void CBurger::gravity(double deltaTicks) {
     for(int location = LEFT_DOWN; location <= RIGHT_UP; ++location) {
         for(auto &burg: burger[location]) {
             if(!burg.canMoveSideway() && burg.canMoveDown())
-                burg.y += 1;
+                //burg.y += 1;
+                burg.y += Y_VEL_START * ( deltaTicks / 1000.0 );
         }
     }
 }
 
-void CBurger::moveLeft() {
+void CBurger::moveLeft(double deltaTicks) {
     
     for(int location = RIGHT_DOWN; location <= RIGHT_UP; ++location) {
         for(auto &burg: burger[location]) {
             if(burg.canMoveSideway())
-                burg.x -= 2;
+                //burg.x -= 2;
+                burg.x -= xVel * ( deltaTicks / 1000.0 );
         }
     }
 }
 
-void CBurger::moveRight() {
+void CBurger::moveRight(double deltaTicks) {
     
     for(int location = LEFT_DOWN; location <= LEFT_UP; ++location) {
         for(auto &burg: burger[location]) {
             if(burg.canMoveSideway())
-                burg.x += 2;
+                //burg.x += 2;
+                burg.x += xVel * ( deltaTicks / 1000.0 );
         }
     }
 }
 
-void CBurger::moveUp() {
+void CBurger::moveUp(double deltaTicks) {
     
     for(int location = LEFT_DOWN; location <= RIGHT_UP; ++location) {
         for(auto &burg: burger[location]) {
             if(burg.y > CONSTANTS::BURGER::STOP_BURGER_Y_UP)
-                burg.y -= 1;
+                //burg.y -= 1;
+                burg.y -= yVel * ( deltaTicks / 1000.0 );
         }
     }
 }
 
-void CBurger::moveDownLeftSide() {
+void CBurger::moveDownLeftSide(double deltaTicks) {
     
     for(int location = LEFT_DOWN; location <= LEFT_UP; ++location) {
         for(auto &burg: burger[location]) {
             if(burg.canMoveDown()) {
                 if(burg.canMoveSideway())
-                    burg.y += 1;
+                    //burg.y += 1;
+                    burg.y += yVel * ( deltaTicks / 1000.0 );
             }
         }
     }
 }
 
-void CBurger::moveDownRightSide() {
+void CBurger::moveDownRightSide(double deltaTicks) {
     
     for(int location = RIGHT_DOWN; location <= RIGHT_UP; ++location) {
         for(auto &burg: burger[location]) {
             if(burg.canMoveDown()) {
                 if(burg.canMoveSideway())
-                    burg.y += 1;
+                    //burg.y += 1;
+                    burg.y += yVel * ( deltaTicks / 1000.0 );
             }
         }
     }
@@ -124,24 +153,37 @@ void CBurger::moveDownRightSide() {
 
 void CBurger::setLevel(int l) { level = l; }
 
-void CBurger::moveFromLeft() { moveRight(); moveDownLeftSide(); }
-void CBurger::moveFromRight() { moveLeft(); moveDownRightSide(); }
+void CBurger::moveFromLeft(double deltaTicks) {
+    moveRight(deltaTicks);
+    moveDownLeftSide(deltaTicks); }
+void CBurger::moveFromRight(double deltaTicks) {
+    moveLeft(deltaTicks);
+    moveDownRightSide(deltaTicks); }
 
 
 void CBurger::StartMove() {
     
-    if(oldTime + this->frameRate < SDL_GetTicks()) {
-        oldTime = SDL_GetTicks();
-        
-        moveFromLeft();
-        moveFromRight();
-    }
+    deltaTicks = timer.get_ticks();
     
-    if(oldTimeGravity + this->frameRateGravity < SDL_GetTicks()) {
-        oldTimeGravity = SDL_GetTicks();
-        
-        gravity();
-    }
+    moveFromLeft(deltaTicks);
+    moveFromRight(deltaTicks);
+    gravity(deltaTicks);
+    
+    timer.start();
+//    if(oldTime + this->frameRate < SDL_GetTicks()) {
+//        oldTime = SDL_GetTicks();
+//
+//        moveFromLeft();
+//        moveFromRight();
+//    }
+//
+//    if(oldTimeGravity + this->frameRateGravity < SDL_GetTicks()) {
+//        oldTimeGravity = SDL_GetTicks();
+//
+//        gravity();
+//    }
+    
+    
     
 }
 
@@ -149,6 +191,12 @@ void CBurger::newGame() {
     gameOverHidding = false;
     for(int location = LEFT_DOWN; location <= RIGHT_UP; ++location)
         burger[location].clear();
+    xVel = X_VEL_START;
+    yVel = Y_VEL_START;
+    createNewBurgerDelay = CREATE_NEW_BURGER_DELAY_START;
+    if(createNewBurgerTimer)
+        SDL_RemoveTimer(createNewBurgerTimer);
+    createNewBurgerTimer = NULL;
 }
 
 void CBurger::checkGameOverCollisions() {
@@ -178,17 +226,17 @@ Uint32 addBurgerK(Uint32 interval, void* param) {
     return interval;
 }
 
-Uint32 changeMovementSpeedTimer(Uint32 interval, void* param) {
-    int* frameRate = (int*)param;
-    if(*frameRate > 10)
-        (*frameRate)--;
-    
-    return interval;
-}
-
-void CBurger::changeMovementSpeed(SDL_TimerID& timer) {
-    timer = SDL_AddTimer(4000, changeMovementSpeedTimer, &frameRate);
-}
+//Uint32 changeMovementSpeedTimer(Uint32 interval, void* param) {
+//    int* frameRate = (int*)param;
+//    if(*frameRate > 10)
+//        (*frameRate)--;
+//
+//    return interval;
+//}
+//
+//void CBurger::changeMovementSpeed(SDL_TimerID& timer) {
+//    timer = SDL_AddTimer(4000, changeMovementSpeedTimer, &frameRate);
+//}
 
 void CBurger::createBurgers() {
     if(!createNewBurgerTimer)

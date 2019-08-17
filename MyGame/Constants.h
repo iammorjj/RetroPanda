@@ -20,24 +20,26 @@ namespace GLOBAL {
     extern bool GameOver;
 }
 
+// coef angle conveyor = 1.75
+
 namespace CONSTANTS
 {
     // NOT CONSTANT FUCK REPLACE IT
     //int score = 0;
     
-//    const int SCREEN_WIDTH = 144*2;
-//    const int SCREEN_HEIGHT = 240*2;
-//    const int SCREEN_BPP = 32;
-    
-//    const int BACKGROUND_WIDTH = 144*2;
-//    const int BACKGROUND_HEIGHT = 240*2;
-    
-    const int SCREEN_WIDTH = 1024;
-    const int SCREEN_HEIGHT = 768;
+    const int SCREEN_WIDTH = 144*2;
+    const int SCREEN_HEIGHT = 240*2;
     const int SCREEN_BPP = 32;
     
-    const int BACKGROUND_WIDTH = 461;
-    const int BACKGROUND_HEIGHT = 768;
+    const int BACKGROUND_WIDTH = 144*2;
+    const int BACKGROUND_HEIGHT = 240*2;
+    
+//    const int SCREEN_WIDTH = 1024;
+//    const int SCREEN_HEIGHT = 768;
+//    const int SCREEN_BPP = 32;
+//
+//    const int BACKGROUND_WIDTH = 461;
+//    const int BACKGROUND_HEIGHT = 768;
     
     const int CONVEYORS_NUM = 6;
     

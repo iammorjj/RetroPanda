@@ -11,10 +11,18 @@
 
 #include "CEntity.hpp"
 #include "Burger.hpp"
+#include "Timer.hpp"
 #include <vector>
 
 class CBurger: public CEntity {
 private:
+    
+    double xVel, yVel;
+    
+    Uint32 deltaTicks;
+    
+    Timer timer;
+    
     int     level;
     int     frameRate; //Milliseconds
     long long    oldTime;
@@ -40,19 +48,22 @@ public:
     
     bool hasBurger(Location location);
     
-    void gravity();
+    void gravity(double deltaTicks);
 
-    void moveLeft();
-    void moveRight();
+    void moveLeft(double deltaTicks);
+    void moveRight(double deltaTicks);
     
-    void moveUp();
+    void moveUp(double deltaTicks);
     
-    void moveDownLeftSide();
-    void moveDownRightSide();
-    void moveFromLeft();
-    void moveFromRight();
+    void moveDownLeftSide(double deltaTicks);
+    void moveDownRightSide(double deltaTicks);
+    void moveFromLeft(double deltaTicks);
+    void moveFromRight(double deltaTicks);
     
     void setLevel(int l);
+    
+    void newLevelSpeedMovement();
+    void newLevelSpeedAppearence();
     
     void StartMove();
     
@@ -60,7 +71,7 @@ public:
     
     void checkGameOverCollisions();
     
-    void changeMovementSpeed(SDL_TimerID& timer);
+    //void changeMovementSpeed(SDL_TimerID& timer);
     
     void createBurgers();
 

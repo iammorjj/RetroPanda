@@ -13,7 +13,7 @@ void CApp::OnEvent(SDL_Event* Event) {
     if(Event->type == SDL_KEYDOWN) {
         if(GLOBAL::GameOver) {
             GLOBAL::GameOver = false;
-            Burger.changeMovementSpeed(timerLevelUpBurgerSpeedMovement);
+            //Burger.changeMovementSpeed(timerLevelUpBurgerSpeedMovement);
             Score.score = 0;
             Burger.newGame();
         }
@@ -29,7 +29,7 @@ void CApp::OnEvent(SDL_Event* Event) {
             case SDLK_5: Hero.MoveRightMid(); break;
             case SDLK_6: Hero.MoveRightUp(); break;
                 
-//            case SDLK_a: Burger.addBurgerToRandomConveyor(); break;
+            case SDLK_a: Burger.addBurgerToRandomConveyor(); break;
 //
 //            case SDLK_9: GLOBAL::GameOver = true; break;
 //            //case SDLK_0: Burger.printCoordinate(); break;

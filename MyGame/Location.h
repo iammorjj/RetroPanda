@@ -11,7 +11,7 @@
 
 class LocationClass {
 public:
-    int x, y;
+    double x, y;
     Location location;
 public:
     

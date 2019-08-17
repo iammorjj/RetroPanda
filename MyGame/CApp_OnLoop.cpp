@@ -22,6 +22,10 @@ void CApp::OnLoop() {
        LocationClass::isHeroCollision(Burger.burger[Hero.location].back())) {
         Burger.burger[Hero.location].pop_back();
         Score.score++;
+        if(Score.score % 3 == 0 && Score.score != 0)
+            Burger.newLevelSpeedMovement();
+        if(Score.score % 5 == 0 && Score.score != 0)
+            Burger.newLevelSpeedAppearence();
     }
     
     Burger.checkGameOverCollisions();
