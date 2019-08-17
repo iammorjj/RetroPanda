@@ -12,7 +12,8 @@ using namespace CONSTANTS::BURGER;
 
 const int X_VEL_START = 35;
 const int Y_VEL_START = 20;
-const int CREATE_NEW_BURGER_DELAY_START = 2500;
+const int GRAVITY = 35;
+const int CREATE_NEW_BURGER_DELAY_START = 2400;
 
 CBurger::CBurger() {
     xVel = X_VEL_START;
@@ -40,20 +41,29 @@ CBurger::CBurger() {
 }
 
 void CBurger::newLevelSpeedMovement() {
-    //xVel *= 1.3;
-    //yVel *= 1.3;
+    xVel *= 1.1;
+    yVel *= 1.1;
 }
 
 void CBurger::newLevelSpeedAppearence() {
-    createNewBurgerDelay *= 0.8;
-    SDL_RemoveTimer(createNewBurgerTimer);
+    createNewBurgerDelay *= 0.75;
+    if(createNewBurgerTimer && !SDL_RemoveTimer(createNewBurgerTimer)) {
+        printf("timer is not removed, FAULT!\n");
+        return;
+    }
     createNewBurgerTimer = NULL;
     createBurgers();
 }
 
 void CBurger::addBurgerToRandomConveyor() {
     Location location = (Location) (rand() % CONSTANTS::CONVEYORS_NUM);
-    burger[location].push_back(Burger(location));
+    
+    // debug
+    //location = LEFT_UP;
+    
+    // no vector, need queue
+    //burger[location].push_back(Burger(location));
+    burger[location].push_front(Burger(location));
 }
 
 void CBurger::OnRender(SDL_Surface* Surf_Display) {
@@ -86,7 +96,7 @@ void CBurger::gravity(double deltaTicks) {
         for(auto &burg: burger[location]) {
             if(!burg.canMoveSideway() && burg.canMoveDown())
                 //burg.y += 1;
-                burg.y += Y_VEL_START * ( deltaTicks / 1000.0 );
+                burg.y += GRAVITY * ( deltaTicks / 1000.0 );
         }
     }
 }
@@ -105,10 +115,14 @@ void CBurger::moveLeft(double deltaTicks) {
 void CBurger::moveRight(double deltaTicks) {
     
     for(int location = LEFT_DOWN; location <= LEFT_UP; ++location) {
+        //for(int i = 0; i < burger[location].size(); ++i) {
         for(auto &burg: burger[location]) {
-            if(burg.canMoveSideway())
+            //auto &burg = burger[location][i];
+            if(burg.canMoveSideway()) {
                 //burg.x += 2;
                 burg.x += xVel * ( deltaTicks / 1000.0 );
+                //printf("%d burger has x %lf\n", i, burg.x);
+            }
         }
     }
 }
@@ -197,6 +211,7 @@ void CBurger::newGame() {
     if(createNewBurgerTimer)
         SDL_RemoveTimer(createNewBurgerTimer);
     createNewBurgerTimer = NULL;
+    createBurgers();
 }
 
 void CBurger::checkGameOverCollisions() {
@@ -213,7 +228,7 @@ void CBurger::printCoordinate(int xx, int yy) { printf("X coordinate is %d\nY co
 
 void CBurger::OnLoop() {
     if(!GLOBAL::GameOver) {
-        createBurgers();
+        //createBurgers();
         StartMove();
     }
 }

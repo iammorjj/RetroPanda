@@ -16,6 +16,7 @@ public:
 public:
     
     static bool isHeroCollision(LocationClass& burger) {
+        
         return burger.x > CONSTANTS::BURGER::HERO_CAN_TAKE_X_LEFT && burger.x < CONSTANTS::BURGER::HERO_CAN_TAKE_X_RIGHT;
     };
 };

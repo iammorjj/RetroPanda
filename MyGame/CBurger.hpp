@@ -13,6 +13,7 @@
 #include "Burger.hpp"
 #include "Timer.hpp"
 #include <vector>
+#include <list>
 
 class CBurger: public CEntity {
 private:
@@ -38,7 +39,8 @@ private:
     SDL_TimerID createNewBurgerTimer;
 public:
     
-    std::vector<Burger> burger[CONSTANTS::CONVEYORS_NUM];
+    //std::vector<Burger> burger[CONSTANTS::CONVEYORS_NUM];
+    std::list<Burger> burger[CONSTANTS::CONVEYORS_NUM];
     
     CBurger();
 
