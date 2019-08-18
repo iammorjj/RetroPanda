@@ -17,31 +17,19 @@
 
 class CBurger: public CEntity {
 private:
-    
-    double xVel, yVel;
-    
-    Uint32 deltaTicks;
-    
     Timer timer;
-    
-    int     level;
-    int     frameRate; //Milliseconds
-    long long    oldTime;
+    Uint32 deltaTicks;
     
     int gameOverHidingBurgersRate;
     int oldTimeGameOver;
     bool gameOverHidding;
     
-    int frameRateGravity;
-    long long oldTimeGravity;
-    
     Uint32 createNewBurgerDelay;
     SDL_TimerID createNewBurgerTimer;
     
     bool changeAppearanceSpeed;
-public:
     
-    //std::vector<Burger> burger[CONSTANTS::CONVEYORS_NUM];
+public:
     std::list<Burger> burger[CONSTANTS::CONVEYORS_NUM];
     
     CBurger();
@@ -52,30 +40,14 @@ public:
     
     bool hasBurger(Location location);
     
-    void gravity(double deltaTicks);
-
-    void moveLeft(double deltaTicks);
-    void moveRight(double deltaTicks);
-    
-    void moveUp(double deltaTicks);
-    
-    void moveDownLeftSide(double deltaTicks);
-    void moveDownRightSide(double deltaTicks);
-    void moveFromLeft(double deltaTicks);
-    void moveFromRight(double deltaTicks);
-    
-    void setLevel(int l);
-    
-    void newLevelSpeedMovement();
-    void newLevelSpeedAppearence();
+    void newLevelMovementSpeed();
+    void newLevelAppearanceSpeed();
     
     void StartMove();
     
     void newGame();
     
     void checkGameOverCollisions();
-    
-    //void changeMovementSpeed(SDL_TimerID& timer);
     
     void createBurgers();
 

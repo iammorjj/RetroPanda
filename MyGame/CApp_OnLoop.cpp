@@ -33,9 +33,9 @@ void CApp::OnLoop() {
         Burger.burger[Hero.location].pop_back();
         Score.score++;
         if(Score.score % 3 == 0)
-            Burger.newLevelSpeedMovement();
+            Burger.newLevelMovementSpeed();
         if(Score.score % 5 == 0)
-            Burger.newLevelSpeedAppearence();
+            Burger.newLevelAppearanceSpeed();
     }
     
     Burger.checkGameOverCollisions();

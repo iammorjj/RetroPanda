@@ -11,9 +11,9 @@
 void CApp::OnEvent(SDL_Event* Event) {
     
     if(Event->type == SDL_KEYDOWN) {
+        
         if(GLOBAL::GameOver) {
             GLOBAL::GameOver = false;
-            //Burger.changeMovementSpeed(timerLevelUpBurgerSpeedMovement);
             Score.score = 0;
             Burger.newGame();
         }

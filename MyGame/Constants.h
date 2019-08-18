@@ -81,6 +81,10 @@ namespace CONSTANTS
         
         const int FRAME_RATE_GRAVITY = 20;
         
+        const int X_VEL_START = 35;
+        const int Y_VEL_START = 20;
+        const int GRAVITY = 35;
+        const int CREATE_NEW_BURGER_DELAY_START = 2400;
     }
 }
 

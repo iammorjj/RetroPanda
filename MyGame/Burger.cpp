@@ -8,6 +8,9 @@
 
 #include "Burger.hpp"
 
+double Burger::xVel = X_VEL_START;
+double Burger::yVel = Y_VEL_START;
+
 Burger::Burger(Location location) {
     this->location = location;
     
@@ -36,6 +39,22 @@ Burger::Burger(Location location) {
 
 bool Burger::canMoveSideway() {
     return !(x > STOP_BURGER_X_LEFT && x < STOP_BURGER_X_RIGHT);
+}
+
+int Burger::xDirectionSign() {
+    if(location == LEFT_DOWN || location == LEFT_MID || location == LEFT_UP)
+        return 1;
+    
+    return -1;
+}
+
+void Burger::move(double deltaTicks) {
+    if(canMoveSideway()) {
+        x += xVel * ( deltaTicks / 1000.0 ) * xDirectionSign();
+        y += yVel * ( deltaTicks / 1000.0 );
+    } else {
+        y += GRAVITY * ( deltaTicks / 1000.0 );
+    }
 }
 
 bool Burger::canMoveDown() {

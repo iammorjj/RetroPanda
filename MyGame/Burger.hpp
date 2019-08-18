@@ -23,7 +23,12 @@ struct Coordinate {
 };
 
 class Burger: public LocationClass {
+private:
+    int xDirectionSign();
 public:
+    static double xVel;
+    static double yVel;
+    
     Burger(Location location = LEFT_DOWN);
     
     bool canMoveSideway();
@@ -31,6 +36,8 @@ public:
     bool canMoveDown();
     
     bool isGameOver();
+    
+    void move(double deltaTicks);
 };
 
 #endif /* Burger_hpp */
