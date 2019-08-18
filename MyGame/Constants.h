@@ -59,25 +59,25 @@ namespace CONSTANTS
             const int BURGER_HEIGHT = 192;
             const int BURGER_MAX_FRAMES = 1;
             
-            const int VERTICAL_DISTANCE_BETWEEN_BURGERS = 240;
-            const int LEFT_SIDE_COORD = 128;
-            const int RIGHT_SIDE_COORD = SCREEN_WIDTH - BURGER_WIDTH + 38;
-            const int TOP_COORD = 384;
+            const int VERTICAL_DISTANCE_BETWEEN_BURGERS = 120;
+//            const int LEFT_SIDE_COORD = 500;
+//            const int RIGHT_SIDE_COORD = 600;//SCREEN_WIDTH - BURGER_WIDTH + 38;
+//            const int TOP_COORD = 190;
             
-            const int START_BURGER_X_LEFT = -237;
-            const int START_BURGER_X_RIGHT = BACKGROUND_WIDTH - BURGER_WIDTH - START_BURGER_X_LEFT;
-            const int START_BURGER_Y_UP = 256;
+            const int START_BURGER_X_LEFT = 160;//-237;
+            const int START_BURGER_X_RIGHT = SCREEN_WIDTH - BURGER_WIDTH - START_BURGER_X_LEFT;//BACKGROUND_WIDTH - BURGER_WIDTH - START_BURGER_X_LEFT;
+            const int START_BURGER_Y_UP = 140;
             
-            const int STOP_BURGER_X_LEFT = 64;
-            const int STOP_BURGER_X_RIGHT = BACKGROUND_WIDTH - BURGER_WIDTH - STOP_BURGER_X_LEFT;
-            const int HERO_CAN_TAKE_X_LEFT = STOP_BURGER_X_LEFT - 16;
-            const int HERO_CAN_TAKE_X_RIGHT = STOP_BURGER_X_RIGHT + 16;
-            const int STOP_BURGER_Y_UP = 528;
+            const int STOP_BURGER_X_LEFT = 300;
+            const int STOP_BURGER_X_RIGHT = SCREEN_WIDTH - BURGER_WIDTH - STOP_BURGER_X_LEFT;
+            const int HERO_CAN_TAKE_X_LEFT = STOP_BURGER_X_LEFT - 15;
+            const int HERO_CAN_TAKE_X_RIGHT = STOP_BURGER_X_RIGHT + 15;
+            const int STOP_BURGER_Y_UP = 265;
             
-            const int X_VEL_START = 140;
-            const int Y_VEL_START = 65;
-            const int GRAVITY = 110;
-            const int CREATE_NEW_BURGER_DELAY_START = 2400;
+            const int X_VEL_START = 70;
+            const int Y_VEL_START = 40;
+            const int GRAVITY = 50;
+            const int CREATE_NEW_BURGER_DELAY_START = 2300;
         }
     }
     

@@ -14,14 +14,6 @@
 
 using namespace CONSTANTS::SCREEN1024X768::BURGER;
 
-struct Coordinate {
-    int x, y;
-    Coordinate(int x = 0, int y = 0) {
-        this->x = x;
-        this->y = y;
-    }
-};
-
 class Burger: public LocationClass {
 private:
     int xDirectionSign();

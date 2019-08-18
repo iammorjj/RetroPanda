@@ -24,17 +24,25 @@ CBurger::CBurger() {
 }
 
 void CBurger::newLevelMovementSpeed() {
-    Burger::xVel *= 1.1;
-    Burger::yVel *= 1.1;
+    double addVelX = 7, addVelY = 4;
+    Burger::xVel += addVelX;//*= 1.1;
+    Burger::yVel += addVelY;//*= 1.1;
 }
 
 void CBurger::newLevelAppearanceSpeed() {
-    createNewBurgerDelay *= 0.75;
-    changeAppearanceSpeed = true;
+    if(createNewBurgerDelay > 300) {
+        createNewBurgerDelay -= 250;
+        changeAppearanceSpeed = true;
+    }
+//    createNewBurgerDelay *= 0.85;
+//    changeAppearanceSpeed = true;
 }
 
 void CBurger::addBurgerToRandomConveyor() {
     Location location = (Location) (rand() % CONSTANTS::SCREEN1024X768::CONVEYORS_NUM);
+    
+    // debug
+    //location = LEFT_UP;
     
     burger[location].push_front(Burger(location));
     
@@ -114,7 +122,7 @@ void CBurger::checkGameOverCollisions() {
 
 void CBurger::OnLoop() {
     if(!GLOBAL::GameOver) {
-        //StartMove();
+        StartMove();
     }
 }
 
