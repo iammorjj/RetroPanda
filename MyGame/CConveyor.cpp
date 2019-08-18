@@ -22,4 +22,4 @@ void CConveyor::OnRender(SDL_Surface* Surf_Display) {
                          TOP_COORD + i*VERTICAL_DISTANCE_BETWEEN_CONVEYORS,
                          Anim_Control.GetCurrentFrame() * Width, 0, Width, Height);
     }
-    }
+}

@@ -8,7 +8,7 @@
 
 #include "CBurger.hpp"
 
-using namespace CONSTANTS::BURGER;
+using namespace CONSTANTS::SCREEN1024X768::BURGER;
 
 CBurger::CBurger() {
     deltaTicks = 0;
@@ -34,7 +34,7 @@ void CBurger::newLevelAppearanceSpeed() {
 }
 
 void CBurger::addBurgerToRandomConveyor() {
-    Location location = (Location) (rand() % CONSTANTS::CONVEYORS_NUM);
+    Location location = (Location) (rand() % CONSTANTS::SCREEN1024X768::CONVEYORS_NUM);
     
     burger[location].push_front(Burger(location));
     
@@ -114,7 +114,7 @@ void CBurger::checkGameOverCollisions() {
 
 void CBurger::OnLoop() {
     if(!GLOBAL::GameOver) {
-        StartMove();
+        //StartMove();
     }
 }
 

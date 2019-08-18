@@ -30,7 +30,7 @@ private:
     bool changeAppearanceSpeed;
     
 public:
-    std::list<Burger> burger[CONSTANTS::CONVEYORS_NUM];
+    std::list<Burger> burger[CONSTANTS::SCREEN1024X768::CONVEYORS_NUM];
     
     CBurger();
 

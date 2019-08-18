@@ -15,10 +15,10 @@
 class CConveyor: public CEntity {
 public:
     
-    const int VERTICAL_DISTANCE_BETWEEN_CONVEYORS = 75;
-    const int LEFT_SIDE_COORD = -30;
-    const int RIGHT_SIDE_COORD = CONSTANTS::SCREEN_WIDTH - CONSTANTS::CONVEYOR_WIDTH + -LEFT_SIDE_COORD;
-    const int TOP_COORD = 120;
+    const int VERTICAL_DISTANCE_BETWEEN_CONVEYORS = 130;
+    const int LEFT_SIDE_COORD = CONSTANTS::SCREEN1024X768::SCREEN_WIDTH / 2. - CONSTANTS::SCREEN1024X768::BACKGROUND_WIDTH / 2. - 60;
+    const int RIGHT_SIDE_COORD = CONSTANTS::SCREEN1024X768::SCREEN_WIDTH / 2. + 90;
+    const int TOP_COORD = 190;
     
     void OnRender(SDL_Surface* Surf_Display);
 };

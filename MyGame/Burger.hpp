@@ -12,7 +12,7 @@
 #include "Constants.h"
 #include "Location.h"
 
-using namespace CONSTANTS::BURGER;
+using namespace CONSTANTS::SCREEN1024X768::BURGER;
 
 struct Coordinate {
     int x, y;

@@ -31,6 +31,9 @@ private:
     SDL_Surface*    Surf_Display;
     SDL_Surface*    Surf_Background;
     
+    SDL_Surface*    Surf_Pizza1;
+    SDL_Surface*    Surf_Pizza2;
+    
     CScore          Score;
     
     CHero           Hero;

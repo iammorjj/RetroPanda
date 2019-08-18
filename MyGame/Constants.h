@@ -24,24 +24,69 @@ namespace GLOBAL {
 
 namespace CONSTANTS
 {
-    // NOT CONSTANT FUCK REPLACE IT
-    //int score = 0;
+    namespace SCREEN1024X768 {
+        const int SCREEN_WIDTH = 1024;
+        const int SCREEN_HEIGHT = 768;
+        const int SCREEN_BPP = 32;
+        
+        const int BACKGROUND_WIDTH = 461;
+        const int BACKGROUND_HEIGHT = 768;
+        
+        const int CONVEYOR_WIDTH = 192;
+        const int CONVEYOR_HEIGHT = 192;
+        const int CONVEYOR_MAX_FRAMES = 16;
+        
+        const int CONVEYORS_NUM = 6;
+        
+        const int HERO_WIDTH = 400;
+        const int HERO_HEIGHT = 400;
+        const int HERO_MAX_FRAMES = 4;
+        
+        const int PIZZA_WIDTH = 282;
+        const int PIZZA_HEIGHT = 768;
+        
+        const std::string PATH = "/Users/alexandermordovsky/Documents/XCodeProjects/MyGame/MyGame/Assets/1024x768/";
+        
+        const std::string BACKGROUND_IMG = PATH+"background.png";
+        const std::string CONVEYOR_IMG = PATH+"conveyor.png";
+        const std::string HERO_IMG = PATH+"hero.png";
+        const std::string BURGER_IMG = PATH+"burger.png";
+        const std::string PIZZA1_IMG = PATH+"pizza1.png";
+        const std::string PIZZA2_IMG = PATH+"pizza2.png";
+        
+        namespace BURGER {
+            const int BURGER_WIDTH = 192;
+            const int BURGER_HEIGHT = 192;
+            const int BURGER_MAX_FRAMES = 1;
+            
+            const int VERTICAL_DISTANCE_BETWEEN_BURGERS = 240;
+            const int LEFT_SIDE_COORD = 128;
+            const int RIGHT_SIDE_COORD = SCREEN_WIDTH - BURGER_WIDTH + 38;
+            const int TOP_COORD = 384;
+            
+            const int START_BURGER_X_LEFT = -237;
+            const int START_BURGER_X_RIGHT = BACKGROUND_WIDTH - BURGER_WIDTH - START_BURGER_X_LEFT;
+            const int START_BURGER_Y_UP = 256;
+            
+            const int STOP_BURGER_X_LEFT = 64;
+            const int STOP_BURGER_X_RIGHT = BACKGROUND_WIDTH - BURGER_WIDTH - STOP_BURGER_X_LEFT;
+            const int HERO_CAN_TAKE_X_LEFT = STOP_BURGER_X_LEFT - 16;
+            const int HERO_CAN_TAKE_X_RIGHT = STOP_BURGER_X_RIGHT + 16;
+            const int STOP_BURGER_Y_UP = 528;
+            
+            const int X_VEL_START = 140;
+            const int Y_VEL_START = 65;
+            const int GRAVITY = 110;
+            const int CREATE_NEW_BURGER_DELAY_START = 2400;
+        }
+    }
     
     const int SCREEN_WIDTH = 144*2;
     const int SCREEN_HEIGHT = 240*2;
     const int SCREEN_BPP = 32;
-    
+
     const int BACKGROUND_WIDTH = 144*2;
     const int BACKGROUND_HEIGHT = 240*2;
-    
-//    const int SCREEN_WIDTH = 1024;
-//    const int SCREEN_HEIGHT = 768;
-//    const int SCREEN_BPP = 32;
-//
-//    const int BACKGROUND_WIDTH = 461;
-//    const int BACKGROUND_HEIGHT = 768;
-    
-    const int CONVEYORS_NUM = 6;
     
     const int CONVEYOR_WIDTH = 60*2;
     const int CONVEYOR_HEIGHT = 60*2;

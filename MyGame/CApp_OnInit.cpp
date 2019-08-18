@@ -8,7 +8,7 @@
 
 #include "CApp.hpp"
 
-using namespace CONSTANTS;
+using namespace CONSTANTS::SCREEN1024X768;
 
 bool CApp::OnInit() {
     if(isWindowInit() && isRecourceInit()) {
@@ -37,7 +37,12 @@ bool CApp::isRecourceInit() {
     if((Surf_Background = CSurface::OnLoad(BACKGROUND_IMG.c_str())) == NULL)
         return false;
     
-    if(!Score.OnLoad(FONT.c_str(), 90))
+    if((Surf_Pizza1 = CSurface::OnLoad(PIZZA1_IMG.c_str())) == NULL)
+        return false;
+    if((Surf_Pizza2 = CSurface::OnLoad(PIZZA2_IMG.c_str())) == NULL)
+        return false;
+    
+    if(!Score.OnLoad(CONSTANTS::FONT.c_str(), 200))
         return false;
     
     if(!Conveyor.OnLoad(CONVEYOR_IMG.c_str(), CONVEYOR_WIDTH, CONVEYOR_HEIGHT, CONVEYOR_MAX_FRAMES))
