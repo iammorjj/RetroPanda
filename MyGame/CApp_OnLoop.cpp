@@ -23,6 +23,7 @@ void CApp::OnLoop() {
        LocationClass::isHeroCollision(Burger.burger[Hero.location].back())) {
         Burger.burger[Hero.location].pop_back();
         Score.score++;
+        Mix_PlayChannel( -1, point, 0 );
         if(Score.score % 3 == 0)
             Burger.newLevelMovementSpeed();
         if(Score.score % 5 == 0)

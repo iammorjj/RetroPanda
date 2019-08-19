@@ -30,7 +30,7 @@ void CBurger::newLevelMovementSpeed() {
 }
 
 void CBurger::newLevelAppearanceSpeed() {
-    if(createNewBurgerDelay > 700) {
+    if(createNewBurgerDelay > 900) {
         createNewBurgerDelay -= 250;
         changeAppearanceSpeed = true;
     }
@@ -115,8 +115,9 @@ void CBurger::checkGameOverCollisions() {
             continue;
         
         auto burg = burger.back();
-        if(burg.isGameOver())
+        if(burg.isGameOver()) {
             GLOBAL::GameOver = true;
+        }
     }
 }
 

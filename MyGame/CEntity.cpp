@@ -28,16 +28,10 @@ CEntity::CEntity() {
 CEntity::~CEntity() {
 }
 
-//static void CheckCollisions(Location HeroLocation, CBurger& BurgerClass) {
-//    
-//}
-
 bool CEntity::OnLoad(const char* File, int Width, int Height, int MaxFrames) {
     if((Surf_Entity = CSurface::OnLoad(File)) == NULL) {
         return false;
     }
-    
-    //CSurface::Transparent(Surf_Entity, 255, 0, 255);
     
     this->Width = Width;
     this->Height = Height;

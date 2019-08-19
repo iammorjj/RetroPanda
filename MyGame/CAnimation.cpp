@@ -44,3 +44,11 @@ void CAnimation::SetCurrentFrame(int Frame) {
 int CAnimation::GetCurrentFrame() {
     return CurrentFrame;
 }
+
+void CAnimation::StopFrameInc() {
+    FrameInc = 0;
+}
+
+void CAnimation::ReturnFrameInc() {
+    FrameInc = 1;
+}

@@ -12,6 +12,11 @@ using namespace CONSTANTS;
 void CConveyor::OnRender(SDL_Surface* Surf_Display) {
     if(Surf_Entity == NULL || Surf_Display == NULL) return;
     
+    if(GLOBAL::GameOver)
+        Anim_Control.StopFrameInc();
+    else
+        Anim_Control.ReturnFrameInc();
+        
     for(int i = 0; i < 3; ++i) {
         // LEFT CONVEYORS
         CSurface::OnDraw(Surf_Display, Surf_Entity, LEFT_SIDE_COORD,

@@ -24,6 +24,7 @@
 #include "CBurger.hpp"
 #include "CScore.hpp"
 #include "CWelcome.hpp"
+#include "CBackground.hpp"
 
 class CApp {
     
@@ -32,6 +33,8 @@ private:
     
     SDL_Surface*    Surf_Display;
     
+    CBackground     Background;
+    
     SDL_Surface*    Surf_Background;
     SDL_Surface*    Surf_Pizza1;
     SDL_Surface*    Surf_Pizza2;
@@ -39,6 +42,7 @@ private:
     CWelcome        Welcome;
     
     Mix_Music*      music;
+    Mix_Chunk*      point;
     
     CScore          Score;
     

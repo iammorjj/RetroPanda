@@ -13,6 +13,7 @@ CApp::CApp() {
     Surf_Background = NULL;
     
     music = nullptr;
+    point = nullptr;
     
     Running = true;
     

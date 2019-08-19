@@ -12,6 +12,7 @@ using namespace CONSTANTS;
 
 bool CApp::OnInit() {
     if(isWindowInit() && isRecourceInit()) {
+        CEntity::EntityList.push_back(&Background);
         CEntity::EntityList.push_back(&Score);
         CEntity::EntityList.push_back(&Conveyor);
         CEntity::EntityList.push_back(&Burger);
@@ -35,20 +36,21 @@ bool CApp::isWindowInit() {
 }
 
 bool CApp::isRecourceInit() {
-    if( Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 ) == -1 ) {
+    if(!Mix_Init(MIX_INIT_MP3) || Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 ) == -1)
         return false;
-    }
+    
     music = Mix_LoadMUS( MUSIC.c_str() );
-    if(music == NULL || Mix_PlayMusic( music, -1 ) < 0)
+    point = Mix_LoadWAV( POINT_WAV.c_str() );
+    if(music == NULL || point == NULL || Mix_PlayMusic( music, -1 ) < 0)
         return false;
     
-    if((Surf_Background = CSurface::OnLoad(BACKGROUND_IMG.c_str())) == NULL)
+    if(!Background.OnLoad())
         return false;
     
-    if((Surf_Pizza1 = CSurface::OnLoad(PIZZA1_IMG.c_str())) == NULL)
-        return false;
-    if((Surf_Pizza2 = CSurface::OnLoad(PIZZA2_IMG.c_str())) == NULL)
-        return false;
+//    if((Surf_Background = CSurface::OnLoad(BACKGROUND_IMG.c_str())) == NULL)
+//        return false;
+//    if((Surf_Sides = CSurface::OnLoad(SIDES_IMG.c_str())) == NULL)
+//        return false;
     
     if(!Score.OnLoad(CONSTANTS::FONT.c_str(), 200))
         return false;

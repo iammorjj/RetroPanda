@@ -36,6 +36,10 @@ public:
     void SetCurrentFrame(int Frame);
     
     int GetCurrentFrame();
+    
+    void StopFrameInc();
+    
+    void ReturnFrameInc();
 };
 
 #endif /* CAnimation_hpp */

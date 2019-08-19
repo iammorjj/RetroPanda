@@ -47,6 +47,9 @@ namespace CONSTANTS
     const int PIZZA_WIDTH = 282;
     const int PIZZA_HEIGHT = 768;
     
+    const int SIDES_WIDTH = 846;
+    const int SIDES_HEIGHT = 768;
+    
     const std::string PATH = "/Users/alexandermordovsky/Documents/XCodeProjects/MyGame/MyGame/Assets/1024x768/";
     
     const std::string FONT = PATH+"acknowtt.ttf";
@@ -55,9 +58,11 @@ namespace CONSTANTS
     const std::string CONVEYOR_IMG = PATH+"conveyor.png";
     const std::string HERO_IMG = PATH+"hero.png";
     const std::string BURGER_IMG = PATH+"burger.png";
+    const std::string SIDES_IMG = PATH+"sidesBillys.png";
     const std::string PIZZA1_IMG = PATH+"pizza1.png";
     const std::string PIZZA2_IMG = PATH+"pizza2.png";
     const std::string MUSIC = PATH+"music.wav";
+    const std::string POINT_WAV = PATH+"point.wav";
     
     namespace BURGER {
         const int BURGER_WIDTH = 192;
