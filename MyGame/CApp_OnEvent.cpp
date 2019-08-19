@@ -29,16 +29,6 @@ void CApp::OnEvent(SDL_Event* Event) {
             case SDLK_5: Hero.MoveRightMid(); break;
             case SDLK_6: Hero.MoveRightUp(); break;
                 
-            case SDLK_a: Burger.addBurgerToRandomConveyor(); break;
-//
-//            case SDLK_9: GLOBAL::GameOver = true; break;
-            case SDLK_0: Burger.printCoordinate(); break;
-//
-            case SDLK_LEFT: Burger.moveLeft(); break;
-            case SDLK_RIGHT: Burger.moveRight(); break;
-            case SDLK_UP: Burger.moveUp(); break;
-            case SDLK_DOWN: Burger.moveDown(); break;
-                
             default:;
         }
     }

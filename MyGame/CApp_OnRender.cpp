@@ -10,7 +10,7 @@
 
 void CApp::OnRender() {
     //CSurface::OnDraw(Surf_Display, Surf_Background, 0, 0);
-    CSurface::OnDraw(Surf_Display, Surf_Background, CONSTANTS::SCREEN1024X768::SCREEN_WIDTH / 2 - CONSTANTS::SCREEN1024X768::BACKGROUND_WIDTH / 2, 0);
+    CSurface::OnDraw(Surf_Display, Surf_Background, CONSTANTS::SCREEN_WIDTH / 2 - CONSTANTS::BACKGROUND_WIDTH / 2, 0);
     
     for(int i = 0;i < CEntity::EntityList.size();i++) {
         if(!CEntity::EntityList[i]) continue;
@@ -19,7 +19,7 @@ void CApp::OnRender() {
     }
     
     CSurface::OnDraw(Surf_Display, Surf_Pizza1, 0, 0);
-    CSurface::OnDraw(Surf_Display, Surf_Pizza2, CONSTANTS::SCREEN1024X768::SCREEN_WIDTH / 2 + CONSTANTS::SCREEN1024X768::BACKGROUND_WIDTH / 2, 0);
+    CSurface::OnDraw(Surf_Display, Surf_Pizza2, CONSTANTS::SCREEN_WIDTH / 2 + CONSTANTS::BACKGROUND_WIDTH / 2, 0);
     
     SDL_Flip(Surf_Display);
 }

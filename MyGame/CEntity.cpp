@@ -24,6 +24,7 @@ CEntity::CEntity() {
     CurrentFrameRow = 0;
 }
 
+
 CEntity::~CEntity() {
 }
 

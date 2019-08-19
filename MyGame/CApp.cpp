@@ -12,6 +12,8 @@ CApp::CApp() {
     Surf_Display = NULL;
     Surf_Background = NULL;
     
+    music = nullptr;
+    
     Running = true;
     
     timerLevelUpBurgerSpeedMovement = NULL;

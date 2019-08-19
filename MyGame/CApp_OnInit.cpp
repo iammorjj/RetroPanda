@@ -8,7 +8,7 @@
 
 #include "CApp.hpp"
 
-using namespace CONSTANTS::SCREEN1024X768;
+using namespace CONSTANTS;
 
 bool CApp::OnInit() {
     if(isWindowInit() && isRecourceInit()) {
@@ -16,6 +16,7 @@ bool CApp::OnInit() {
         CEntity::EntityList.push_back(&Conveyor);
         CEntity::EntityList.push_back(&Burger);
         CEntity::EntityList.push_back(&Hero);
+        CEntity::EntityList.push_back(&Welcome);
         
         return true;
     }
@@ -34,6 +35,13 @@ bool CApp::isWindowInit() {
 }
 
 bool CApp::isRecourceInit() {
+    if( Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 ) == -1 ) {
+        return false;
+    }
+    music = Mix_LoadMUS( MUSIC.c_str() );
+    if(music == NULL || Mix_PlayMusic( music, -1 ) < 0)
+        return false;
+    
     if((Surf_Background = CSurface::OnLoad(BACKGROUND_IMG.c_str())) == NULL)
         return false;
     
@@ -43,6 +51,9 @@ bool CApp::isRecourceInit() {
         return false;
     
     if(!Score.OnLoad(CONSTANTS::FONT.c_str(), 200))
+        return false;
+    
+    if(!Welcome.OnLoad(CONSTANTS::FONT.c_str(), 35))
         return false;
     
     if(!Conveyor.OnLoad(CONVEYOR_IMG.c_str(), CONVEYOR_WIDTH, CONVEYOR_HEIGHT, CONVEYOR_MAX_FRAMES))

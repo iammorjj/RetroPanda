@@ -30,7 +30,7 @@ private:
     bool changeAppearanceSpeed;
     
 public:
-    std::list<Burger> burger[CONSTANTS::SCREEN1024X768::CONVEYORS_NUM];
+    std::list<Burger> burger[CONSTANTS::CONVEYORS_NUM];
     
     CBurger();
 
@@ -50,38 +50,6 @@ public:
     void checkGameOverCollisions();
     
     void createBurgers();
-
-    void printCoordinate() {
-        for(int i = LEFT_DOWN; i <= RIGHT_UP; ++i) {
-            for(auto &burg: burger[i])
-                printf("X is %lf, Y is %lf\n", burg.x, burg.y);
-        }
-    }
-    void moveLeft() {
-        for(int i = LEFT_DOWN; i <= RIGHT_UP; ++i) {
-            for(auto &burg: burger[i])
-                burg.x -= 3;
-        }
-    }
-    void moveRight() {
-        for(int i = LEFT_DOWN; i <= RIGHT_UP; ++i) {
-            for(auto &burg: burger[i])
-                burg.x += 3;
-        }
-    }
-    void moveUp() {
-        for(int i = LEFT_DOWN; i <= RIGHT_UP; ++i) {
-            for(auto &burg: burger[i])
-                burg.y -= 3;
-        }
-    }
-    void moveDown() {
-        for(int i = LEFT_DOWN; i <= RIGHT_UP; ++i) {
-            for(auto &burg: burger[i])
-                burg.y += 3;
-        }
-    }
-    
 public:
     void OnLoop();
     

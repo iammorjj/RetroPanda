@@ -8,7 +8,7 @@
 
 #include "CBurger.hpp"
 
-using namespace CONSTANTS::SCREEN1024X768::BURGER;
+using namespace CONSTANTS::BURGER;
 
 CBurger::CBurger() {
     deltaTicks = 0;
@@ -25,12 +25,12 @@ CBurger::CBurger() {
 
 void CBurger::newLevelMovementSpeed() {
     double addVelX = 7, addVelY = 4;
-    Burger::xVel += addVelX;//*= 1.1;
-    Burger::yVel += addVelY;//*= 1.1;
+    //Burger::xVel += addVelX;//*= 1.1;
+    //Burger::yVel += addVelY;//*= 1.1;
 }
 
 void CBurger::newLevelAppearanceSpeed() {
-    if(createNewBurgerDelay > 300) {
+    if(createNewBurgerDelay > 700) {
         createNewBurgerDelay -= 250;
         changeAppearanceSpeed = true;
     }
@@ -39,7 +39,7 @@ void CBurger::newLevelAppearanceSpeed() {
 }
 
 void CBurger::addBurgerToRandomConveyor() {
-    Location location = (Location) (rand() % CONSTANTS::SCREEN1024X768::CONVEYORS_NUM);
+    Location location = (Location) (rand() % CONSTANTS::CONVEYORS_NUM);
     
     // debug
     //location = LEFT_UP;

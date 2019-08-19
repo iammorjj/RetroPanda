@@ -7,6 +7,7 @@
 //
 
 #include "CConveyor.hpp"
+using namespace CONSTANTS;
 
 void CConveyor::OnRender(SDL_Surface* Surf_Display) {
     if(Surf_Entity == NULL || Surf_Display == NULL) return;

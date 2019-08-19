@@ -7,6 +7,7 @@
 //
 
 #include "CScore.hpp"
+using namespace CONSTANTS;
 
 CScore::CScore() {
     textColorWhite = {255, 255, 255};
@@ -30,8 +31,8 @@ void CScore::OnRender(SDL_Surface* Surf_Display) {
     
     if(Surf_Score_Black == NULL || Surf_Score_White == NULL || Surf_Display == NULL) return;
     
-    CSurface::OnDraw(Surf_Display, Surf_Score_Black, CONSTANTS::SCREEN1024X768::SCREEN_WIDTH / 2 - Surf_Score_Black->clip_rect.w / 2 + 16, 80 + 16);
-    CSurface::OnDraw(Surf_Display, Surf_Score_White, CONSTANTS::SCREEN1024X768::SCREEN_WIDTH / 2 - Surf_Score_Black->clip_rect.w / 2, 80);
+    CSurface::OnDraw(Surf_Display, Surf_Score_Black, SCREEN_WIDTH / 2 - Surf_Score_Black->clip_rect.w / 2 + 16, 80 + 16);
+    CSurface::OnDraw(Surf_Display, Surf_Score_White, SCREEN_WIDTH / 2 - Surf_Score_Black->clip_rect.w / 2, 80);
 }
 
 void CScore::OnCleanup() {

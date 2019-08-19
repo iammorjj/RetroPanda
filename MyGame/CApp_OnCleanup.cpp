@@ -20,5 +20,7 @@ void CApp::OnCleanup() {
     SDL_FreeSurface(Surf_Background);
     SDL_FreeSurface(Surf_Display);
     
+    Mix_FreeMusic(music);
+    
     SDL_Quit();
 }

@@ -12,7 +12,7 @@
 #include "Constants.h"
 #include "Location.h"
 
-using namespace CONSTANTS::SCREEN1024X768::BURGER;
+using namespace CONSTANTS::BURGER;
 
 class Burger: public LocationClass {
 private:

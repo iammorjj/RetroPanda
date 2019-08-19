@@ -11,6 +11,7 @@
 
 #include <SDL/SDL.h>
 #include <SDL_ttf/SDL_ttf.h>
+#include <SDL_mixer/SDL_mixer.h>
 
 #include <stdio.h>
 
@@ -22,6 +23,7 @@
 #include "CHero.hpp"
 #include "CBurger.hpp"
 #include "CScore.hpp"
+#include "CWelcome.hpp"
 
 class CApp {
     
@@ -29,10 +31,14 @@ private:
     bool            Running;
     
     SDL_Surface*    Surf_Display;
-    SDL_Surface*    Surf_Background;
     
+    SDL_Surface*    Surf_Background;
     SDL_Surface*    Surf_Pizza1;
     SDL_Surface*    Surf_Pizza2;
+    
+    CWelcome        Welcome;
+    
+    Mix_Music*      music;
     
     CScore          Score;
     
