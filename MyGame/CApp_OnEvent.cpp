@@ -21,12 +21,18 @@ void CApp::OnEvent(SDL_Event* Event) {
         switch(Event->key.keysym.sym) {
             
             case SDLK_q: Running = false; break;
-                
+               
+            case SDLK_LCTRL:
             case SDLK_1: Hero.MoveLeftDown(); break;
+            case SDLK_LALT:
             case SDLK_2: Hero.MoveLeftMid(); break;
+            case SDLK_SPACE:
             case SDLK_3: Hero.MoveLeftUp(); break;
+            case SDLK_LSHIFT:
             case SDLK_4: Hero.MoveRightDown(); break;
+            case SDLK_z:
             case SDLK_5: Hero.MoveRightMid(); break;
+            case SDLK_x:
             case SDLK_6: Hero.MoveRightUp(); break;
                 
             default:;
