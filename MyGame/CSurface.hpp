@@ -10,7 +10,12 @@
 #define _CSURFACE_H_
 
 #include <SDL/SDL.h>
+
+#ifndef MAC
+#include <SDL/SDL_image.h>
+#else
 #include <SDL_image/SDL_image.h>
+#endif
 
 class CSurface {
 public:

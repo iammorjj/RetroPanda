@@ -9,9 +9,17 @@
 #ifndef _CAPP_H_
 #define _CAPP_H_
 
+
+
 #include <SDL/SDL.h>
+
+#ifndef MAC
+#include <SDL/SDL_ttf.h>
+#include <SDL/SDL_mixer.h>
+#else
 #include <SDL_ttf/SDL_ttf.h>
 #include <SDL_mixer/SDL_mixer.h>
+#endif
 
 #include <stdio.h>
 

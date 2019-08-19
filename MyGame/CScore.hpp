@@ -10,7 +10,12 @@
 #define CScore_hpp
 
 #include "CEntity.hpp"
+
+#ifndef MAC
+#include <SDL/SDL_ttf.h>
+#else
 #include <SDL_ttf/SDL_ttf.h>
+#endif
 
 class CScore: public CEntity {
     friend class CApp;
