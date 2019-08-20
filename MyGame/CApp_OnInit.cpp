@@ -13,10 +13,10 @@ using namespace CONSTANTS;
 bool CApp::OnInit() {
     if(isWindowInit() && isRecourceInit()) {
         CEntity::EntityList.push_back(&Background);
-        CEntity::EntityList.push_back(&Score);
         CEntity::EntityList.push_back(&Conveyor);
         CEntity::EntityList.push_back(&Burger);
         CEntity::EntityList.push_back(&Hero);
+        CEntity::EntityList.push_back(&Score);
         CEntity::EntityList.push_back(&Welcome);
         
         return true;
@@ -46,11 +46,6 @@ bool CApp::isRecourceInit() {
     
     if(!Background.OnLoad())
         return false;
-    
-//    if((Surf_Background = CSurface::OnLoad(BACKGROUND_IMG.c_str())) == NULL)
-//        return false;
-//    if((Surf_Sides = CSurface::OnLoad(SIDES_IMG.c_str())) == NULL)
-//        return false;
     
     if(!Score.OnLoad(CONSTANTS::FONT.c_str(), 200))
         return false;

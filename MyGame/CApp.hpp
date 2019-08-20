@@ -43,10 +43,6 @@ private:
     
     CBackground     Background;
     
-    SDL_Surface*    Surf_Background;
-    SDL_Surface*    Surf_Pizza1;
-    SDL_Surface*    Surf_Pizza2;
-    
     CWelcome        Welcome;
     
     Mix_Music*      music;
@@ -57,8 +53,6 @@ private:
     CHero           Hero;
     CBurger         Burger;
     CConveyor       Conveyor;
-    
-    SDL_TimerID     timerLevelUpBurgerSpeedMovement;
     
 private:
     bool isWindowInit();

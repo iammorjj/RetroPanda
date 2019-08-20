@@ -109,16 +109,18 @@ void CBurger::newGame() {
     createBurgers();
 }
 
-void CBurger::checkGameOverCollisions() {
+bool CBurger::isGameOverCollisions() {
     for(auto burger: burger) {
         if(burger.empty())
             continue;
         
         auto burg = burger.back();
         if(burg.isGameOver()) {
-            GLOBAL::GameOver = true;
+            return true;
         }
     }
+    
+    return false;
 }
 
 void CBurger::OnLoop() {

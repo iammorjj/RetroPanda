@@ -9,3 +9,5 @@
 #include "Constants.h"
 
 bool GLOBAL::GameOver = true;
+bool GLOBAL::keyboardDelay = false;
+Timer GLOBAL::timer;

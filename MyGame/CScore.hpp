@@ -22,10 +22,28 @@ class CScore: public CEntity {
 private:
     SDL_Color       textColorWhite;
     SDL_Color       textColorBlack;
+    SDL_Color       textColorGold;
+    
+    int             bestScore;
+    bool            gameOverHidding;
+    
+    bool            leader;
     
     TTF_Font*       font;
+    TTF_Font*       bestScoreFont;
+    TTF_Font*       leaderFont;
+    
     SDL_Surface*    Surf_Score_Black;
     SDL_Surface*    Surf_Score_White;
+    
+    SDL_Surface*    Surf_Leader_Black;
+    SDL_Surface*    Surf_Leader_Gold;
+    
+    SDL_Surface*    Surf_BestScore_Black;
+    SDL_Surface*    Surf_BestScore;
+    
+    SDL_Surface*    Surf_Participate_Black,* Surf_Participate_Black2;
+    SDL_Surface*    Surf_Participate_Gold,* Surf_Participate_Gold2;
     
     int             score;
     char            buf[5];

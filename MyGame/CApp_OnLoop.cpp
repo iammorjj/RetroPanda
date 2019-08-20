@@ -30,6 +30,10 @@ void CApp::OnLoop() {
             Burger.newLevelAppearanceSpeed();
     }
     
-    Burger.checkGameOverCollisions();
+    if(!GLOBAL::GameOver && Burger.isGameOverCollisions()) {
+        GLOBAL::GameOver = true;
+        GLOBAL::keyboardDelay = true;
+        GLOBAL::timer.start();
+    }
     
 }

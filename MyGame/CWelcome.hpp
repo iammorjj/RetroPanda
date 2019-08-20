@@ -24,14 +24,12 @@ private:
     SDL_Color       textColorBlack;
     
     TTF_Font*       font;
-    SDL_Surface*    Surf_Score_Black;
-    SDL_Surface*    Surf_Score_White;
+    SDL_Surface*    Surf_Welcome_Black;
+    SDL_Surface*    Surf_Welcome_White;
     
     bool            gameOverHidding;
     Uint32          oldTimeGameOver;
     Uint32          gameOverHidingRate;
-    
-    char            buf[30];
     
     CWelcome();
     

@@ -11,6 +11,7 @@
 
 #include <string>
 #include <iostream>
+#include "Timer.hpp"
 
 enum Location {LEFT_DOWN,LEFT_MID,LEFT_UP,
     RIGHT_DOWN,RIGHT_MID,RIGHT_UP
@@ -18,6 +19,8 @@ enum Location {LEFT_DOWN,LEFT_MID,LEFT_UP,
 
 namespace GLOBAL {
     extern bool GameOver;
+    extern bool keyboardDelay;
+    extern Timer timer;
 }
 
 namespace CONSTANTS
@@ -63,6 +66,7 @@ namespace CONSTANTS
     const std::string PIZZA2_IMG = PATH+"pizza2.png";
     const std::string MUSIC = PATH+"music.wav";
     const std::string POINT_WAV = PATH+"point.wav";
+    const std::string FOOD = PATH+"food.txt";
     
     namespace BURGER {
         const int BURGER_WIDTH = 192;

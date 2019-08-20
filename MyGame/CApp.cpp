@@ -10,14 +10,11 @@
 
 CApp::CApp() {
     Surf_Display = NULL;
-    Surf_Background = NULL;
     
     music = nullptr;
     point = nullptr;
     
     Running = true;
-    
-    timerLevelUpBurgerSpeedMovement = NULL;
 }
 
 int CApp::OnExecute() {

@@ -47,7 +47,7 @@ public:
     
     void newGame();
     
-    void checkGameOverCollisions();
+    bool isGameOverCollisions();
     
     void createBurgers();
 public:

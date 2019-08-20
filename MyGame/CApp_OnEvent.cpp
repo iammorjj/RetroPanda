@@ -12,6 +12,15 @@ void CApp::OnEvent(SDL_Event* Event) {
     
     if(Event->type == SDL_KEYDOWN) {
         
+        // keyboard delay after gameover
+        if(GLOBAL::keyboardDelay) {
+            printf("ticks = %d\n", GLOBAL::timer.get_ticks());
+            if(GLOBAL::timer.get_ticks() > 2000)
+                GLOBAL::keyboardDelay = false;
+            else
+                return;
+        }
+        
         if(GLOBAL::GameOver) {
             GLOBAL::GameOver = false;
             Score.score = 0;
