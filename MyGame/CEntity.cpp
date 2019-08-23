@@ -13,8 +13,6 @@ std::vector<CEntity*> CEntity::EntityList;
 CEntity::CEntity() {
     Surf_Entity = NULL;
     
-    //location = LEFT_DOWN;
-    
     X = Y = 0.0f;
     
     Width = Height = 0;

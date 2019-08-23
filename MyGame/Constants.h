@@ -12,6 +12,7 @@
 #include <string>
 #include <iostream>
 #include "Timer.hpp"
+#include <SDL/SDL.h>
 
 enum Location {LEFT_DOWN,LEFT_MID,LEFT_UP,
     RIGHT_DOWN,RIGHT_MID,RIGHT_UP
@@ -21,6 +22,7 @@ namespace GLOBAL {
     extern bool GameOver;
     extern bool keyboardDelay;
     extern Timer timer;
+    extern bool isLeader;
 }
 
 namespace CONSTANTS
@@ -37,8 +39,8 @@ namespace CONSTANTS
     const int CONVEYOR_MAX_FRAMES = 16;
     
     const int VERTICAL_DISTANCE_BETWEEN_CONVEYORS = 120;
-    const int LEFT_SIDE_COORD = CONSTANTS::SCREEN_WIDTH / 2. - CONSTANTS::BACKGROUND_WIDTH / 2. - 60;
-    const int RIGHT_SIDE_COORD = CONSTANTS::SCREEN_WIDTH / 2. + 90;
+    const int LEFT_SIDE_COORD = SCREEN_WIDTH / 2. - BACKGROUND_WIDTH / 2. - 60;
+    const int RIGHT_SIDE_COORD = SCREEN_WIDTH / 2. + 90;
     const int TOP_COORD = 200;
     
     const int CONVEYORS_NUM = 6;
@@ -53,7 +55,12 @@ namespace CONSTANTS
     const int SIDES_WIDTH = 846;
     const int SIDES_HEIGHT = 768;
     
-    const std::string PATH = "/Users/alexandermordovsky/Documents/XCodeProjects/MyGame/MyGame/Assets/1024x768/";
+    const std::string PATH =
+#ifdef MAC
+    "/Users/alexandermordovsky/Documents/XCodeProjects/MyGame/MyGame/Assets/";
+#else
+    "./Assets/";
+#endif
     
     const std::string FONT = PATH+"acknowtt.ttf";
     
@@ -62,11 +69,11 @@ namespace CONSTANTS
     const std::string HERO_IMG = PATH+"hero.png";
     const std::string BURGER_IMG = PATH+"burger.png";
     const std::string SIDES_IMG = PATH+"sidesBillys.png";
-    const std::string PIZZA1_IMG = PATH+"pizza1.png";
-    const std::string PIZZA2_IMG = PATH+"pizza2.png";
     const std::string MUSIC = PATH+"music.wav";
     const std::string POINT_WAV = PATH+"point.wav";
-    const std::string FOOD = PATH+"food.txt";
+    
+    const SDL_Color COLOR_BLACK = {0, 0, 0};
+    const SDL_Color COLOR_WHITE = {255, 255, 255};
     
     namespace BURGER {
         const int BURGER_WIDTH = 192;
@@ -74,12 +81,9 @@ namespace CONSTANTS
         const int BURGER_MAX_FRAMES = 1;
         
         const int VERTICAL_DISTANCE_BETWEEN_BURGERS = 120;
-//            const int LEFT_SIDE_COORD = 500;
-//            const int RIGHT_SIDE_COORD = 600;//SCREEN_WIDTH - BURGER_WIDTH + 38;
-//            const int TOP_COORD = 190;
         
-        const int START_BURGER_X_LEFT = 160;//-237;
-        const int START_BURGER_X_RIGHT = SCREEN_WIDTH - BURGER_WIDTH - START_BURGER_X_LEFT;//BACKGROUND_WIDTH - BURGER_WIDTH - START_BURGER_X_LEFT;
+        const int START_BURGER_X_LEFT = 160;
+        const int START_BURGER_X_RIGHT = SCREEN_WIDTH - BURGER_WIDTH - START_BURGER_X_LEFT;
         const int START_BURGER_Y_UP = 140;
         
         const int STOP_BURGER_X_LEFT = 300;

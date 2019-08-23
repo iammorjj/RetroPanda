@@ -10,4 +10,5 @@
 
 bool GLOBAL::GameOver = true;
 bool GLOBAL::keyboardDelay = false;
+bool GLOBAL::isLeader = false;
 Timer GLOBAL::timer;

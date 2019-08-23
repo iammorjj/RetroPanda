@@ -15,6 +15,8 @@ void CApp::OnRender() {
         CEntity::EntityList[i]->OnRender(Surf_Display);
     }
     
+    gameOverTitle.OnRender(Surf_Display);
+    
     Background.RenderSides(Surf_Display);
     
     SDL_Flip(Surf_Display);

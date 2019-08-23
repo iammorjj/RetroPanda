@@ -17,7 +17,6 @@ bool CApp::OnInit() {
         CEntity::EntityList.push_back(&Burger);
         CEntity::EntityList.push_back(&Hero);
         CEntity::EntityList.push_back(&Score);
-        CEntity::EntityList.push_back(&Welcome);
         
         return true;
     }
@@ -50,9 +49,6 @@ bool CApp::isRecourceInit() {
     if(!Score.OnLoad(CONSTANTS::FONT.c_str(), 200))
         return false;
     
-    if(!Welcome.OnLoad(CONSTANTS::FONT.c_str(), 35))
-        return false;
-    
     if(!Conveyor.OnLoad(CONVEYOR_IMG.c_str(), CONVEYOR_WIDTH, CONVEYOR_HEIGHT, CONVEYOR_MAX_FRAMES))
         return false;
     
@@ -60,6 +56,9 @@ bool CApp::isRecourceInit() {
         return false;
     
     if(!Burger.OnLoad(BURGER_IMG.c_str(), BURGER::BURGER_WIDTH, BURGER::BURGER_HEIGHT, BURGER::BURGER_MAX_FRAMES))
+        return false;
+    
+    if(!gameOverTitle.OnLoad())
         return false;
     
     return true;

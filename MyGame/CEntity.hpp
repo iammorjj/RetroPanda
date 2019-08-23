@@ -10,15 +10,11 @@
 #define CEntity_hpp
 
 #include <vector>
-
 #include "CAnimation.hpp"
-#include "CSurface.hpp"
 #include "Constants.h"
-//#include "CBurger.hpp"
+#include "CSurface.hpp"
 
 class CEntity {
-//private:
-//    Location location;
 public:
     static std::vector<CEntity*>    EntityList;
     

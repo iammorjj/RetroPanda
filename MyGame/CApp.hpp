@@ -31,11 +31,10 @@
 #include "CHero.hpp"
 #include "CBurger.hpp"
 #include "CScore.hpp"
-#include "CWelcome.hpp"
 #include "CBackground.hpp"
+#include "CGameOverTitle.hpp"
 
 class CApp {
-    
 private:
     bool            Running;
     
@@ -43,7 +42,7 @@ private:
     
     CBackground     Background;
     
-    CWelcome        Welcome;
+    CGameOverTitle  gameOverTitle;
     
     Mix_Music*      music;
     Mix_Chunk*      point;
