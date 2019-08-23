@@ -32,7 +32,7 @@ bool CGameOverTitle::OnLoad() {
 
     if( !( bestScoreFont = TTF_OpenFont(File, 60)) ||
         !( welcomeFont = TTF_OpenFont(File, 35)) ||
-        !(leaderFont = TTF_OpenFont(File, 30)) )
+        !( leaderFont = TTF_OpenFont(File, 30)) )
         return false;
     
     if( !isTitlesLoaded() )

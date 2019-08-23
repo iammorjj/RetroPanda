@@ -33,6 +33,7 @@
 #include "CScore.hpp"
 #include "CBackground.hpp"
 #include "CGameOverTitle.hpp"
+#include "CMusic.hpp"
 
 class CApp {
 private:
@@ -42,10 +43,9 @@ private:
     
     CBackground     Background;
     
-    CGameOverTitle  gameOverTitle;
+    CGameOverTitle  GameOverTitle;
     
-    Mix_Music*      music;
-    Mix_Chunk*      point;
+    CMusic          Music;
     
     CScore          Score;
     
@@ -56,6 +56,9 @@ private:
 private:
     bool isWindowInit();
     bool isRecourceInit();
+    
+private:
+    void startNewGame();
     
 public:
     CApp();

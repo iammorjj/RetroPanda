@@ -8,48 +8,66 @@
 
 #include "CApp.hpp"
 
+bool isNewGame() { return GLOBAL::GameOver; }
+bool isWaitingTimePassed();
+bool isQuitGame(SDL_Event* Event);
+
 void CApp::OnEvent(SDL_Event* Event) {
+    
+    if(isQuitGame(Event)) {
+        Running = false;
+        return;
+    }
     
     if(Event->type == SDL_KEYDOWN) {
         
-        // keyboard delay after gameover
-        if(GLOBAL::keyboardDelay) {
-            printf("ticks = %d\n", GLOBAL::timer.get_ticks());
-            if(GLOBAL::timer.get_ticks() > 2000)
-                GLOBAL::keyboardDelay = false;
+        if(isNewGame()) {
+            if(isWaitingTimePassed())
+                startNewGame();
             else
                 return;
         }
         
-        if(GLOBAL::GameOver) {
-            GLOBAL::GameOver = false;
-            Score.score = 0;
-            Burger.newGame();
-        }
-        
+        // TODO: make sensible names for arcade machine
         switch(Event->key.keysym.sym) {
-            
-            case SDLK_q: Running = false; break;
-               
             case SDLK_LCTRL:
-            case SDLK_1: Hero.MoveLeftDown(); break;
+            case SDLK_v: Hero.MoveLeftDown(); break;
             case SDLK_LALT:
-            case SDLK_2: Hero.MoveLeftMid(); break;
+            case SDLK_f: Hero.MoveLeftMid(); break;
             case SDLK_SPACE:
-            case SDLK_3: Hero.MoveLeftUp(); break;
+            case SDLK_r: Hero.MoveLeftUp(); break;
             case SDLK_LSHIFT:
-            case SDLK_4: Hero.MoveRightDown(); break;
+            case SDLK_n: Hero.MoveRightDown(); break;
             case SDLK_z:
-            case SDLK_5: Hero.MoveRightMid(); break;
+            case SDLK_j: Hero.MoveRightMid(); break;
             case SDLK_x:
-            case SDLK_6: Hero.MoveRightUp(); break;
+            case SDLK_i: Hero.MoveRightUp(); break;
                 
             default:;
         }
     }
-    
-    if(Event->type == SDL_QUIT) {
-        Running = false;
+}
+
+bool isQuitGame(SDL_Event* Event) {
+    return Event->type == SDL_QUIT ||
+        Event->key.keysym.sym == SDLK_q;
+}
+
+void CApp::startNewGame() {
+    GLOBAL::GameOver = false;
+    Score.score = 0;
+    Burger.newGame();
+}
+
+bool isWaitingTimePassed() {
+    if(GLOBAL::keyboardDelay) {
+        if(GLOBAL::timer.get_ticks() > 2000) {
+            GLOBAL::keyboardDelay = false;
+            return true;
+        }
+        
+        return false;
     }
     
+    return true;
 }

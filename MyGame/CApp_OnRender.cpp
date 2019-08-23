@@ -15,7 +15,7 @@ void CApp::OnRender() {
         CEntity::EntityList[i]->OnRender(Surf_Display);
     }
     
-    gameOverTitle.OnRender(Surf_Display);
+    GameOverTitle.OnRender(Surf_Display);
     
     Background.RenderSides(Surf_Display);
     

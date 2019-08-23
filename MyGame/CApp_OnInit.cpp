@@ -28,37 +28,26 @@ bool CApp::isWindowInit() {
     if(SDL_Init( SDL_INIT_EVERYTHING ) < 0)
         return false;
     
-    if((Surf_Display = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_HWSURFACE | SDL_DOUBLEBUF)) == NULL)
+    if( !(Surf_Display = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_HWSURFACE | SDL_DOUBLEBUF)) )
         return false;
     
     return true;
 }
 
 bool CApp::isRecourceInit() {
-    if(Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 ) == -1)
-        return false;
-    
-    music = Mix_LoadMUS( MUSIC.c_str() );
-    point = Mix_LoadWAV( POINT_WAV.c_str() );
-    if(music == NULL || point == NULL || Mix_PlayMusic( music, -1 ) < 0)
-        return false;
-    
-    if(!Background.OnLoad())
-        return false;
-    
-    if(!Score.OnLoad(CONSTANTS::FONT.c_str(), 200))
-        return false;
-    
-    if(!Conveyor.OnLoad(CONVEYOR_IMG.c_str(), CONVEYOR_WIDTH, CONVEYOR_HEIGHT, CONVEYOR_MAX_FRAMES))
-        return false;
-    
-    if(!Hero.OnLoad(HERO_IMG.c_str(), HERO_WIDTH, HERO_HEIGHT, HERO_MAX_FRAMES))
-        return false;
-    
-    if(!Burger.OnLoad(BURGER_IMG.c_str(), BURGER::BURGER_WIDTH, BURGER::BURGER_HEIGHT, BURGER::BURGER_MAX_FRAMES))
-        return false;
-    
-    if(!gameOverTitle.OnLoad())
+    if( !Music.OnLoad() ||
+       
+        !Background.OnLoad() ||
+       
+        !Score.OnLoad(CONSTANTS::FONT.c_str(), 200) ||
+       
+        !Conveyor.OnLoad(CONVEYOR_IMG.c_str(), CONVEYOR_WIDTH, CONVEYOR_HEIGHT, CONVEYOR_MAX_FRAMES) ||
+       
+        !Hero.OnLoad(HERO_IMG.c_str(), HERO_WIDTH, HERO_HEIGHT, HERO_MAX_FRAMES) ||
+       
+        !Burger.OnLoad(BURGER_IMG.c_str(), BURGER::BURGER_WIDTH, BURGER::BURGER_HEIGHT, BURGER::BURGER_MAX_FRAMES) ||
+       
+        !GameOverTitle.OnLoad() )
         return false;
     
     return true;

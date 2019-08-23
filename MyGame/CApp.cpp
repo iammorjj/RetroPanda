@@ -10,10 +10,7 @@
 
 CApp::CApp() {
     Surf_Display = NULL;
-    
-    music = nullptr;
-    point = nullptr;
-    
+
     Running = true;
 }
 
