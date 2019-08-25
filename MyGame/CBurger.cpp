@@ -15,7 +15,7 @@ CBurger::CBurger() {
 
     gameOverHidingBurgersRate = 500;
     oldTimeGameOver = 0;
-    gameOverHidding = false;
+    isHide = false;
     
     createNewBurgerDelay = CREATE_NEW_BURGER_DELAY_START;
     createNewBurgerTimer = nullptr;
@@ -58,7 +58,7 @@ void CBurger::OnRender(SDL_Surface* Surf_Display) {
         for(auto burg: burger[location]) {
             if(GLOBAL::GameOver)
                 gameOver();
-            if(!gameOverHidding)
+            if(!isHide)
                 CSurface::OnDraw(Surf_Display, Surf_Entity, burg.x,
                                  burg.y,
                                  0, 0, Width, Height);
@@ -71,7 +71,7 @@ void CBurger::gameOver() {
         return;
 
     oldTimeGameOver = SDL_GetTicks();
-    gameOverHidding = !gameOverHidding;
+    isHide = !isHide;
 }
 
 bool CBurger::hasBurger(Location location) {
@@ -93,7 +93,7 @@ void CBurger::newGame() {
     for(int location = LEFT_DOWN; location <= RIGHT_UP; ++location)
         burger[location].clear();
     
-    gameOverHidding = false;
+    isHide = false;
     changeAppearanceSpeed = false;
     
     Burger::xVel = X_VEL_START;

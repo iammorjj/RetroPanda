@@ -17,9 +17,9 @@ void CApp::OnCleanup() {
     
     CEntity::EntityList.clear();
     
-    SDL_FreeSurface(Surf_Display);
-    
     Music.OnCleanup();
+    
+    SDL_FreeSurface(Surf_Display);
     
     SDL_Quit();
 }

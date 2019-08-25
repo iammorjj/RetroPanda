@@ -22,7 +22,7 @@ private:
     
     int gameOverHidingBurgersRate;
     int oldTimeGameOver;
-    bool gameOverHidding;
+    bool isHide;
     
     Uint32 createNewBurgerDelay;
     SDL_TimerID createNewBurgerTimer;
