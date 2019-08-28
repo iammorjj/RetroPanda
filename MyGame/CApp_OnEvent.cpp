@@ -12,13 +12,13 @@ bool isNewGame() { return GLOBAL::GameOver; }
 bool isWaitingTimePassed();
 bool isQuitGame(SDL_Event* Event);
 
-#include "LocationRefactoring.hpp"
+//#include "LocationRefactoring.hpp"
 
 void CApp::OnEvent(SDL_Event* Event) {
     
     if(isQuitGame(Event)) {
         Running = false;
-        LocationRefactoring::RIGHT_UP;
+        //LocationRefactoring::RIGHT_UP;
         return;
     }
     

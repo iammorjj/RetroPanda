@@ -36,6 +36,7 @@
 #include "CMusic.hpp"
 
 #include "Hero.hpp"
+#include "BurgerRefactoring.h"
 
 class CApp {
 private:

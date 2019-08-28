@@ -49,14 +49,12 @@ public:
             animation.animate();
     }
     void render(SDL_Surface* display) {
+        // add 2 sides
         animation.draw(display, surface, xPosition, yPosition);
     }
     void cleanup() {
         SDL_FreeSurface(surface);
     }
 };
-
-#endif /* CConveyor_hpp */
-
 
 #endif /* Conveyor_h */
