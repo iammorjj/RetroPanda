@@ -26,6 +26,9 @@ public:
     int    MaxFrames;
     
 public:
+    int   CurrentFrameRow;
+    
+public:
     CAnimation();
     
     void OnAnimate();

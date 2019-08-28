@@ -31,17 +31,35 @@ void CApp::OnEvent(SDL_Event* Event) {
         // TODO: make sensible names for arcade machine
         switch(Event->key.keysym.sym) {
             case SDLK_LCTRL:
-            case SDLK_v: Hero.MoveLeftDown(); break;
+            case SDLK_v:
+                Hero.MoveLeftDown();
+                HeroRefactoring.changeLocation(LEFT_DOWN);
+                break;
             case SDLK_LALT:
-            case SDLK_f: Hero.MoveLeftMid(); break;
+            case SDLK_f:
+                Hero.MoveLeftMid();
+                HeroRefactoring.changeLocation(LEFT_MID);
+                break;
             case SDLK_SPACE:
-            case SDLK_r: Hero.MoveLeftUp(); break;
+            case SDLK_r:
+                Hero.MoveLeftUp();
+                HeroRefactoring.changeLocation(LEFT_UP);
+                break;
             case SDLK_LSHIFT:
-            case SDLK_n: Hero.MoveRightDown(); break;
+            case SDLK_n:
+                Hero.MoveRightDown();
+                HeroRefactoring.changeLocation(RIGHT_DOWN);
+                break;
             case SDLK_z:
-            case SDLK_j: Hero.MoveRightMid(); break;
+            case SDLK_j:
+                Hero.MoveRightMid();
+                HeroRefactoring.changeLocation(RIGHT_MID);
+                break;
             case SDLK_x:
-            case SDLK_i: Hero.MoveRightUp(); break;
+            case SDLK_i:
+                Hero.MoveRightUp();
+                HeroRefactoring.changeLocation(RIGHT_UP);
+                break;
                 
             default:;
         }

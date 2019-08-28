@@ -20,6 +20,8 @@ void CHero::OnRender(SDL_Surface* Surf_Display) {
     
     CSurface::OnDraw(Surf_Display, Surf_Entity, X, Y,
                      Anim_Control.GetCurrentFrame() * Width, CurrentFrameRow * Height, Width, Height);
+//    CSurface::OnDraw(Surf_Display, Surf_Entity, X, Y,
+//                     anim.GetCurrentFrame() * Width, CurrentFrameRow * Height, Width, Height);
 }
 
 void CHero::MoveLeftDown() { CurrentFrameRow = 0; location = LEFT_DOWN; }

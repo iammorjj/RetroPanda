@@ -9,10 +9,20 @@
 #ifndef Location_h
 #define Location_h
 
+enum Location {LEFT_DOWN,LEFT_MID,LEFT_UP,
+    RIGHT_DOWN,RIGHT_MID,RIGHT_UP
+};
+
+#include "Constants.h"
+
 class LocationClass {
 public:
     double x, y;
     Location location;
+//public:
+//    enum {LEFT_DOWN,LEFT_MID,LEFT_UP,
+//        RIGHT_DOWN,RIGHT_MID,RIGHT_UP
+//    } location;
 public:
     
     static bool isHeroCollision(LocationClass& burger) {

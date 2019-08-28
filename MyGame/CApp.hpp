@@ -35,6 +35,8 @@
 #include "CGameOverTitle.hpp"
 #include "CMusic.hpp"
 
+#include "Hero.hpp"
+
 class CApp {
 private:
     bool            Running;
@@ -52,6 +54,9 @@ private:
     CHero           Hero;
     CBurger         Burger;
     CConveyor       Conveyor;
+    
+    //ref
+    class Hero      HeroRefactoring;
     
 private:
     bool isWindowInit();

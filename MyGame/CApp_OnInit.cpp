@@ -45,6 +45,8 @@ bool CApp::isRecourceInit() {
        
         !Hero.OnLoad(HERO_IMG.c_str(), HERO_WIDTH, HERO_HEIGHT, HERO_MAX_FRAMES) ||
        
+        !HeroRefactoring.load() ||
+       
         !Burger.OnLoad(BURGER_IMG.c_str(), BURGER::BURGER_WIDTH, BURGER::BURGER_HEIGHT, BURGER::BURGER_MAX_FRAMES) ||
        
         !GameOverTitle.OnLoad() )
