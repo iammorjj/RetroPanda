@@ -15,8 +15,9 @@ void CApp::OnLoop() {
         if(!CEntity::EntityList[i]) continue;
         
         CEntity::EntityList[i]->OnLoop();
+        
     }
-    
+
     // refactor this place pls
     
     if(Burger.hasBurger(Hero.location) &&

@@ -14,17 +14,17 @@
 
 class Animation {
 private:
-    int frameWidth;
-    int frameHeight;
+    int frameWidth = 0;
+    int frameHeight = 0;
     
-private:
-    int maxFrames;
-    int currentFrame;
-    int frameInc;
+    int maxFrames = 0;
+    int currentFrame = 0;
+    int frameInc = 1;
     
-private:
-    int frameRate;
-    int oldTime;
+    int frameRateMs = 125;
+    int oldTimeMs = 0;
+    
+    int currentFrameRow = 0;
     
 private:
     int getXPosCurrentFrame() {
@@ -34,42 +34,33 @@ private:
         return currentFrameRow * frameHeight;
     }
     
-private:
-    int currentFrameRow;
-    
 public:
-    void setCurrentFrameRow(int row) { currentFrameRow = row; }
-    
-public:
-    Animation();
-    
-    void animate();
-    
-public:
-    void draw(SDL_Surface* display, SDL_Surface* surface, int displayX, int displayY) {
-        CSurface::OnDraw(display, surface, displayX, displayY,
-                         getXPosCurrentFrame(), getYPosCurrentFrame(), frameWidth, frameHeight);
+    void setCurrentFrameRow(int row) {
+        currentFrameRow = row;
     }
     
-    
-    
-public:
     void setSpriteInfo(int frameWidth, int frameHeight, int maxFrames) {
         this->frameWidth = frameWidth;
         this->frameHeight = frameHeight;
         this->maxFrames = maxFrames;
     }
     
-public:
-    void setFrameRate(int rate);
+    void animate() {
+        if(oldTimeMs + frameRateMs > SDL_GetTicks())
+            return;
+        
+        oldTimeMs = SDL_GetTicks();
+        
+        currentFrame += frameInc;
+        
+        if(currentFrame >= maxFrames)
+            currentFrame = 0;
+    }
     
-    void setCurrentFrame(int frame);
-    
-    int getCurrentFrame();
-    
-    void stopFrameInc();
-    
-    void returnFrameInc();
+    void draw(SDL_Surface* display, SDL_Surface* surface, int displayX, int displayY) {
+        CSurface::OnDraw(display, surface, displayX, displayY,
+                         getXPosCurrentFrame(), getYPosCurrentFrame(), frameWidth, frameHeight);
+    }
 };
 
 #endif /* Animation_hpp */

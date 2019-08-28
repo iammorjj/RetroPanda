@@ -1,20 +1,18 @@
 //
-//  Hero.hpp
+//  Conveyor.h
 //  MyGame
 //
-//  Created by Alexander Mordovsky on 27/08/2019.
+//  Created by Alexander Mordovsky on 28/08/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
 //
 
-#ifndef Hero_hpp
-#define Hero_hpp
+#ifndef Conveyor_h
+#define Conveyor_h
 
 #include "Entity.hpp"
-#include "Location.h"
 #include "Animation.hpp"
-#include "CSurface.hpp"
 
-class Hero: public Entity, public LocationClass {
+class Conveyor: public Entity {
     const char* file = "";
     const int frameWidth = 0;
     const int frameHeight = 0;
@@ -22,14 +20,19 @@ class Hero: public Entity, public LocationClass {
     
     const int xPosition = 0;
     const int yPosition = 0;
-
+    
 private:
     SDL_Surface* surface = nullptr;
     Animation animation;
     
+    bool running = false;
+    
 public:
-    void changeLocation(Location location) {
-        animation.setCurrentFrameRow(this->location = location);
+    void stop() {
+        running = false;
+    }
+    void start() {
+        running = true;
     }
     
 public:
@@ -42,8 +45,8 @@ public:
         return true;
     }
     void loop() {
-        animation.animate();
-        
+        if(running)
+            animation.animate();
     }
     void render(SDL_Surface* display) {
         animation.draw(display, surface, xPosition, yPosition);
@@ -53,4 +56,7 @@ public:
     }
 };
 
-#endif /* Hero_hpp */
+#endif /* CConveyor_hpp */
+
+
+#endif /* Conveyor_h */
