@@ -1,5 +1,5 @@
 //
-//  Burger.hpp
+//  BurgerOldVersion.hpp
 //  MyGame
 //
 //  Created by Alexander Mordovsky on 08/08/2019.
@@ -14,14 +14,14 @@
 
 using namespace CONSTANTS::BURGER;
 
-class Burger: public LocationClass {
+class BurgerOldVersion: public LocationClass {
 private:
     int xDirectionSign();
 public:
     static double xVel;
     static double yVel;
     
-    Burger(Location location = LEFT_DOWN);
+    BurgerOldVersion(Location location = LEFT_DOWN);
     
     bool canMoveSideway();
     

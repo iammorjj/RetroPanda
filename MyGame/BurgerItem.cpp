@@ -1,17 +1,14 @@
 //
-//  Burger.cpp
+//  BurgerItem.cpp
 //  MyGame
 //
-//  Created by Alexander Mordovsky on 08/08/2019.
+//  Created by Alexander Mordovsky on 02/09/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
 //
 
-#include "Burger.hpp"
+#include "BurgerItem.hpp"
 
-double Burger::xVel = X_VEL_START;
-double Burger::yVel = Y_VEL_START;
-
-Burger::Burger(Location location) {
+BurgerItem::BurgerItem(int location) {
     this->location = location;
     
     switch(location) {
@@ -37,18 +34,18 @@ Burger::Burger(Location location) {
     }
 }
 
-bool Burger::canMoveSideway() {
+bool BurgerItem::canMoveSideway() {
     return !(x > STOP_BURGER_X_LEFT && x < STOP_BURGER_X_RIGHT);
 }
 
-int Burger::xDirectionSign() {
+int BurgerItem::xDirectionSign() {
     if(location == LEFT_DOWN || location == LEFT_MID || location == LEFT_UP)
         return 1;
     
     return -1;
 }
 
-void Burger::move(double deltaTicks) {
+void BurgerItem::move(double deltaTicks) {
     if(canMoveSideway()) {
         x += xVel * ( deltaTicks / 1000.0 ) * xDirectionSign();
         y += yVel * ( deltaTicks / 1000.0 );
@@ -57,7 +54,7 @@ void Burger::move(double deltaTicks) {
     }
 }
 
-bool Burger::canMoveDown() {
+bool BurgerItem::canMoveDown() {
     switch(this->location) {
         case LEFT_DOWN:
         case RIGHT_DOWN:
@@ -75,6 +72,7 @@ bool Burger::canMoveDown() {
     }
 }
 
-bool Burger::isGameOver() {
+bool BurgerItem::isGameOver() {
     return !canMoveDown();
 }
+

@@ -6,4 +6,13 @@
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
 //
 
-#include "Hero.hpp"
+#include "HeroRefactoring.hpp"
+#include "BurgerRefactoring.hpp"
+
+bool HeroRefactoring::canCatch(const BurgerRefactoring& obj) {
+    return obj.canBeCaught(location);
+}
+
+void HeroRefactoring::catchBurger(BurgerRefactoring& obj) {
+        obj.burger[location].pop_back();
+}

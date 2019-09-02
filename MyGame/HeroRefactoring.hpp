@@ -1,40 +1,50 @@
 //
-//  Hero.hpp
+//  HeroRefactoring.hpp
 //  MyGame
 //
 //  Created by Alexander Mordovsky on 27/08/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
 //
 
-#ifndef Hero_hpp
-#define Hero_hpp
+#ifndef HeroRefactoring_hpp
+#define HeroRefactoring_hpp
 
 #include "Entity.hpp"
-#include "Location.h"
 #include "Animation.hpp"
 #include "CSurface.hpp"
 
-class Hero: public Entity, public LocationClass {
-    const char* file = "";
-    const int frameWidth = 0;
-    const int frameHeight = 0;
-    const int maxFrames = 0;
+#include "LocationRefactoring.hpp"
+
+#include <string>
+
+class BurgerRefactoring;
+
+class HeroRefactoring: public Entity, public LocationRefactoring {
+    static const std::string file;
+    static const int frameWidth = 0;
+    static const int frameHeight = 0;
+    static const int maxFrames = 0;
     
-    const int xPosition = 0;
-    const int yPosition = 0;
+    static const int xPosition = 0;
+    static const int yPosition = 0;
 
 private:
     SDL_Surface* surface = nullptr;
     Animation animation;
+    
+    bool hasBurger = false;
     
 public:
     void changeLocation(Location location) {
         animation.setCurrentFrameRow(this->location = location);
     }
     
+    bool canCatch(const BurgerRefactoring& obj);
+    void catchBurger(BurgerRefactoring& obj);
+    
 public:
     bool load() {
-        surface = CSurface::OnLoad(file);
+        surface = CSurface::OnLoad(file.c_str());
         if(!surface)
             return false;
         
@@ -43,7 +53,6 @@ public:
     }
     void loop() {
         animation.animate();
-        
     }
     void render(SDL_Surface* display) {
         animation.draw(display, surface, xPosition, yPosition);

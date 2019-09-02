@@ -17,9 +17,13 @@ public:
         RIGHT_DOWN, RIGHT_MID, RIGHT_UP
     };
     
-private:
+protected:
     double x = 0, y = 0;
     int location = LEFT_DOWN;
+    
+public:
+    double getXCoord() { return x; }
+    double getYCoord() { return y; }
     
 };
 

@@ -25,8 +25,8 @@ CBurger::CBurger() {
 
 void CBurger::newLevelMovementSpeed() {
     double addVelX = 7, addVelY = 4;
-    //Burger::xVel += addVelX;//*= 1.1;
-    //Burger::yVel += addVelY;//*= 1.1;
+    //BurgerOldVersion::xVel += addVelX;//*= 1.1;
+    //BurgerOldVersion::yVel += addVelY;//*= 1.1;
 }
 
 void CBurger::newLevelAppearanceSpeed() {
@@ -44,7 +44,7 @@ void CBurger::addBurgerToRandomConveyor() {
     // debug
     //location = LEFT_UP;
     
-    burger[location].push_front(Burger(location));
+    burger[location].push_front(BurgerOldVersion(location));
     
     if(changeAppearanceSpeed && createNewBurgerTimer && SDL_RemoveTimer(createNewBurgerTimer)) {
         createNewBurgerTimer = NULL;
@@ -96,8 +96,8 @@ void CBurger::newGame() {
     isHide = false;
     changeAppearanceSpeed = false;
     
-    Burger::xVel = X_VEL_START;
-    Burger::yVel = Y_VEL_START;
+    BurgerOldVersion::xVel = X_VEL_START;
+    BurgerOldVersion::yVel = Y_VEL_START;
     createNewBurgerDelay = CREATE_NEW_BURGER_DELAY_START;
     
     if(createNewBurgerTimer)

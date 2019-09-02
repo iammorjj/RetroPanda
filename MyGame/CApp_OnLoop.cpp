@@ -17,7 +17,18 @@ void CApp::OnLoop() {
         CEntity::EntityList[i]->OnLoop();
         
     }
-
+    
+//    if(hero.canTake(Burger)) {
+//        hero.take(Burger);
+//        Score.score++;
+//        Music.pointSoundPlay();
+//        if(isNewLevel())
+//            newLevel();
+//    }
+//    
+//    if(burger.isMissed())
+//        gameOver();
+    
     // refactor this place pls
     
     if(Burger.hasBurger(Hero.location) &&

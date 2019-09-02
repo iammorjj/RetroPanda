@@ -35,8 +35,10 @@
 #include "CGameOverTitle.hpp"
 #include "CMusic.hpp"
 
-#include "Hero.hpp"
-#include "BurgerRefactoring.h"
+#include "HeroRefactoring.hpp"
+#include "BurgerRefactoring.hpp"
+#include "Conveyor.h"
+//#include "BurgerRefactoring.h"
 
 class CApp {
 private:
@@ -57,14 +59,19 @@ private:
     CConveyor       Conveyor;
     
     //ref
-    class Hero      HeroRefactoring;
+    HeroRefactoring   hero;
+    BurgerRefactoring burger;
+    class Conveyor    conveyor;
     
 private:
     bool isWindowInit();
     bool isRecourceInit();
     
-private:
     void startNewGame();
+    void gameOver();
+    
+    bool isNewLevel();
+    void newLevel();
     
 public:
     CApp();

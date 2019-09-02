@@ -10,7 +10,7 @@
 #define CBurger_hpp
 
 #include "CEntity.hpp"
-#include "Burger.hpp"
+#include "BurgerOldVersion.hpp"
 #include "Timer.hpp"
 #include <vector>
 #include <list>
@@ -30,7 +30,7 @@ private:
     bool changeAppearanceSpeed;
     
 public:
-    std::list<Burger> burger[CONSTANTS::CONVEYORS_NUM];
+    std::list<BurgerOldVersion> burger[CONSTANTS::CONVEYORS_NUM];
     
     CBurger();
 
