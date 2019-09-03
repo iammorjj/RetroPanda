@@ -1,5 +1,5 @@
 //
-//  CAnimation.hpp
+//  CAnimationOldVersion.hpp
 //  MyGame
 //
 //  Created by Alexander Mordovsky on 06/08/2019.
@@ -11,7 +11,7 @@
 
 #include <SDL/SDL.h>
 
-class CAnimation {
+class CAnimationOldVersion {
 private:
     int    CurrentFrame;
     
@@ -29,7 +29,7 @@ public:
     int   CurrentFrameRow;
     
 public:
-    CAnimation();
+    CAnimationOldVersion();
     
     void OnAnimate();
     

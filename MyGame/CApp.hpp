@@ -24,19 +24,19 @@
 #include <stdio.h>
 
 #include "Constants.h"
-#include "CSurface.hpp"
-#include "CAnimation.hpp"
-#include "CConveyor.hpp"
-#include "CEntity.hpp"
-#include "CHero.hpp"
-#include "CBurger.hpp"
-#include "CScore.hpp"
-#include "CBackground.hpp"
+#include "CSurfaceOldVersion.hpp"
+#include "CAnimationOldVersion.hpp"
+#include "CConveyorOldVersion.hpp"
+#include "CEntityOldVersion.hpp"
+#include "CHeroOldVersion.hpp"
+#include "CBurgerOldVersion.hpp"
+#include "CScoreOldVersion.hpp"
+#include "CBackgroundOldVersion.hpp"
 #include "CGameOverTitle.hpp"
 #include "CMusic.hpp"
 
-#include "HeroRefactoring.hpp"
-#include "BurgerRefactoring.hpp"
+//#include "Hero.hpp"
+#include "Burger.hpp"
 #include "Conveyor.h"
 //#include "BurgerRefactoring.h"
 
@@ -46,21 +46,21 @@ private:
     
     SDL_Surface*    Surf_Display;
     
-    CBackground     Background;
+    CBackgroundOldVersion     Background;
     
     CGameOverTitle  GameOverTitle;
     
     CMusic          Music;
     
-    CScore          Score;
+    CScoreOldVersion          Score;
     
-    CHero           Hero;
-    CBurger         Burger;
-    CConveyor       Conveyor;
+    //CHeroOldVersion           Hero;
+    //CBurgerOldVersion         Burger;
+    //CConveyorOldVersion       Conveyor;
     
     //ref
-    HeroRefactoring   hero;
-    BurgerRefactoring burger;
+    //Hero   hero;
+    
     class Conveyor    conveyor;
     
 private:

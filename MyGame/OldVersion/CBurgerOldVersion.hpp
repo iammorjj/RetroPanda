@@ -1,5 +1,5 @@
 //
-//  CBurger.hpp
+//  CBurgerOldVersion.hpp
 //  MyGame
 //
 //  Created by Alexander Mordovsky on 07/08/2019.
@@ -9,13 +9,13 @@
 #ifndef CBurger_hpp
 #define CBurger_hpp
 
-#include "CEntity.hpp"
+#include "CEntityOldVersion.hpp"
 #include "BurgerOldVersion.hpp"
 #include "Timer.hpp"
 #include <vector>
 #include <list>
 
-class CBurger: public CEntity {
+class CBurgerOldVersion: public CEntityOldVersion {
 private:
     Timer timer;
     Uint32 deltaTicks;
@@ -32,13 +32,13 @@ private:
 public:
     std::list<BurgerOldVersion> burger[CONSTANTS::CONVEYORS_NUM];
     
-    CBurger();
+    CBurgerOldVersion();
 
     void addBurgerToRandomConveyor();
     
     void gameOver();
     
-    bool hasBurger(Location location);
+    bool hasBurger(LocationOldVersion location);
     
     void newLevelMovementSpeed();
     void newLevelAppearanceSpeed();

@@ -1,25 +1,25 @@
 //
-//  HeroRefactoring.hpp
+//  Hero.hpp
 //  MyGame
 //
-//  Created by Alexander Mordovsky on 27/08/2019.
+//  Created by Alexander Mordovsky on 03/09/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
 //
 
-#ifndef HeroRefactoring_hpp
-#define HeroRefactoring_hpp
+#ifndef Hero_hpp
+#define Hero_hpp
 
 #include "Entity.hpp"
 #include "Animation.hpp"
-#include "CSurface.hpp"
+#include "CSurfaceOldVersion.hpp"
 
-#include "LocationRefactoring.hpp"
+#include "Location.hpp"
 
 #include <string>
 
-class BurgerRefactoring;
+class Burger;
 
-class HeroRefactoring: public Entity, public LocationRefactoring {
+class Hero: public Entity, public Location {
     static const std::string file;
     static const int frameWidth = 0;
     static const int frameHeight = 0;
@@ -27,24 +27,24 @@ class HeroRefactoring: public Entity, public LocationRefactoring {
     
     static const int xPosition = 0;
     static const int yPosition = 0;
-
+    
 private:
-    SDL_Surface* surface = nullptr;
+    SDL_Surface* surface;
     Animation animation;
     
-    bool hasBurger = false;
+    Hero();
     
 public:
     void changeLocation(Location location) {
-        animation.setCurrentFrameRow(this->location = location);
+        //animation.setCurrentFrameRow(this->location = location);
     }
     
-    bool canCatch(const BurgerRefactoring& obj);
-    void catchBurger(BurgerRefactoring& obj);
+    bool canCatch(const Burger& obj);
+    void catchBurger(Burger& obj);
     
 public:
     bool load() {
-        surface = CSurface::OnLoad(file.c_str());
+        surface = CSurfaceOldVersion::OnLoad(file.c_str());
         if(!surface)
             return false;
         

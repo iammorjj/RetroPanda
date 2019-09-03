@@ -12,13 +12,13 @@ bool isNewGame() { return GLOBAL::GameOver; }
 bool isWaitingTimePassed();
 bool isQuitGame(SDL_Event* Event);
 
-//#include "LocationRefactoring.hpp"
+//#include "Location.hpp"
 
 void CApp::OnEvent(SDL_Event* Event) {
     
     if(isQuitGame(Event)) {
         Running = false;
-        //LocationRefactoring::RIGHT_UP;
+        //Location::RIGHT_UP;
         return;
     }
     
@@ -36,32 +36,32 @@ void CApp::OnEvent(SDL_Event* Event) {
             case SDLK_LCTRL:
             case SDLK_v:
                 Hero.MoveLeftDown();
-                //HeroRefactoring.changeLocation(LEFT_DOWN);
+                //Hero.changeLocation(LEFT_DOWN);
                 break;
             case SDLK_LALT:
             case SDLK_f:
                 Hero.MoveLeftMid();
-                //HeroRefactoring.changeLocation(LEFT_MID);
+                //Hero.changeLocation(LEFT_MID);
                 break;
             case SDLK_SPACE:
             case SDLK_r:
                 Hero.MoveLeftUp();
-                //HeroRefactoring.changeLocation(LEFT_UP);
+                //Hero.changeLocation(LEFT_UP);
                 break;
             case SDLK_LSHIFT:
             case SDLK_n:
                 Hero.MoveRightDown();
-                //HeroRefactoring.changeLocation(RIGHT_DOWN);
+                //Hero.changeLocation(RIGHT_DOWN);
                 break;
             case SDLK_z:
             case SDLK_j:
                 Hero.MoveRightMid();
-                //HeroRefactoring.changeLocation(RIGHT_MID);
+                //Hero.changeLocation(RIGHT_MID);
                 break;
             case SDLK_x:
             case SDLK_i:
                 Hero.MoveRightUp();
-                //HeroRefactoring.changeLocation(RIGHT_UP);
+                //Hero.changeLocation(RIGHT_UP);
                 break;
                 
             default:;

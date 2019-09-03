@@ -9,9 +9,9 @@
 #ifndef BurgerItem_hpp
 #define BurgerItem_hpp
 
-#include "LocationRefactoring.hpp"
+#include "Location.hpp"
 
-class BurgerItem: public LocationRefactoring {
+class BurgerItem: public Location {
 private:
     static double xVel;
     static double yVel;

@@ -1,5 +1,5 @@
 //
-//  CConveyor.hpp
+//  CConveyorOldVersion.hpp
 //  MyGame
 //
 //  Created by Alexander Mordovsky on 06/08/2019.
@@ -9,10 +9,10 @@
 #ifndef CConveyor_hpp
 #define CConveyor_hpp
 
-#include "CEntity.hpp"
+#include "CEntityOldVersion.hpp"
 #include <queue>
 
-class CConveyor: public CEntity {
+class CConveyorOldVersion: public CEntityOldVersion {
 public:
     
     void OnRender(SDL_Surface* Surf_Display);

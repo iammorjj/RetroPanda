@@ -12,11 +12,11 @@ using namespace CONSTANTS;
 
 bool CApp::OnInit() {
     if(isWindowInit() && isRecourceInit()) {
-        CEntity::EntityList.push_back(&Background);
-        CEntity::EntityList.push_back(&Conveyor);
-        CEntity::EntityList.push_back(&Burger);
-        CEntity::EntityList.push_back(&Hero);
-        CEntity::EntityList.push_back(&Score);
+        CEntityOldVersion::EntityList.push_back(&Background);
+        CEntityOldVersion::EntityList.push_back(&Conveyor);
+        CEntityOldVersion::EntityList.push_back(&Burger);
+        CEntityOldVersion::EntityList.push_back(&Hero);
+        CEntityOldVersion::EntityList.push_back(&Score);
         
         return true;
     }
@@ -45,7 +45,7 @@ bool CApp::isRecourceInit() {
        
         !Hero.OnLoad(HERO_IMG.c_str(), HERO_WIDTH, HERO_HEIGHT, HERO_MAX_FRAMES) ||
        
-        //!HeroRefactoring.load() ||
+        //!Hero.load() ||
        
         !Burger.OnLoad(BURGER_IMG.c_str(), BURGER::BURGER_WIDTH, BURGER::BURGER_HEIGHT, BURGER::BURGER_MAX_FRAMES) ||
        

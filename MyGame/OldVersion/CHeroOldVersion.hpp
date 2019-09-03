@@ -1,5 +1,5 @@
 //
-//  CHero.hpp
+//  CHeroOldVersion.hpp
 //  MyGame
 //
 //  Created by Alexander Mordovsky on 06/08/2019.
@@ -9,15 +9,15 @@
 #ifndef CHero_hpp
 #define CHero_hpp
 
-#include "CEntity.hpp"
-#include "Location.h"
+#include "CEntityOldVersion.hpp"
+#include "LocationOldVersion.h"
 
-class CHero: public CEntity, public LocationClass {
+class CHeroOldVersion: public CEntityOldVersion, public LocationClassOldVersion {
 public:
-    Location location;
+    LocationOldVersion location;
 public:
 
-    CHero();
+    CHeroOldVersion();
     
     void OnRender(SDL_Surface* Surf_Display);
     

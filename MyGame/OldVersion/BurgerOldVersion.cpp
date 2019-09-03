@@ -11,7 +11,7 @@
 double BurgerOldVersion::xVel = X_VEL_START;
 double BurgerOldVersion::yVel = Y_VEL_START;
 
-BurgerOldVersion::BurgerOldVersion(Location location) {
+BurgerOldVersion::BurgerOldVersion(LocationOldVersion location) {
     this->location = location;
     
     switch(location) {

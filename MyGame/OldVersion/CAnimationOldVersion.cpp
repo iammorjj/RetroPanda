@@ -1,14 +1,14 @@
 //
-//  CAnimation.cpp
+//  CAnimationOldVersion.cpp
 //  MyGame
 //
 //  Created by Alexander Mordovsky on 06/08/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
 //
 
-#include "CAnimation.hpp"
+#include "CAnimationOldVersion.hpp"
 
-CAnimation::CAnimation() {
+CAnimationOldVersion::CAnimationOldVersion() {
     CurrentFrame    = 0;
     MaxFrames       = 0;
     FrameInc        = 1;
@@ -17,7 +17,7 @@ CAnimation::CAnimation() {
     OldTime         = 0;
 }
 
-void CAnimation::OnAnimate() {
+void CAnimationOldVersion::OnAnimate() {
     if(OldTime + FrameRate > SDL_GetTicks()) {
         return;
     }
@@ -31,24 +31,24 @@ void CAnimation::OnAnimate() {
     }
 }
 
-void CAnimation::SetFrameRate(int Rate) {
+void CAnimationOldVersion::SetFrameRate(int Rate) {
     FrameRate = Rate;
 }
 
-void CAnimation::SetCurrentFrame(int Frame) {
+void CAnimationOldVersion::SetCurrentFrame(int Frame) {
     if(Frame < 0 || Frame >= MaxFrames) return;
     
     CurrentFrame = Frame;
 }
 
-int CAnimation::GetCurrentFrame() {
+int CAnimationOldVersion::GetCurrentFrame() {
     return CurrentFrame;
 }
 
-void CAnimation::StopFrameInc() {
+void CAnimationOldVersion::StopFrameInc() {
     FrameInc = 0;
 }
 
-void CAnimation::ReturnFrameInc() {
+void CAnimationOldVersion::ReturnFrameInc() {
     FrameInc = 1;
 }

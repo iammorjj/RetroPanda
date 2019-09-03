@@ -7,14 +7,14 @@
 //
 
 #include "CApp.hpp"
-#include "Location.h"
+#include "LocationOldVersion.h"
 
 void CApp::OnLoop() {
     
-    for(int i = 0;i < CEntity::EntityList.size();i++) {
-        if(!CEntity::EntityList[i]) continue;
+    for(int i = 0;i < CEntityOldVersion::EntityList.size();i++) {
+        if(!CEntityOldVersion::EntityList[i]) continue;
         
-        CEntity::EntityList[i]->OnLoop();
+        CEntityOldVersion::EntityList[i]->OnLoop();
         
     }
     
@@ -32,7 +32,7 @@ void CApp::OnLoop() {
     // refactor this place pls
     
     if(Burger.hasBurger(Hero.location) &&
-       LocationClass::isHeroCollision(Burger.burger[Hero.location].back())) {
+       LocationClassOldVersion::isHeroCollision(Burger.burger[Hero.location].back())) {
         Burger.burger[Hero.location].pop_back();
         Score.score++;
         Music.pointSoundPlay();

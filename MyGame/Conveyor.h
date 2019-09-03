@@ -37,7 +37,7 @@ public:
     
 public:
     bool load() {
-        surface = CSurface::OnLoad(file);
+        surface = CSurfaceOldVersion::OnLoad(file);
         if(!surface)
             return false;
         

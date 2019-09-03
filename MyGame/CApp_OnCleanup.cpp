@@ -9,13 +9,13 @@
 #include "CApp.hpp"
 
 void CApp::OnCleanup() {
-    for(int i = 0;i < CEntity::EntityList.size();i++) {
-        if(!CEntity::EntityList[i]) continue;
+    for(int i = 0;i < CEntityOldVersion::EntityList.size();i++) {
+        if(!CEntityOldVersion::EntityList[i]) continue;
         
-        CEntity::EntityList[i]->OnCleanup();
+        CEntityOldVersion::EntityList[i]->OnCleanup();
     }
     
-    CEntity::EntityList.clear();
+    CEntityOldVersion::EntityList.clear();
     
     Music.OnCleanup();
     

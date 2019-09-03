@@ -1,5 +1,5 @@
 //
-//  CBackground.hpp
+//  CBackgroundOldVersion.hpp
 //  MyGame
 //
 //  Created by Alexander Mordovsky on 18/08/2019.
@@ -9,9 +9,9 @@
 #ifndef CBackground_hpp
 #define CBackground_hpp
 
-#include "CEntity.hpp"
+#include "CEntityOldVersion.hpp"
 
-class CBackground: public CEntity {
+class CBackgroundOldVersion: public CEntityOldVersion {
 private:
     SDL_Surface*    Surf_Background;
     SDL_Surface*    Surf_Sides;
@@ -23,7 +23,7 @@ public:
     
     void OnCleanup();
 
-    CBackground();
+    CBackgroundOldVersion();
     
     bool OnLoad();
     

@@ -1,17 +1,17 @@
 //
-//  CSurface.cpp
+//  CSurfaceOldVersion.cpp
 //  MyGame
 //
 //  Created by Alexander Mordovsky on 27/07/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
 //
 
-#include "CSurface.hpp"
+#include "CSurfaceOldVersion.hpp"
 
-CSurface::CSurface() {
+CSurfaceOldVersion::CSurfaceOldVersion() {
 }
 
-SDL_Surface* CSurface::OnLoad(const char* File) {
+SDL_Surface* CSurfaceOldVersion::OnLoad(const char* File) {
     
     SDL_Surface* Surf_Temp = NULL;
     SDL_Surface* Surf_Return = NULL;
@@ -26,7 +26,7 @@ SDL_Surface* CSurface::OnLoad(const char* File) {
     return Surf_Return;
 }
 
-bool CSurface::OnDraw(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int Y) {
+bool CSurfaceOldVersion::OnDraw(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int Y) {
     
     if(Surf_Dest == NULL || Surf_Src == NULL) {
         return false;
@@ -42,7 +42,7 @@ bool CSurface::OnDraw(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int 
     return true;
 }
 
-bool CSurface::OnDraw(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int Y, int X2, int Y2, int W, int H) {
+bool CSurfaceOldVersion::OnDraw(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int Y, int X2, int Y2, int W, int H) {
     
     if(Surf_Dest == NULL || Surf_Src == NULL) {
         return false;

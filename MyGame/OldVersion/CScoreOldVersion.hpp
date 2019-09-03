@@ -1,5 +1,5 @@
 //
-//  CScore.hpp
+//  CScoreOldVersion.hpp
 //  MyGame
 //
 //  Created by Alexander Mordovsky on 11/08/2019.
@@ -9,7 +9,7 @@
 #ifndef CScore_hpp
 #define CScore_hpp
 
-#include "CEntity.hpp"
+#include "CEntityOldVersion.hpp"
 #include "Title.hpp"
 
 #ifndef MAC
@@ -18,7 +18,7 @@
 #include <SDL_ttf/SDL_ttf.h>
 #endif
 
-class CScore: public CEntity {
+class CScoreOldVersion: public CEntityOldVersion {
     friend class CApp;
 private:
     int     score;
@@ -26,7 +26,7 @@ private:
     Title   tScore;
     char    buf[5];
     
-    CScore();
+    CScoreOldVersion();
     
     bool OnLoad(const char* File, int Size);
     

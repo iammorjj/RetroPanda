@@ -1,16 +1,16 @@
 //
-//  CBurger.cpp
+//  CBurgerOldVersion.cpp
 //  MyGame
 //
 //  Created by Alexander Mordovsky on 07/08/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
 //
 
-#include "CBurger.hpp"
+#include "CBurgerOldVersion.hpp"
 
 using namespace CONSTANTS::BURGER;
 
-CBurger::CBurger() {
+CBurgerOldVersion::CBurgerOldVersion() {
     deltaTicks = 0;
 
     gameOverHidingBurgersRate = 500;
@@ -23,13 +23,13 @@ CBurger::CBurger() {
     changeAppearanceSpeed = false;
 }
 
-void CBurger::newLevelMovementSpeed() {
+void CBurgerOldVersion::newLevelMovementSpeed() {
     double addVelX = 7, addVelY = 4;
     //BurgerOldVersion::xVel += addVelX;//*= 1.1;
     //BurgerOldVersion::yVel += addVelY;//*= 1.1;
 }
 
-void CBurger::newLevelAppearanceSpeed() {
+void CBurgerOldVersion::newLevelAppearanceSpeed() {
     if(createNewBurgerDelay > 900) {
         createNewBurgerDelay -= 250;
         changeAppearanceSpeed = true;
@@ -38,8 +38,8 @@ void CBurger::newLevelAppearanceSpeed() {
 //    changeAppearanceSpeed = true;
 }
 
-void CBurger::addBurgerToRandomConveyor() {
-    Location location = (Location) (rand() % CONSTANTS::CONVEYORS_NUM);
+void CBurgerOldVersion::addBurgerToRandomConveyor() {
+    LocationOldVersion location = (LocationOldVersion) (rand() % CONSTANTS::CONVEYORS_NUM);
     
     // debug
     //location = LEFT_UP;
@@ -53,20 +53,20 @@ void CBurger::addBurgerToRandomConveyor() {
     }
 }
 
-void CBurger::OnRender(SDL_Surface* Surf_Display) {
+void CBurgerOldVersion::OnRender(SDL_Surface* Surf_Display) {
     for(int location = LEFT_DOWN; location <= RIGHT_UP; ++location) {
         for(auto burg: burger[location]) {
             if(GLOBAL::GameOver)
                 gameOver();
             if(!isHide)
-                CSurface::OnDraw(Surf_Display, Surf_Entity, burg.x,
+                CSurfaceOldVersion::OnDraw(Surf_Display, Surf_Entity, burg.x,
                                  burg.y,
                                  0, 0, Width, Height);
         }
     }
 }
 
-void CBurger::gameOver() {
+void CBurgerOldVersion::gameOver() {
     if(oldTimeGameOver + this->gameOverHidingBurgersRate > SDL_GetTicks())
         return;
 
@@ -74,11 +74,11 @@ void CBurger::gameOver() {
     isHide = !isHide;
 }
 
-bool CBurger::hasBurger(Location location) {
+bool CBurgerOldVersion::hasBurger(LocationOldVersion location) {
     return !burger[location].empty();
 }
 
-void CBurger::StartMove() {
+void CBurgerOldVersion::StartMove() {
     deltaTicks = timer.get_ticks();
     
     for(int location = LEFT_DOWN; location <= RIGHT_UP; ++location) {
@@ -89,7 +89,7 @@ void CBurger::StartMove() {
     timer.start();
 }
 
-void CBurger::newGame() {
+void CBurgerOldVersion::newGame() {
     for(int location = LEFT_DOWN; location <= RIGHT_UP; ++location)
         burger[location].clear();
     
@@ -109,7 +109,7 @@ void CBurger::newGame() {
     createBurgers();
 }
 
-bool CBurger::isGameOverCollisions() {
+bool CBurgerOldVersion::isGameOverCollisions() {
     for(auto burger: burger) {
         if(burger.empty())
             continue;
@@ -123,20 +123,20 @@ bool CBurger::isGameOverCollisions() {
     return false;
 }
 
-void CBurger::OnLoop() {
+void CBurgerOldVersion::OnLoop() {
     if(!GLOBAL::GameOver) {
         StartMove();
     }
 }
 
 Uint32 addBurgerK(Uint32 interval, void* param) {
-    CBurger* Burger = (CBurger*)param;
+    CBurgerOldVersion* Burger = (CBurgerOldVersion*)param;
     Burger->addBurgerToRandomConveyor();
     
     return interval;
 }
 
-void CBurger::createBurgers() {
+void CBurgerOldVersion::createBurgers() {
     if(!createNewBurgerTimer)
         createNewBurgerTimer = SDL_AddTimer(createNewBurgerDelay, addBurgerK, this);
 }

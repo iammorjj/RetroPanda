@@ -1,5 +1,5 @@
 //
-//  CEntity.hpp
+//  CEntityOldVersion.hpp
 //  MyGame
 //
 //  Created by Alexander Mordovsky on 06/08/2019.
@@ -10,16 +10,16 @@
 #define CEntity_hpp
 
 #include <vector>
-#include "CAnimation.hpp"
+#include "CAnimationOldVersion.hpp"
 #include "Constants.h"
-#include "CSurface.hpp"
+#include "CSurfaceOldVersion.hpp"
 
-class CEntity {
+class CEntityOldVersion {
 public:
-    static std::vector<CEntity*>    EntityList;
+    static std::vector<CEntityOldVersion*>    EntityList;
     
 protected:
-    CAnimation      Anim_Control;
+    CAnimationOldVersion      Anim_Control;
     
     SDL_Surface*    Surf_Entity;
     
@@ -36,9 +36,9 @@ public:
     int             AnimState;
     
 public:
-    CEntity();
+    CEntityOldVersion();
     
-    virtual ~CEntity();
+    virtual ~CEntityOldVersion();
     
 public:
     virtual bool OnLoad(const char* File, int Width, int Height, int MaxFrames);

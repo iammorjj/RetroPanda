@@ -1,5 +1,5 @@
 //
-//  CSurface.hpp
+//  CSurfaceOldVersion.hpp
 //  MyGame
 //
 //  Created by Alexander Mordovsky on 27/07/2019.
@@ -17,9 +17,9 @@
 #include <SDL_image/SDL_image.h>
 #endif
 
-class CSurface {
+class CSurfaceOldVersion {
 public:
-    CSurface();
+    CSurfaceOldVersion();
     
 public:
     static SDL_Surface* OnLoad(const char* File);

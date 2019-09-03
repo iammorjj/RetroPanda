@@ -10,18 +10,18 @@
 #define Burger_hpp
 
 #include "Constants.h"
-#include "Location.h"
+#include "LocationOldVersion.h"
 
 using namespace CONSTANTS::BURGER;
 
-class BurgerOldVersion: public LocationClass {
+class BurgerOldVersion: public LocationClassOldVersion {
 private:
     int xDirectionSign();
 public:
     static double xVel;
     static double yVel;
     
-    BurgerOldVersion(Location location = LEFT_DOWN);
+    BurgerOldVersion(LocationOldVersion location = LEFT_DOWN);
     
     bool canMoveSideway();
     

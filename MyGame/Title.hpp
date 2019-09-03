@@ -16,7 +16,7 @@
 #include <SDL_ttf/SDL_ttf.h>
 #endif
 
-#include "CSurface.hpp"
+#include "CSurfaceOldVersion.hpp"
 
 struct Title {
 private:
@@ -80,8 +80,8 @@ public:
     }
     
     void OnDraw(SDL_Surface* Surf_Display, int x, int y, int k) {
-        CSurface::OnDraw(Surf_Display, sShadow, x+k, y+k);
-        CSurface::OnDraw(Surf_Display, sFront, x, y);
+        CSurfaceOldVersion::OnDraw(Surf_Display, sShadow, x+k, y+k);
+        CSurfaceOldVersion::OnDraw(Surf_Display, sFront, x, y);
     }
     
     ~Title() {
