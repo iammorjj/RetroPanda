@@ -25,8 +25,11 @@ class Burger: public Entity {
     static const int lineNumber = 6;
 private:
     SDL_Surface* surface;
+    
     bool running;
+    
     std::vector< std::list<BurgerItem> > burgerLine;
+    
     HideEffect effect;
 private:
     Burger();
@@ -37,17 +40,12 @@ private:
     
     friend void Hero::catchBurger(Burger& obj);
     friend bool Hero::canCatch(const Burger& obj);
-    
-private:
-    bool canBeCaught(int location);
-    
 public:
     bool isMissed();
     
     void newGame();
     void gameOver();
     
-public:
     bool load();
     void loop();
     void render(SDL_Surface* display);

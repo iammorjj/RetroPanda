@@ -23,14 +23,15 @@ void Burger::drawBurgers(SDL_Surface* display) {
             CSurfaceOldVersion::OnDraw(display, surface, burger.getXCoord(), burger.getYCoord());
 }
 
-bool Burger::canBeCaught(int location) {
-    // not completed
-    return true;
-}
-
 bool Burger::isMissed() {
-    // not completed
-    return true;
+    for(auto line: burgerLine)
+        if(!line.empty()) {
+            auto burger = line.back();
+            if(!burger.canMoveDown())
+                return true;
+        }
+    
+    return false;
 }
 
 void Burger::newGame() {
