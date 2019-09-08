@@ -35,9 +35,7 @@ private:
     Hero();
     
 public:
-    void changeLocation(Location location) {
-        //animation.setCurrentFrameRow(this->location = location);
-    }
+    void changeLocation(int location);
     
     bool canCatch(const Burger& obj);
     void catchBurger(Burger& obj);

@@ -24,7 +24,7 @@ public:
     bool canMoveDown();
     void move(double deltaTicks);
     
-    bool isGameOver();
+    bool isGameOver();    
 };
 
 #endif /* BurgerItem_hpp */

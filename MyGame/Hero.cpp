@@ -7,3 +7,22 @@
 //
 
 #include "Hero.hpp"
+#include "Burger.hpp"
+
+const std::string Hero::file = std::string("fileName");
+
+Hero::Hero(): surface(nullptr) {}
+
+void Hero::changeLocation(int location) {
+    animation.setCurrentFrameRow(this->location = location);
+}
+
+bool Hero::canCatch(const Burger &obj) {
+    return true;
+}
+
+void Hero::catchBurger(Burger &obj) {
+    obj.burgerLine[location].pop_back();
+}
+
+

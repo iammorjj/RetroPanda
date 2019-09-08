@@ -14,7 +14,9 @@ Burger::Burger(): surface(nullptr), running(false),
     burgerLine(std::vector< std::list<BurgerItem> >(lineNumber)) {}
 
 void move() {
-    // not completed
+    for(auto &line: burgerLine)
+        for(auto &burger: line)
+            burger.move(228);
 }
 
 void Burger::drawBurgers(SDL_Surface* display) {

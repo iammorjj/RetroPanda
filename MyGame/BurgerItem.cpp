@@ -7,35 +7,59 @@
 //
 
 #include "BurgerItem.hpp"
+#include "Constants.h"
+using namespace CONSTANTS;
+
+namespace {
+    const int xStartLeft = 160;
+    const int xStartRight = SCREEN_WIDTH - BURGER::BURGER_WIDTH - xStartLeft;
+    const int xStopLeft = 300;
+    const int xStopRight = SCREEN_WIDTH - BURGER::BURGER_WIDTH - xStopLeft;
+    
+    const int yDistanceBetweenLines = 120;
+    const int yStartUp = 140;
+    const int yStartMid = yStartUp + yDistanceBetweenLines;
+    const int yStartDown = yStartMid + yDistanceBetweenLines;
+    const int yStopUp = 265;
+    const int yStopMid = yStopUp + yDistanceBetweenLines;
+    const int yStopDown = yStopMid + yDistanceBetweenLines;
+    
+    const int gravity = 50;
+    const int xVelStart = 70;
+    const int yVelStart = 40;
+}
+
+double BurgerItem::xVel = xVelStart;
+double BurgerItem::yVel = yVelStart;
 
 BurgerItem::BurgerItem(int location) {
     this->location = location;
     
     switch(location) {
         case LEFT_DOWN:
-            x = START_BURGER_X_LEFT; y = START_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS * 2;
+            x = xStartLeft; y = yStartDown;
             break;
         case LEFT_MID:
-            x = START_BURGER_X_LEFT; y = START_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS;
+            x = xStartLeft; y = yStartMid;
             break;
         case LEFT_UP:
-            x = START_BURGER_X_LEFT; y = START_BURGER_Y_UP;
+            x = xStartLeft; y = yStartUp;
             break;
             
         case RIGHT_DOWN:
-            x = START_BURGER_X_RIGHT; y = START_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS * 2;
+            x = xStartRight; y = yStartDown;
             break;
         case RIGHT_MID:
-            x = START_BURGER_X_RIGHT; y = START_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS;
+            x = xStartRight; y = yStartMid;
             break;
         case RIGHT_UP:
-            x = START_BURGER_X_RIGHT; y = START_BURGER_Y_UP;
+            x = xStartRight; y = yStartUp;
             break;
     }
 }
 
 bool BurgerItem::canMoveSideway() {
-    return !(x > STOP_BURGER_X_LEFT && x < STOP_BURGER_X_RIGHT);
+    return !(x > xStopLeft && x < xStopRight);
 }
 
 int BurgerItem::xDirectionSign() {
@@ -50,7 +74,7 @@ void BurgerItem::move(double deltaTicks) {
         x += xVel * ( deltaTicks / 1000.0 ) * xDirectionSign();
         y += yVel * ( deltaTicks / 1000.0 );
     } else {
-        y += GRAVITY * ( deltaTicks / 1000.0 );
+        y += gravity * ( deltaTicks / 1000.0 );
     }
 }
 
@@ -58,17 +82,15 @@ bool BurgerItem::canMoveDown() {
     switch(this->location) {
         case LEFT_DOWN:
         case RIGHT_DOWN:
-            if(y < STOP_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS * 2) return true;
-            return false;
+            return y < yStopDown;
         case LEFT_MID:
         case RIGHT_MID:
-            if(y < STOP_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS) return true;
-            return false;
+            return y < yStopMid;
         case LEFT_UP:
         case RIGHT_UP:
-            if(y < STOP_BURGER_Y_UP) return true;
-            return false;
+            return y < yStopUp;
             
+        default: return false;
     }
 }
 

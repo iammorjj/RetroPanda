@@ -38,8 +38,8 @@ private:
     
     void drawBurgers(SDL_Surface* display);
     
-    friend void Hero::catchBurger(Burger& obj);
     friend bool Hero::canCatch(const Burger& obj);
+    friend void Hero::catchBurger(Burger& obj);
 public:
     bool isMissed();
     

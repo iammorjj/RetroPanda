@@ -9,8 +9,6 @@
 #ifndef Location_hpp
 #define Location_hpp
 
-//#include "Constants.h"
-
 class Location {
 public:
     enum { LEFT_DOWN, LEFT_MID, LEFT_UP,
