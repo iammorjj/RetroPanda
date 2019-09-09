@@ -10,16 +10,26 @@
 #include "Location.hpp"
 #include <string>
 
+#include "Constants.h"
+using namespace CONSTANTS;
+
 namespace {
-    const std::string file = "";
-    const int frameWidth = 0;
-    const int frameHeight = 0;
-    const int maxFrames = 0;
+    const std::string file = PATH+"conveyor.png";
+    const int frameWidth = 192;
+    const int frameHeight = 192;
+    const int maxFrames = 16;
+    
+    const int yDistanceBetweenLines = 120;
+    const int leftSideCoord = SCREEN_WIDTH / 2. - BACKGROUND_WIDTH / 2. - 60;
+    const int rightSideCoord = SCREEN_WIDTH / 2. + 90;
+    const int yUp = 200;
     
     enum { RIGHT, LEFT };
     
-    const int x[] = {-1, -1, -1, -1, -1, -1};
-    const int y[] = {-1, -1, -1, -1, -1, -1};
+    const int x[] = {leftSideCoord, leftSideCoord, leftSideCoord,
+        rightSideCoord, rightSideCoord, rightSideCoord};
+    const int y[] = {yUp + yDistanceBetweenLines * 2, yUp + yDistanceBetweenLines, yUp,
+        yUp + yDistanceBetweenLines * 2, yUp + yDistanceBetweenLines, yUp};
 }
 
 Conveyor::Conveyor() : surface(nullptr), running(false) {}

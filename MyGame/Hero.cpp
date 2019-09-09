@@ -8,8 +8,20 @@
 
 #include "Hero.hpp"
 #include "Burger.hpp"
+#include <string>
 
-const std::string Hero::file = std::string("fileName");
+#include "Constants.h"
+using namespace CONSTANTS;
+
+namespace {
+    const std::string file = PATH+"hero.png";
+    const int frameWidth = 400;
+    const int frameHeight = 400;
+    const int maxFrames = 4;
+    
+    const int x = SCREEN_WIDTH / 2.0 - frameWidth / 2.0;
+    const int y = SCREEN_HEIGHT - frameHeight - 20;
+}
 
 Hero::Hero(): surface(nullptr) {}
 
@@ -20,9 +32,25 @@ void Hero::changeLocation(int location) {
 bool Hero::canCatch(const Burger &obj) {
     return true;
 }
-
 void Hero::catchBurger(Burger &obj) {
     obj.burgerLine[location].pop_back();
 }
 
+bool Hero::load() {
+    surface = CSurfaceOldVersion::OnLoad(file.c_str());
+    if(!surface)
+        return false;
+    
+    animation.setSpriteInfo(frameWidth, frameHeight, maxFrames);
+    return true;
+}
+void Hero::loop() {
+    animation.animate();
+}
+void Hero::render(SDL_Surface* display) {
+    animation.draw(display, surface, x, y);
+}
+void Hero::cleanup() {
+    SDL_FreeSurface(surface);
+}
 

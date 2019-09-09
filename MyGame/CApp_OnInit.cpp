@@ -13,9 +13,9 @@ using namespace CONSTANTS;
 bool CApp::OnInit() {
     if(isWindowInit() && isRecourceInit()) {
         CEntityOldVersion::EntityList.push_back(&Background);
-        CEntityOldVersion::EntityList.push_back(&Conveyor);
-        CEntityOldVersion::EntityList.push_back(&Burger);
-        CEntityOldVersion::EntityList.push_back(&Hero);
+        Entity::entityList.push_back(&conveyor);
+        Entity::entityList.push_back(&burger);
+        Entity::entityList.push_back(&hero);
         CEntityOldVersion::EntityList.push_back(&Score);
         
         return true;
@@ -41,13 +41,17 @@ bool CApp::isRecourceInit() {
        
         !Score.OnLoad(CONSTANTS::FONT.c_str(), 200) ||
        
-        !Conveyor.OnLoad(CONVEYOR_IMG.c_str(), CONVEYOR_WIDTH, CONVEYOR_HEIGHT, CONVEYOR_MAX_FRAMES) ||
+        !conveyor.load() ||
        
-        !Hero.OnLoad(HERO_IMG.c_str(), HERO_WIDTH, HERO_HEIGHT, HERO_MAX_FRAMES) ||
+        !hero.load() ||
        
-        //!Hero.load() ||
+        !burger.load() ||
        
-        !Burger.OnLoad(BURGER_IMG.c_str(), BURGER::BURGER_WIDTH, BURGER::BURGER_HEIGHT, BURGER::BURGER_MAX_FRAMES) ||
+        //!Conveyor.OnLoad(CONVEYOR_IMG.c_str(), CONVEYOR_WIDTH, CONVEYOR_HEIGHT, CONVEYOR_MAX_FRAMES) ||
+       
+        //!Hero.OnLoad(HERO_IMG.c_str(), HERO_WIDTH, HERO_HEIGHT, HERO_MAX_FRAMES) ||
+       
+        //!Burger.OnLoad(BURGER_IMG.c_str(), BURGER::BURGER_WIDTH, BURGER::BURGER_HEIGHT, BURGER::BURGER_MAX_FRAMES) ||
        
         !GameOverTitle.OnLoad() )
         return false;

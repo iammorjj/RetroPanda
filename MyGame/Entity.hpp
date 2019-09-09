@@ -10,9 +10,12 @@
 #define Entity_hpp
 
 #include "SDL/SDL.h"
+#include <vector>
 
 class Entity {
 public:
+    static std::vector<Entity*> entityList;
+    
     virtual bool load() = 0;
     virtual void loop() = 0;
     virtual void render(SDL_Surface* Surf_Display) = 0;

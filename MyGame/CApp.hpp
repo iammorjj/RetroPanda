@@ -24,18 +24,18 @@
 #include <stdio.h>
 
 #include "Constants.h"
-#include "CSurfaceOldVersion.hpp"
-#include "CAnimationOldVersion.hpp"
-#include "CConveyorOldVersion.hpp"
-#include "CEntityOldVersion.hpp"
-#include "CHeroOldVersion.hpp"
-#include "CBurgerOldVersion.hpp"
-#include "CScoreOldVersion.hpp"
-#include "CBackgroundOldVersion.hpp"
+#include "./OldVersion/CSurfaceOldVersion.hpp"
+//#include "CAnimationOldVersion.hpp"
+//#include "CConveyorOldVersion.hpp"
+//#include "CEntityOldVersion.hpp"
+//#include "CHeroOldVersion.hpp"
+//#include "CBurgerOldVersion.hpp"
+#include "./OldVersion/CScoreOldVersion.hpp"
+//#include "./OldVersion/CBackgroundOldVersion.hpp"
 #include "CGameOverTitle.hpp"
 #include "CMusic.hpp"
 
-//#include "Hero.hpp"
+#include "Hero.hpp"
 #include "Burger.hpp"
 #include "Conveyor.h"
 //#include "BurgerRefactoring.h"
@@ -46,7 +46,7 @@ private:
     
     SDL_Surface*    Surf_Display;
     
-    CBackgroundOldVersion     Background;
+    //CBackgroundOldVersion     Background;
     
     CGameOverTitle  GameOverTitle;
     
@@ -60,8 +60,9 @@ private:
     
     //ref
     //Hero   hero;
-    
-    class Conveyor    conveyor;
+    Hero hero;
+    Burger burger;
+    Conveyor conveyor;
     
 private:
     bool isWindowInit();

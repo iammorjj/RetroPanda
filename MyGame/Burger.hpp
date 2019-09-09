@@ -23,15 +23,10 @@
 class Burger: public Entity {
 private:
     SDL_Surface* surface;
-    
     bool running;
-    
     std::vector< std::list<BurgerItem> > burgerLine;
-    
     HideEffect effect;
 private:
-    Burger();
-    
     void move();
     
     void drawBurgers(SDL_Surface* display);
@@ -39,6 +34,8 @@ private:
     friend bool Hero::canCatch(const Burger& obj);
     friend void Hero::catchBurger(Burger& obj);
 public:
+    Burger();
+    
     bool isMissed();
     
     void newGame();

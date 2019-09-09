@@ -7,9 +7,14 @@
 //
 
 #include "Burger.hpp"
+#include "Constants.h"
+
+#include "./OldVersion/CSurfaceOldVersion.hpp"
+
+using namespace CONSTANTS;
 
 namespace {
-    const std::string file = "kek";
+    const std::string file = PATH+"burger.png";
     const int lineNumber = 6;
 }
 
