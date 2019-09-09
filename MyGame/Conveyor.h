@@ -13,48 +13,23 @@
 #include "Animation.hpp"
 
 class Conveyor: public Entity {
-    const char* file = "";
-    const int frameWidth = 0;
-    const int frameHeight = 0;
-    const int maxFrames = 0;
-    
-    const int xPosition = 0;
-    const int yPosition = 0;
-    
 private:
-    SDL_Surface* surface = nullptr;
+    SDL_Surface* surface;
+    bool running;
+    
     Animation animation;
-    
-    bool running = false;
-    
+private:
+    void drawSide(SDL_Surface* display, int side);
 public:
-    void stop() {
-        running = false;
-    }
-    void start() {
-        running = true;
-    }
+    Conveyor();
     
+    void stop();
+    void start();
 public:
-    bool load() {
-        surface = CSurfaceOldVersion::OnLoad(file);
-        if(!surface)
-            return false;
-        
-        animation.setSpriteInfo(frameWidth, frameHeight, maxFrames);
-        return true;
-    }
-    void loop() {
-        if(running)
-            animation.animate();
-    }
-    void render(SDL_Surface* display) {
-        // add 2 sides
-        animation.draw(display, surface, xPosition, yPosition);
-    }
-    void cleanup() {
-        SDL_FreeSurface(surface);
-    }
+    bool load();
+    void loop();
+    void render(SDL_Surface* display);
+    void cleanup();
 };
 
 #endif /* Conveyor_h */

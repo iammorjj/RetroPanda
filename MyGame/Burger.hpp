@@ -21,8 +21,6 @@
 #include "BurgerItem.hpp"
 
 class Burger: public Entity {
-    static const std::string file;
-    static const int lineNumber = 6;
 private:
     SDL_Surface* surface;
     

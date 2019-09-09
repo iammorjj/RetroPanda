@@ -8,12 +8,15 @@
 
 #include "Burger.hpp"
 
-const std::string Burger::file = std::string("fileName");
+namespace {
+    const std::string file = "kek";
+    const int lineNumber = 6;
+}
 
 Burger::Burger(): surface(nullptr), running(false),
     burgerLine(std::vector< std::list<BurgerItem> >(lineNumber)) {}
 
-void move() {
+void Burger::move() {
     for(auto &line: burgerLine)
         for(auto &burger: line)
             burger.move(228);

@@ -27,10 +27,10 @@ private:
     int currentFrameRow = 0;
     
 private:
-    int getXPosCurrentFrame() {
+    int getXCurrentFrame() {
         return currentFrame * frameWidth;
     }
-    int getYPosCurrentFrame() {
+    int getYCurrentFrame() {
         return currentFrameRow * frameHeight;
     }
     
@@ -59,7 +59,7 @@ public:
     
     void draw(SDL_Surface* display, SDL_Surface* surface, int displayX, int displayY) {
         CSurfaceOldVersion::OnDraw(display, surface, displayX, displayY,
-                         getXPosCurrentFrame(), getYPosCurrentFrame(), frameWidth, frameHeight);
+                         getXCurrentFrame(), getYCurrentFrame(), frameWidth, frameHeight);
     }
 };
 
