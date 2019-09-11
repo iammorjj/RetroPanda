@@ -7,7 +7,7 @@
 //
 
 #include "Background.hpp"
-#include "OldVersion/CSurfaceOldVersion.hpp"
+#include "OldVersion/Surface.hpp"
 #include <string>
 #include "Constants.h"
 
@@ -35,8 +35,8 @@ namespace {
 Background::Background() : sCenter(nullptr), sSides(nullptr) {}
 
 bool Background::load() {
-    sCenter = CSurfaceOldVersion::OnLoad(fCenter.c_str());
-    sSides = CSurfaceOldVersion::OnLoad(fSides.c_str());
+    sCenter = Surface::load(fCenter.c_str());
+    sSides = Surface::load(fSides.c_str());
     
     if(!sCenter || !sSides)
         return false;
@@ -52,7 +52,7 @@ void Background::loop() {
 }
 
 void Background::render(SDL_Surface* display) {
-    CSurfaceOldVersion::OnDraw(display, sCenter, xCenter, yCenter);
+    Surface::draw(display, sCenter, xCenter, yCenter);
     sidesAnimation.draw(display, sSides, xLeftSide, yLeftSide);
     sidesAnimation.draw(display, sSides, xRightSide, yRightSide);
 }

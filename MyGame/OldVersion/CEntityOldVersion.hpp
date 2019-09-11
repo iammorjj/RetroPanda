@@ -12,7 +12,7 @@
 #include <vector>
 #include "CAnimationOldVersion.hpp"
 #include "Constants.h"
-#include "CSurfaceOldVersion.hpp"
+#include "Surface.hpp"
 
 class CEntityOldVersion {
 public:

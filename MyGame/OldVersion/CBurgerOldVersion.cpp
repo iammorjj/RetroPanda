@@ -59,7 +59,7 @@ void CBurgerOldVersion::OnRender(SDL_Surface* Surf_Display) {
             if(GLOBAL::GameOver)
                 gameOver();
             if(!isHide)
-                CSurfaceOldVersion::OnDraw(Surf_Display, Surf_Entity, burg.x,
+                Surface::draw(Surf_Display, Surf_Entity, burg.x,
                                  burg.y,
                                  0, 0, Width, Height);
         }

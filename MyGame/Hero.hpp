@@ -11,7 +11,7 @@
 
 #include "Entity.hpp"
 #include "Animation.hpp"
-#include "CSurfaceOldVersion.hpp"
+#include "Surface.hpp"
 
 #include "Location.hpp"
 

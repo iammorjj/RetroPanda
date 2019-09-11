@@ -52,7 +52,7 @@ void Conveyor::drawSide(SDL_Surface* display, int side) {
 }
 
 bool Conveyor::load() {
-    surface = CSurfaceOldVersion::OnLoad(file.c_str());
+    surface = Surface::load(file.c_str());
     if(!surface)
         return false;
     

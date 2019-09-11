@@ -17,17 +17,13 @@
 #include <SDL_image/SDL_image.h>
 #endif
 
-class CSurfaceOldVersion {
+class Surface {
 public:
-    CSurfaceOldVersion();
+    static SDL_Surface* load(const char* file);
     
-public:
-    static SDL_Surface* OnLoad(const char* File);
-    
-    static bool OnDraw(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int Y);
-    
-    static bool OnDraw(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int Y, int X2, int Y2, int W, int H);
-    
+    static void draw(SDL_Surface* destination, SDL_Surface* source, int x, int y);
+    static void draw(SDL_Surface* destination, SDL_Surface* source, int xDestination, int yDestination,
+                     int XSource, int ySource, int width, int height);
 };
 
 #endif

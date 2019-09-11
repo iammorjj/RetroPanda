@@ -10,7 +10,7 @@
 #define Animation_hpp
 
 #include "SDL/SDL.h"
-#include "CSurfaceOldVersion.hpp"
+#include "Surface.hpp"
 
 class Animation {
 private:
@@ -60,7 +60,7 @@ public:
     }
     
     void draw(SDL_Surface* display, SDL_Surface* surface, int displayX, int displayY) {
-        CSurfaceOldVersion::OnDraw(display, surface, displayX, displayY,
+        Surface::draw(display, surface, displayX, displayY,
                          getXCurrentFrame(), getYCurrentFrame(), frameWidth, frameHeight);
     }
 };

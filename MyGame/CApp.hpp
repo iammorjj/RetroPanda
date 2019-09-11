@@ -24,7 +24,7 @@
 #include <stdio.h>
 
 #include "Constants.h"
-#include "./OldVersion/CSurfaceOldVersion.hpp"
+#include "./OldVersion/Surface.hpp"
 //#include "CAnimationOldVersion.hpp"
 //#include "CConveyorOldVersion.hpp"
 //#include "CEntityOldVersion.hpp"

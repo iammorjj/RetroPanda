@@ -37,7 +37,7 @@ void Hero::catchBurger(Burger &obj) {
 }
 
 bool Hero::load() {
-    surface = CSurfaceOldVersion::OnLoad(file.c_str());
+    surface = Surface::load(file.c_str());
     if(!surface)
         return false;
     

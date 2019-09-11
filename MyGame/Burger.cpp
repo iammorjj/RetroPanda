@@ -9,7 +9,7 @@
 #include "Burger.hpp"
 #include "Constants.h"
 
-#include "./OldVersion/CSurfaceOldVersion.hpp"
+#include "./OldVersion/Surface.hpp"
 
 using namespace CONSTANTS;
 
@@ -30,7 +30,7 @@ void Burger::move() {
 void Burger::drawBurgers(SDL_Surface* display) {
     for(auto line: burgerLine)
         for(auto burger: line)
-            CSurfaceOldVersion::OnDraw(display, surface, burger.getXCoord(), burger.getYCoord());
+            Surface::draw(display, surface, burger.getXCoord(), burger.getYCoord());
 }
 
 bool Burger::isMissed() {
@@ -53,7 +53,7 @@ void Burger::gameOver() {
 }
 
 bool Burger::load() {
-    surface = CSurfaceOldVersion::OnLoad(file.c_str());
+    surface = Surface::load(file.c_str());
     if(!surface)
         return false;
     

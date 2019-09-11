@@ -27,7 +27,7 @@ CEntityOldVersion::~CEntityOldVersion() {
 }
 
 bool CEntityOldVersion::OnLoad(const char* File, int Width, int Height, int MaxFrames) {
-    if((Surf_Entity = CSurfaceOldVersion::OnLoad(File)) == NULL) {
+    if((Surf_Entity = Surface::load(File)) == NULL) {
         return false;
     }
     
@@ -46,7 +46,7 @@ void CEntityOldVersion::OnLoop() {
 void CEntityOldVersion::OnRender(SDL_Surface* Surf_Display) {
     if(Surf_Entity == NULL || Surf_Display == NULL) return;
     
-    CSurfaceOldVersion::OnDraw(Surf_Display, Surf_Entity, X, Y, Anim_Control.GetCurrentFrame() * Width, 0, Width, Height);
+    Surface::draw(Surf_Display, Surf_Entity, X, Y, Anim_Control.GetCurrentFrame() * Width, 0, Width, Height);
 }
 
 void CEntityOldVersion::OnCleanup() {

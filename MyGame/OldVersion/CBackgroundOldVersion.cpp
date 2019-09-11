@@ -18,24 +18,24 @@ CBackgroundOldVersion::CBackgroundOldVersion() {
 }
 
 bool CBackgroundOldVersion::OnLoad() {
-    if((Surf_Background = CSurfaceOldVersion::OnLoad(BACKGROUND_IMG.c_str())) == NULL)
+    if((Surf_Background = Surface::load(BACKGROUND_IMG.c_str())) == NULL)
         return false;
-    if((Surf_Sides = CSurfaceOldVersion::OnLoad(SIDES_IMG.c_str())) == NULL)
+    if((Surf_Sides = Surface::load(SIDES_IMG.c_str())) == NULL)
         return false;
     
     return true;
 }
 
 void CBackgroundOldVersion::OnRender(SDL_Surface *Surf_Display) {
-    CSurfaceOldVersion::OnDraw(Surf_Display, Surf_Background, CONSTANTS::SCREEN_WIDTH / 2 - CONSTANTS::BACKGROUND_WIDTH / 2, 0);
+    Surface::draw(Surf_Display, Surf_Background, CONSTANTS::SCREEN_WIDTH / 2 - CONSTANTS::BACKGROUND_WIDTH / 2, 0);
 }
 
 void CBackgroundOldVersion::RenderSides(SDL_Surface* Surf_Display) {
-    CSurfaceOldVersion::OnDraw(Surf_Display, Surf_Sides, 0,
+    Surface::draw(Surf_Display, Surf_Sides, 0,
                      0,
                      Anim_Control.GetCurrentFrame() * 282, 0, 282, SIDES_HEIGHT);
     
-    CSurfaceOldVersion::OnDraw(Surf_Display, Surf_Sides, CONSTANTS::SCREEN_WIDTH / 2 + CONSTANTS::BACKGROUND_WIDTH / 2, 0,
+    Surface::draw(Surf_Display, Surf_Sides, CONSTANTS::SCREEN_WIDTH / 2 + CONSTANTS::BACKGROUND_WIDTH / 2, 0,
                      Anim_Control.GetCurrentFrame() * 282, 0, 282, SIDES_HEIGHT);
 }
 

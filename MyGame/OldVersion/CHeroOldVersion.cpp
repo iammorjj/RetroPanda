@@ -18,7 +18,7 @@ CHeroOldVersion::CHeroOldVersion() {
 void CHeroOldVersion::OnRender(SDL_Surface* Surf_Display) {
     if(Surf_Entity == NULL || Surf_Display == NULL) return;
     
-    CSurfaceOldVersion::OnDraw(Surf_Display, Surf_Entity, X, Y,
+    Surface::draw(Surf_Display, Surf_Entity, X, Y,
                      Anim_Control.GetCurrentFrame() * Width, CurrentFrameRow * Height, Width, Height);
 //    CSurfaceOldVersion::OnDraw(Surf_Display, Surf_Entity, X, Y,
 //                     anim.GetCurrentFrame() * Width, CurrentFrameRow * Height, Width, Height);

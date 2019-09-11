@@ -19,12 +19,12 @@ void CConveyorOldVersion::OnRender(SDL_Surface* Surf_Display) {
         
     for(int i = 0; i < 3; ++i) {
         // LEFT CONVEYORS
-        CSurfaceOldVersion::OnDraw(Surf_Display, Surf_Entity, LEFT_SIDE_COORD,
+        Surface::draw(Surf_Display, Surf_Entity, LEFT_SIDE_COORD,
                          TOP_COORD + i*VERTICAL_DISTANCE_BETWEEN_CONVEYORS,
                          Anim_Control.GetCurrentFrame() * Width, Height, Width, Height);
         
         // RIGHT CONVEYORS
-        CSurfaceOldVersion::OnDraw(Surf_Display, Surf_Entity, RIGHT_SIDE_COORD,
+        Surface::draw(Surf_Display, Surf_Entity, RIGHT_SIDE_COORD,
                          TOP_COORD + i*VERTICAL_DISTANCE_BETWEEN_CONVEYORS,
                          Anim_Control.GetCurrentFrame() * Width, 0, Width, Height);
     }
