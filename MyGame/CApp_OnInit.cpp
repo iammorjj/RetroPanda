@@ -16,7 +16,7 @@ bool CApp::init() {
         Entity::entityList.push_back(&conveyor);
         Entity::entityList.push_back(&burger);
         Entity::entityList.push_back(&hero);
-        CEntityOldVersion::EntityList.push_back(&Score);
+        Entity::entityList.push_back(&score);
         
         return true;
     }
@@ -39,7 +39,7 @@ bool CApp::recourceInit() {
        
         !background.load() ||
        
-        !Score.OnLoad(CONSTANTS::FONT.c_str(), 200) ||
+        !score.load() ||
        
         !conveyor.load() ||
        

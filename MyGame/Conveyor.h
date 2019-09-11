@@ -15,7 +15,9 @@
 class Conveyor: public Entity {
 private:
     SDL_Surface* surface;
+    
     bool running;
+    
     Animation animation;
 private:
     void drawSide(SDL_Surface* display, int side);

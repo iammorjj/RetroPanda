@@ -70,7 +70,7 @@ bool isQuitGame(SDL_Event* Event) {
 
 void CApp::startNewGame() {
     GLOBAL::GameOver = false;
-    Score.score = 0;
+    score.score = 0;
     burger.newGame();
 }
 

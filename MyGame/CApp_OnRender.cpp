@@ -9,10 +9,11 @@
 #include "CApp.hpp"
 
 void CApp::render() {
-    for(int i = 0;i < CEntityOldVersion::EntityList.size();i++) {
-        if(!CEntityOldVersion::EntityList[i]) continue;
+    for(int i = 0; i < Entity::entityList.size(); i++) {
+        if(!Entity::entityList[i])
+            continue;
         
-        CEntityOldVersion::EntityList[i]->OnRender(display);
+        Entity::entityList[i]->render(display);
     }
     
     GameOverTitle.OnRender(display);

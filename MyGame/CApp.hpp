@@ -30,8 +30,9 @@
 //#include "CEntityOldVersion.hpp"
 //#include "CHeroOldVersion.hpp"
 //#include "CBurgerOldVersion.hpp"
-#include "./OldVersion/CScoreOldVersion.hpp"
+//#include "./OldVersion/CScoreOldVersion.hpp"
 //#include "./OldVersion/CBackgroundOldVersion.hpp"
+#include "Score.hpp"
 #include "Background.hpp"
 #include "CGameOverTitle.hpp"
 #include "CMusic.hpp"
@@ -53,7 +54,7 @@ private:
     
     CMusic          Music;
     
-    CScoreOldVersion          Score;
+    Score score;
 
     Hero hero;
     Burger burger;

@@ -10,15 +10,16 @@
 #include "LocationOldVersion.h"
 
 void CApp::loop() {
-    for(int i = 0;i < CEntityOldVersion::EntityList.size();i++) {
-        if(!CEntityOldVersion::EntityList[i])
+    for(int i = 0; i < Entity::entityList.size(); i++) {
+        if(!Entity::entityList[i])
             continue;
-        CEntityOldVersion::EntityList[i]->OnLoop();
+        
+        Entity::entityList[i]->loop();
     }
     
     if(hero.canCatch(burger)) {
         hero.catchBurger(burger);
-        Score.score++;
+        //score.score++;
         Music.pointSoundPlay();
         if(isNewLevel())
             newLevel();

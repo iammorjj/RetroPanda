@@ -16,6 +16,8 @@ class Entity {
 public:
     static std::vector<Entity*> entityList;
     
+    virtual ~Entity() {}
+    
     virtual bool load() = 0;
     virtual void loop() = 0;
     virtual void render(SDL_Surface* Surf_Display) = 0;
