@@ -22,4 +22,6 @@ public:
     virtual void cleanup() = 0;
 };
 
+std::vector<Entity*> Entity::entityList;
+
 #endif /* Entity_hpp */

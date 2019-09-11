@@ -25,7 +25,6 @@ private:
     int oldTimeMs = 0;
     
     int currentFrameRow = 0;
-    
 private:
     int getXCurrentFrame() {
         return currentFrame * frameWidth;
@@ -33,10 +32,13 @@ private:
     int getYCurrentFrame() {
         return currentFrameRow * frameHeight;
     }
-    
 public:
     void setCurrentFrameRow(int row) {
         currentFrameRow = row;
+    }
+    
+    void setFrameRateMs(int ms) {
+        frameRateMs = ms;
     }
     
     void setSpriteInfo(int frameWidth, int frameHeight, int maxFrames) {

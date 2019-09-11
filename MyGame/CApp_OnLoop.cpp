@@ -10,12 +10,10 @@
 #include "LocationOldVersion.h"
 
 void CApp::OnLoop() {
-    
     for(int i = 0;i < CEntityOldVersion::EntityList.size();i++) {
-        if(!CEntityOldVersion::EntityList[i]) continue;
-        
+        if(!CEntityOldVersion::EntityList[i])
+            continue;
         CEntityOldVersion::EntityList[i]->OnLoop();
-        
     }
     
     if(hero.canCatch(burger)) {

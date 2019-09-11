@@ -12,7 +12,7 @@ bool isNewGame() { return GLOBAL::GameOver; }
 bool isWaitingTimePassed();
 bool isQuitGame(SDL_Event* Event);
 
-//#include "Location.hpp"
+///#include "Location.hpp"
 
 void CApp::OnEvent(SDL_Event* Event) {
     
@@ -35,33 +35,27 @@ void CApp::OnEvent(SDL_Event* Event) {
         switch(Event->key.keysym.sym) {
             case SDLK_LCTRL:
             case SDLK_v:
-                Hero.MoveLeftDown();
-                //Hero.changeLocation(LEFT_DOWN);
+                hero.changeLocation(Location::LEFT_DOWN);
                 break;
             case SDLK_LALT:
             case SDLK_f:
-                Hero.MoveLeftMid();
-                //Hero.changeLocation(LEFT_MID);
+                hero.changeLocation(Location::LEFT_MID);
                 break;
             case SDLK_SPACE:
             case SDLK_r:
-                Hero.MoveLeftUp();
-                //Hero.changeLocation(LEFT_UP);
+                hero.changeLocation(Location::LEFT_UP);
                 break;
             case SDLK_LSHIFT:
             case SDLK_n:
-                Hero.MoveRightDown();
-                //Hero.changeLocation(RIGHT_DOWN);
+                hero.changeLocation(Location::RIGHT_DOWN);
                 break;
             case SDLK_z:
             case SDLK_j:
-                Hero.MoveRightMid();
-                //Hero.changeLocation(RIGHT_MID);
+                hero.changeLocation(Location::RIGHT_MID);
                 break;
             case SDLK_x:
             case SDLK_i:
-                Hero.MoveRightUp();
-                //Hero.changeLocation(RIGHT_UP);
+                hero.changeLocation(Location::RIGHT_UP);
                 break;
                 
             default:;
@@ -77,7 +71,7 @@ bool isQuitGame(SDL_Event* Event) {
 void CApp::startNewGame() {
     GLOBAL::GameOver = false;
     Score.score = 0;
-    Burger.newGame();
+    burger.newGame();
 }
 
 bool isWaitingTimePassed() {

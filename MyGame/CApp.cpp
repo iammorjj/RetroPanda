@@ -34,3 +34,17 @@ int CApp::OnExecute() {
     
     return 0;
 }
+
+void CApp::startNewGame() {
+    
+}
+void CApp::gameOver() {
+    
+}
+
+bool CApp::isNewLevel() {
+    return true;
+}
+void CApp::newLevel() {
+    
+}

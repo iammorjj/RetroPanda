@@ -32,6 +32,7 @@
 //#include "CBurgerOldVersion.hpp"
 #include "./OldVersion/CScoreOldVersion.hpp"
 //#include "./OldVersion/CBackgroundOldVersion.hpp"
+#include "Background.hpp";
 #include "CGameOverTitle.hpp"
 #include "CMusic.hpp"
 
@@ -47,19 +48,14 @@ private:
     SDL_Surface*    Surf_Display;
     
     //CBackgroundOldVersion     Background;
+    Background background;
     
     CGameOverTitle  GameOverTitle;
     
     CMusic          Music;
     
     CScoreOldVersion          Score;
-    
-    //CHeroOldVersion           Hero;
-    //CBurgerOldVersion         Burger;
-    //CConveyorOldVersion       Conveyor;
-    
-    //ref
-    //Hero   hero;
+
     Hero hero;
     Burger burger;
     Conveyor conveyor;

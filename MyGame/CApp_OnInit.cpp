@@ -12,7 +12,7 @@ using namespace CONSTANTS;
 
 bool CApp::OnInit() {
     if(isWindowInit() && isRecourceInit()) {
-        CEntityOldVersion::EntityList.push_back(&Background);
+        Entity::entityList.push_back(&background);
         Entity::entityList.push_back(&conveyor);
         Entity::entityList.push_back(&burger);
         Entity::entityList.push_back(&hero);
@@ -37,7 +37,7 @@ bool CApp::isWindowInit() {
 bool CApp::isRecourceInit() {
     if( !Music.OnLoad() ||
        
-        !Background.OnLoad() ||
+        //!Background.OnLoad() ||
        
         !Score.OnLoad(CONSTANTS::FONT.c_str(), 200) ||
        
