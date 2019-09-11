@@ -9,21 +9,26 @@
 #include "Background.hpp"
 #include "OldVersion/CSurfaceOldVersion.hpp"
 #include <string>
+#include "Constants.h"
+
+using namespace CONSTANTS;
 
 namespace {
-    const std::string fCenter = "name1";
-    const std::string fSides = "name2";
+    const std::string fCenter = PATH+"background.png";
+    const std::string fSides = PATH+"sidesBillys.png";
     
-    const int sidesWidth = 400;
-    const int sidesHeight = 400;
+    const int backgroundWidth = 461;
+    const int backgroundHeight = SCREEN_HEIGHT;
+    const int sidesWidth = 282;
+    const int sidesHeight = SCREEN_HEIGHT;
     const int sidesFrameRateMs = 200;
     const int maxFrames = 3;
     
-    const int xCenter = 0;
+    const int xCenter = SCREEN_WIDTH / 2 - backgroundWidth / 2;
     const int yCenter = 0;
     const int xLeftSide = 0;
     const int yLeftSide = 0;
-    const int xRightSide = 0;
+    const int xRightSide = SCREEN_WIDTH / 2 + backgroundWidth / 2;
     const int yRightSide = 0;
 }
 
@@ -36,20 +41,20 @@ bool Background::load() {
     if(!sCenter || !sSides)
         return false;
     
-    animation.setSpriteInfo(sidesWidth, sidesHeight, maxFrames);
-    animation.setFrameRateMs(sidesFrameRateMs);
+    sidesAnimation.setSpriteInfo(sidesWidth, sidesHeight, maxFrames);
+    sidesAnimation.setFrameRateMs(sidesFrameRateMs);
     
     return true;
 }
 
 void Background::loop() {
-    animation.animate();
+    sidesAnimation.animate();
 }
 
 void Background::render(SDL_Surface* display) {
     CSurfaceOldVersion::OnDraw(display, sCenter, xCenter, yCenter);
-    animation.draw(display, sSides, xLeftSide, yLeftSide);
-    animation.draw(display, sSides, xRightSide, yRightSide);
+    sidesAnimation.draw(display, sSides, xLeftSide, yLeftSide);
+    sidesAnimation.draw(display, sSides, xRightSide, yRightSide);
 }
 
 void Background::cleanup() {

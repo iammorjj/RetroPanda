@@ -8,16 +8,16 @@
 
 #include "CApp.hpp"
 
-void CApp::OnRender() {
+void CApp::render() {
     for(int i = 0;i < CEntityOldVersion::EntityList.size();i++) {
         if(!CEntityOldVersion::EntityList[i]) continue;
         
-        CEntityOldVersion::EntityList[i]->OnRender(Surf_Display);
+        CEntityOldVersion::EntityList[i]->OnRender(display);
     }
     
-    GameOverTitle.OnRender(Surf_Display);
+    GameOverTitle.OnRender(display);
     
     //Background.RenderSides(Surf_Display);
     
-    SDL_Flip(Surf_Display);
+    SDL_Flip(display);
 }

@@ -9,7 +9,7 @@
 #include "CApp.hpp"
 #include "LocationOldVersion.h"
 
-void CApp::OnLoop() {
+void CApp::loop() {
     for(int i = 0;i < CEntityOldVersion::EntityList.size();i++) {
         if(!CEntityOldVersion::EntityList[i])
             continue;

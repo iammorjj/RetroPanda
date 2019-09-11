@@ -10,8 +10,8 @@
 
 using namespace CONSTANTS;
 
-bool CApp::OnInit() {
-    if(isWindowInit() && isRecourceInit()) {
+bool CApp::init() {
+    if(windowInit() && recourceInit()) {
         Entity::entityList.push_back(&background);
         Entity::entityList.push_back(&conveyor);
         Entity::entityList.push_back(&burger);
@@ -24,20 +24,20 @@ bool CApp::OnInit() {
     return false;
 }
 
-bool CApp::isWindowInit() {
+bool CApp::windowInit() {
     if(SDL_Init( SDL_INIT_EVERYTHING ) < 0)
         return false;
     
-    if( !(Surf_Display = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_HWSURFACE | SDL_DOUBLEBUF)) )
+    if( !(display = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_HWSURFACE | SDL_DOUBLEBUF)) )
         return false;
     
     return true;
 }
 
-bool CApp::isRecourceInit() {
+bool CApp::recourceInit() {
     if( !Music.OnLoad() ||
        
-        //!Background.OnLoad() ||
+        !background.load() ||
        
         !Score.OnLoad(CONSTANTS::FONT.c_str(), 200) ||
        
@@ -46,12 +46,6 @@ bool CApp::isRecourceInit() {
         !hero.load() ||
        
         !burger.load() ||
-       
-        //!Conveyor.OnLoad(CONVEYOR_IMG.c_str(), CONVEYOR_WIDTH, CONVEYOR_HEIGHT, CONVEYOR_MAX_FRAMES) ||
-       
-        //!Hero.OnLoad(HERO_IMG.c_str(), HERO_WIDTH, HERO_HEIGHT, HERO_MAX_FRAMES) ||
-       
-        //!Burger.OnLoad(BURGER_IMG.c_str(), BURGER::BURGER_WIDTH, BURGER::BURGER_HEIGHT, BURGER::BURGER_MAX_FRAMES) ||
        
         !GameOverTitle.OnLoad() )
         return false;

@@ -18,7 +18,7 @@ private:
     SDL_Surface* sCenter;
     SDL_Surface* sSides;
     
-    Animation animation;
+    Animation sidesAnimation;
 public:
     Background();
     

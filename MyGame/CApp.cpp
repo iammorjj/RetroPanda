@@ -9,28 +9,28 @@
 #include "CApp.hpp"
 
 CApp::CApp() {
-    Surf_Display = NULL;
+    display = NULL;
 
-    Running = true;
+    running = true;
 }
 
-int CApp::OnExecute() {
-    if(OnInit() == false) {
+int CApp::execute() {
+    if(init() == false) {
         return -1;
     }
     
     SDL_Event Event;
     
-    while(Running) {
+    while(running) {
         while(SDL_PollEvent(&Event)) {
-            OnEvent(&Event);
+            event(&Event);
         }
         
-        OnLoop();
-        OnRender();
+        loop();
+        render();
     }
     
-    OnCleanup();
+    cleanup();
     
     return 0;
 }

@@ -32,7 +32,7 @@
 //#include "CBurgerOldVersion.hpp"
 #include "./OldVersion/CScoreOldVersion.hpp"
 //#include "./OldVersion/CBackgroundOldVersion.hpp"
-#include "Background.hpp";
+#include "Background.hpp"
 #include "CGameOverTitle.hpp"
 #include "CMusic.hpp"
 
@@ -43,11 +43,10 @@
 
 class CApp {
 private:
-    bool            Running;
+    bool            running;
     
-    SDL_Surface*    Surf_Display;
+    SDL_Surface*    display;
     
-    //CBackgroundOldVersion     Background;
     Background background;
     
     CGameOverTitle  GameOverTitle;
@@ -59,10 +58,9 @@ private:
     Hero hero;
     Burger burger;
     Conveyor conveyor;
-    
 private:
-    bool isWindowInit();
-    bool isRecourceInit();
+    bool windowInit();
+    bool recourceInit();
     
     void startNewGame();
     void gameOver();
@@ -73,18 +71,14 @@ private:
 public:
     CApp();
     
-    int OnExecute();
+    int execute();
     
 public:
-    bool OnInit();
-    
-    void OnEvent(SDL_Event* Event);
-    
-    void OnLoop();
-    
-    void OnRender();
-    
-    void OnCleanup();
+    bool init();
+    void event(SDL_Event* Event);
+    void loop();
+    void render();
+    void cleanup();
 };
 
 #endif

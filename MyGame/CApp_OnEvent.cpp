@@ -14,10 +14,10 @@ bool isQuitGame(SDL_Event* Event);
 
 ///#include "Location.hpp"
 
-void CApp::OnEvent(SDL_Event* Event) {
+void CApp::event(SDL_Event* Event) {
     
     if(isQuitGame(Event)) {
-        Running = false;
+        running = false;
         //Location::RIGHT_UP;
         return;
     }

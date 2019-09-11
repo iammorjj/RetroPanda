@@ -8,7 +8,7 @@
 
 #include "CApp.hpp"
 
-void CApp::OnCleanup() {
+void CApp::cleanup() {
     for(int i = 0;i < CEntityOldVersion::EntityList.size();i++) {
         if(!CEntityOldVersion::EntityList[i]) continue;
         
@@ -19,7 +19,7 @@ void CApp::OnCleanup() {
     
     Music.OnCleanup();
     
-    SDL_FreeSurface(Surf_Display);
+    SDL_FreeSurface(display);
     
     SDL_Quit();
 }
