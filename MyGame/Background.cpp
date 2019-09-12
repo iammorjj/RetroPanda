@@ -7,7 +7,7 @@
 //
 
 #include "Background.hpp"
-#include "OldVersion/Surface.hpp"
+#include "Surface.hpp"
 #include <string>
 #include "Constants.h"
 

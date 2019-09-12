@@ -1,5 +1,5 @@
 //
-//  CApp.hpp
+//  App.hpp
 //  MyGame
 //
 //  Created by Alexander Mordovsky on 27/07/2019.
@@ -24,7 +24,7 @@
 #include <stdio.h>
 
 #include "Constants.h"
-#include "./OldVersion/Surface.hpp"
+#include "Surface.hpp"
 //#include "CAnimationOldVersion.hpp"
 //#include "CConveyorOldVersion.hpp"
 //#include "CEntityOldVersion.hpp"
@@ -35,24 +35,22 @@
 #include "Score.hpp"
 #include "Background.hpp"
 #include "CGameOverTitle.hpp"
-#include "CMusic.hpp"
+#include "Music.hpp"
 
 #include "Hero.hpp"
 #include "Burger.hpp"
 #include "Conveyor.h"
-//#include "BurgerRefactoring.h"
 
-class CApp {
+class App {
 private:
-    bool            running;
-    
-    SDL_Surface*    display;
+    SDL_Surface* display;
+    bool running;
     
     Background background;
     
     CGameOverTitle  GameOverTitle;
     
-    CMusic          Music;
+    Music music;
     
     Score score;
 
@@ -68,15 +66,13 @@ private:
     
     bool isNewLevel();
     void newLevel();
-    
 public:
-    CApp();
+    App();
     
     int execute();
-    
 public:
     bool init();
-    void event(SDL_Event* Event);
+    void event(SDL_Event* event);
     void loop();
     void render();
     void cleanup();

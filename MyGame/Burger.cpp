@@ -9,7 +9,7 @@
 #include "Burger.hpp"
 #include "Constants.h"
 
-#include "./OldVersion/Surface.hpp"
+#include "Surface.hpp"
 
 using namespace CONSTANTS;
 

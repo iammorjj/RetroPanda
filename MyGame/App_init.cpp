@@ -1,16 +1,16 @@
 //
-//  CApp_OnInit.cpp
+//  App_init.cpp
 //  MyGame
 //
 //  Created by Alexander Mordovsky on 27/07/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
 //
 
-#include "CApp.hpp"
+#include "App.hpp"
 
 using namespace CONSTANTS;
 
-bool CApp::init() {
+bool App::init() {
     if(windowInit() && recourceInit()) {
         Entity::entityList.push_back(&background);
         Entity::entityList.push_back(&conveyor);
@@ -24,7 +24,7 @@ bool CApp::init() {
     return false;
 }
 
-bool CApp::windowInit() {
+bool App::windowInit() {
     if(SDL_Init( SDL_INIT_EVERYTHING ) < 0)
         return false;
     
@@ -34,8 +34,8 @@ bool CApp::windowInit() {
     return true;
 }
 
-bool CApp::recourceInit() {
-    if( !Music.OnLoad() ||
+bool App::recourceInit() {
+    if( !music.load() ||
        
         !background.load() ||
        

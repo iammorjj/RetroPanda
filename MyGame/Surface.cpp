@@ -13,9 +13,8 @@ SDL_Surface* Surface::load(const char* file) {
     SDL_Surface* sReturn = nullptr;
     
     sTemp = IMG_Load(file);
-    if(!sTemp) {
+    if(!sTemp)
         return nullptr;
-    }
     
     sReturn = SDL_DisplayFormatAlpha(sTemp);
     SDL_FreeSurface(sTemp);
@@ -24,9 +23,8 @@ SDL_Surface* Surface::load(const char* file) {
 }
 
 void Surface::draw(SDL_Surface* sDestination, SDL_Surface* sSource, int x, int y) {
-    if(sDestination == nullptr || sSource == nullptr) {
+    if(sDestination == nullptr || sSource == nullptr)
         return;
-    }
     
     SDL_Rect rect;
     rect.x = x;
@@ -37,9 +35,8 @@ void Surface::draw(SDL_Surface* sDestination, SDL_Surface* sSource, int x, int y
 
 void Surface::draw(SDL_Surface* sDestination, SDL_Surface* sSource, int xDestination, int yDestination,
                    int xSource, int ySource, int width, int height) {
-    if(sDestination == nullptr || sSource == nullptr) {
+    if(sDestination == nullptr || sSource == nullptr)
         return;
-    }
     
     SDL_Rect destRect;
     destRect.x = xDestination;

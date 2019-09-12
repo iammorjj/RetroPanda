@@ -20,10 +20,8 @@ public:
     
     virtual bool load() = 0;
     virtual void loop() = 0;
-    virtual void render(SDL_Surface* Surf_Display) = 0;
+    virtual void render(SDL_Surface* display) = 0;
     virtual void cleanup() = 0;
 };
-
-std::vector<Entity*> Entity::entityList;
 
 #endif /* Entity_hpp */

@@ -1,26 +1,24 @@
 //
-//  CApp_OnCleanup.cpp
+//  App_render.cpp
 //  MyGame
 //
 //  Created by Alexander Mordovsky on 27/07/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
 //
 
-#include "CApp.hpp"
+#include "App.hpp"
 
-void CApp::cleanup() {
+void App::render() {
     for(int i = 0; i < Entity::entityList.size(); i++) {
         if(!Entity::entityList[i])
             continue;
         
-        Entity::entityList[i]->cleanup();
+        Entity::entityList[i]->render(display);
     }
     
-    Entity::entityList.clear();
+    GameOverTitle.OnRender(display);
     
-    Music.OnCleanup();
+    //Background.RenderSides(Surf_Display);
     
-    SDL_FreeSurface(display);
-    
-    SDL_Quit();
+    SDL_Flip(display);
 }

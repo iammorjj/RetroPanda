@@ -1,23 +1,18 @@
 //
-//  CApp.cpp
+//  App.cpp
 //  MyGame
 //
 //  Created by Alexander Mordovsky on 27/07/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
 //
 
-#include "CApp.hpp"
+#include "App.hpp"
 
-CApp::CApp() {
-    display = NULL;
+App::App() : display(nullptr), running(true) {}
 
-    running = true;
-}
-
-int CApp::execute() {
-    if(init() == false) {
+int App::execute() {
+    if(init() == false)
         return -1;
-    }
     
     SDL_Event Event;
     
@@ -35,16 +30,13 @@ int CApp::execute() {
     return 0;
 }
 
-void CApp::startNewGame() {
-    
-}
-void CApp::gameOver() {
+void App::gameOver() {
     
 }
 
-bool CApp::isNewLevel() {
+bool App::isNewLevel() {
     return true;
 }
-void CApp::newLevel() {
+void App::newLevel() {
     
 }

@@ -19,7 +19,7 @@
 #endif
 
 class CScoreOldVersion: public CEntityOldVersion {
-    friend class CApp;
+    friend class App;
 private:
     int     score;
     int     bestScore;

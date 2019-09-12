@@ -1,15 +1,15 @@
 //
-//  CApp_OnLoop.cpp
+//  App_loop.cpp
 //  MyGame
 //
 //  Created by Alexander Mordovsky on 27/07/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
 //
 
-#include "CApp.hpp"
+#include "App.hpp"
 #include "LocationOldVersion.h"
 
-void CApp::loop() {
+void App::loop() {
     for(int i = 0; i < Entity::entityList.size(); i++) {
         if(!Entity::entityList[i])
             continue;
@@ -20,7 +20,7 @@ void CApp::loop() {
     if(hero.canCatch(burger)) {
         hero.catchBurger(burger);
         //score.score++;
-        Music.pointSoundPlay();
+        music.pointSoundPlay();
         if(isNewLevel())
             newLevel();
     }

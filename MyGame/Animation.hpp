@@ -14,55 +14,32 @@
 
 class Animation {
 private:
-    int frameWidth = 0;
-    int frameHeight = 0;
+    int frameWidth;
+    int frameHeight;
     
-    int maxFrames = 0;
-    int currentFrame = 0;
-    int frameInc = 1;
+    int maxFrames;
+    int currentFrame;
+    int frameInc;
     
-    int frameRateMs = 125;
-    int oldTimeMs = 0;
+    int frameRateMs;
+    int oldTimeMs;
     
-    int currentFrameRow = 0;
+    int currentFrameRow;
 private:
-    int getXCurrentFrame() {
-        return currentFrame * frameWidth;
-    }
-    int getYCurrentFrame() {
-        return currentFrameRow * frameHeight;
-    }
+    int getXCurrentFrame();
+    int getYCurrentFrame();
 public:
-    void setCurrentFrameRow(int row) {
-        currentFrameRow = row;
-    }
+    Animation();
     
-    void setFrameRateMs(int ms) {
-        frameRateMs = ms;
-    }
+    void setCurrentFrameRow(int row);
     
-    void setSpriteInfo(int frameWidth, int frameHeight, int maxFrames) {
-        this->frameWidth = frameWidth;
-        this->frameHeight = frameHeight;
-        this->maxFrames = maxFrames;
-    }
+    void setFrameRateMs(int ms);
     
-    void animate() {
-        if(oldTimeMs + frameRateMs > SDL_GetTicks())
-            return;
-        
-        oldTimeMs = SDL_GetTicks();
-        
-        currentFrame += frameInc;
-        
-        if(currentFrame >= maxFrames)
-            currentFrame = 0;
-    }
+    void setSpriteInfo(int frameWidth, int frameHeight, int maxFrames);
     
-    void draw(SDL_Surface* display, SDL_Surface* surface, int displayX, int displayY) {
-        Surface::draw(display, surface, displayX, displayY,
-                         getXCurrentFrame(), getYCurrentFrame(), frameWidth, frameHeight);
-    }
+    void animate();
+    
+    void draw(SDL_Surface* display, SDL_Surface* surface, int displayX, int displayY);
 };
 
 #endif /* Animation_hpp */

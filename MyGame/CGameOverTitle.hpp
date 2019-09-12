@@ -12,7 +12,7 @@
 #include "Title.hpp"
 
 class CGameOverTitle {
-    friend class CApp;
+    friend class App;
 private:
     SDL_Color       textColorWhite = {255, 255, 255};
     SDL_Color       textColorGold = {255, 215, 0};

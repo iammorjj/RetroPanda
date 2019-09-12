@@ -6,10 +6,10 @@
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
 //
 
-#include "CApp.hpp"
+#include "App.hpp"
 
 int main(int argc, char* argv[]) {
-    CApp theApp;
+    App theApp;
     
     return theApp.execute();
 }

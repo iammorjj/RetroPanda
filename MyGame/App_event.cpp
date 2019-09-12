@@ -1,12 +1,12 @@
 //
-//  CApp_OnEvent.cpp
+//  App_event.cpp
 //  MyGame
 //
 //  Created by Alexander Mordovsky on 27/07/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
 //
 
-#include "CApp.hpp"
+#include "App.hpp"
 
 bool isNewGame() { return GLOBAL::GameOver; }
 bool isWaitingTimePassed();
@@ -14,7 +14,7 @@ bool isQuitGame(SDL_Event* Event);
 
 ///#include "Location.hpp"
 
-void CApp::event(SDL_Event* Event) {
+void App::event(SDL_Event* Event) {
     
     if(isQuitGame(Event)) {
         running = false;
@@ -68,7 +68,7 @@ bool isQuitGame(SDL_Event* Event) {
         Event->key.keysym.sym == SDLK_q;
 }
 
-void CApp::startNewGame() {
+void App::startNewGame() {
     GLOBAL::GameOver = false;
     score.score = 0;
     burger.newGame();

@@ -1,13 +1,13 @@
 //
-//  CSurfaceOldVersion.hpp
+//  Surface.hpp
 //  MyGame
 //
 //  Created by Alexander Mordovsky on 27/07/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
 //
 
-#ifndef _CSURFACE_H_
-#define _CSURFACE_H_
+#ifndef _SURFACE_H_
+#define _SURFACE_H_
 
 #include <SDL/SDL.h>
 
