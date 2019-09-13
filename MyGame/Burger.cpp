@@ -15,11 +15,15 @@ using namespace CONSTANTS;
 
 namespace {
     const std::string file = PATH+"burger.png";
+    
     const int lineNumber = 6;
+    
+    const double xVelNewLevel = 7.;
+    const double yVelNewLevel = xVelNewLevel * 4./7.;
 }
 
 Burger::Burger(): surface(nullptr), running(false),
-    burgerLine(std::vector< std::list<BurgerItem> >(lineNumber)) {}
+    burgerLine(std::vector< std::list<BurgerItem> >(lineNumber)), creator(this) {}
 
 void Burger::move() {
     for(auto &line: burgerLine)
@@ -45,11 +49,20 @@ bool Burger::isMissed() {
 }
 
 void Burger::newGame() {
+    creator.start();
     running = true;
 }
-
 void Burger::gameOver() {
+    creator.stop();
     running = false;
+}
+
+void Burger::newLevelMovementSpeed() {
+    BurgerItem::xVel += xVelNewLevel;
+    BurgerItem::yVel += yVelNewLevel;
+}
+void Burger::newLevelAppearanceSpeed() {
+    creator.changeDelay();
 }
 
 bool Burger::load() {

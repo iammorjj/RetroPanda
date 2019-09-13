@@ -20,11 +20,19 @@
 #include "Hero.hpp"
 #include "BurgerItem.hpp"
 
+#include "BurgerCreator.hpp"
+
 class Burger: public Entity {
+    friend class BurgerCreator;
 private:
     SDL_Surface* surface;
+    
     bool running;
+    
     std::vector< std::list<BurgerItem> > burgerLine;
+    
+    BurgerCreator creator;
+    
     HideEffect effect;
 private:
     void move();
@@ -40,6 +48,9 @@ public:
     
     void newGame();
     void gameOver();
+    
+    void newLevelMovementSpeed();
+    void newLevelAppearanceSpeed();
     
     bool load();
     void loop();

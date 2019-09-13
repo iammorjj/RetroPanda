@@ -31,12 +31,34 @@ int App::execute() {
 }
 
 void App::gameOver() {
-    
+    burger.gameOver();
+    conveyor.gameOver();
 }
 
 bool App::isNewLevel() {
-    return true;
+    return score.score % 3 == 0 ||
+        score.score % 5 == 0;
 }
 void App::newLevel() {
-    
+    if(score.score % 3 == 0)
+        burger.newLevelMovementSpeed();
+    else
+        burger.newLevelAppearanceSpeed();
 }
+
+//    if(Burger.hasBurger(Hero.location) &&
+//       LocationClassOldVersion::isHeroCollision(Burger.burger[Hero.location].back())) {
+//        Burger.burger[Hero.location].pop_back();
+//        Score.score++;
+//        Music.pointSoundPlay();
+//        if(Score.score % 3 == 0)
+//            Burger.newLevelMovementSpeed();
+//        if(Score.score % 5 == 0)
+//            Burger.newLevelAppearanceSpeed();
+//    }
+//
+//    if(!GLOBAL::GameOver && Burger.isGameOverCollisions()) {
+//        GLOBAL::GameOver = true;
+//        GLOBAL::keyboardDelay = true;
+//        GLOBAL::timer.start();
+//    }

@@ -14,7 +14,7 @@ using namespace CONSTANTS;
 
 namespace {
     const std::string file = PATH+"acknowtt.ttf";
-    const int size = 200;
+    const int fontSize = 200;
 }
 
 Score::Score() : bestScore(2), score(bestScore) {}
@@ -23,7 +23,7 @@ bool Score::load() {
     if(!TTF_WasInit() && TTF_Init() < 0)
         return false;
     
-    return tScore.OnLoadFont(TTF_OpenFont(file.c_str(), size));
+    return tScore.OnLoadFont(TTF_OpenFont(file.c_str(), fontSize));
 }
 
 void Score::render(SDL_Surface* display) {

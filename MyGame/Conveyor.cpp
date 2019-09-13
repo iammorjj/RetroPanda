@@ -37,10 +37,10 @@ namespace {
 
 Conveyor::Conveyor() : surface(nullptr), running(false) {}
 
-void Conveyor::stop() {
+void Conveyor::gameOver() {
     running = false;
 }
-void Conveyor::start() {
+void Conveyor::newGame() {
     running = true;
 }
 

@@ -61,7 +61,7 @@ private:
     bool windowInit();
     bool recourceInit();
     
-    void startNewGame();
+    void newGame();
     void gameOver();
     
     bool isNewLevel();

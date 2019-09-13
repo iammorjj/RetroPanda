@@ -26,7 +26,7 @@ void App::event(SDL_Event* Event) {
         
         if(isNewGame()) {
             if(isWaitingTimePassed())
-                startNewGame();
+                newGame();
             else
                 return;
         }
@@ -68,7 +68,7 @@ bool isQuitGame(SDL_Event* Event) {
         Event->key.keysym.sym == SDLK_q;
 }
 
-void App::startNewGame() {
+void App::newGame() {
     GLOBAL::GameOver = false;
     score.score = 0;
     burger.newGame();

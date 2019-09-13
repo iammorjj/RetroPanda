@@ -24,8 +24,8 @@ private:
 public:
     Conveyor();
     
-    void stop();
-    void start();
+    void newGame();
+    void gameOver();
 public:
     bool load();
     void loop();
