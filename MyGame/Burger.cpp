@@ -26,9 +26,14 @@ Burger::Burger(): surface(nullptr), running(false),
     burgerLine(std::vector< std::list<BurgerItem> >(lineNumber)), creator(this) {}
 
 void Burger::move() {
+    // make it static or not?
+    int deltaTicks = moveTimer.get_ticks();
+    
     for(auto &line: burgerLine)
         for(auto &burger: line)
-            burger.move(228);
+            burger.move(deltaTicks);
+    
+    moveTimer.start();
 }
 
 void Burger::drawBurgers(SDL_Surface* display) {
@@ -54,6 +59,7 @@ void Burger::newGame() {
 }
 void Burger::gameOver() {
     creator.stop();
+    moveTimer.stop();
     running = false;
 }
 

@@ -7,18 +7,19 @@
 //
 
 #include "App.hpp"
+#include "GlobalObjects.hpp"
 
-App::App() : display(nullptr), running(true) {}
+App::App() : display(nullptr), running(true), isGameOver(false) {}
 
 int App::execute() {
     if(init() == false)
         return -1;
     
-    SDL_Event Event;
+    SDL_Event event;
     
     while(running) {
-        while(SDL_PollEvent(&Event)) {
-            event(&Event);
+        while(SDL_PollEvent(&event)) {
+            eventHandler(&event);
         }
         
         loop();
@@ -30,35 +31,28 @@ int App::execute() {
     return 0;
 }
 
+void App::newGame() {
+    isGameOver = false;
+    score.score = 0;
+    
+    burger.newGame();
+    conveyor.newGame();
+}
 void App::gameOver() {
+    isGameOver = true;
+    GlobalObjects::tKeyboardDelay.start();
+    
     burger.gameOver();
     conveyor.gameOver();
 }
 
 bool App::isNewLevel() {
-    return score.score % 3 == 0 ||
-        score.score % 5 == 0;
+    return score.score % GlobalObjects::speedLevelUp == 0 ||
+        score.score % GlobalObjects::appearanceLevelUp == 0;
 }
 void App::newLevel() {
-    if(score.score % 3 == 0)
+    if(score.score % GlobalObjects::speedLevelUp == 0)
         burger.newLevelMovementSpeed();
     else
         burger.newLevelAppearanceSpeed();
 }
-
-//    if(Burger.hasBurger(Hero.location) &&
-//       LocationClassOldVersion::isHeroCollision(Burger.burger[Hero.location].back())) {
-//        Burger.burger[Hero.location].pop_back();
-//        Score.score++;
-//        Music.pointSoundPlay();
-//        if(Score.score % 3 == 0)
-//            Burger.newLevelMovementSpeed();
-//        if(Score.score % 5 == 0)
-//            Burger.newLevelAppearanceSpeed();
-//    }
-//
-//    if(!GLOBAL::GameOver && Burger.isGameOverCollisions()) {
-//        GLOBAL::GameOver = true;
-//        GLOBAL::keyboardDelay = true;
-//        GLOBAL::timer.start();
-//    }

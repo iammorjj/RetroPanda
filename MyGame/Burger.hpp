@@ -11,19 +11,17 @@
 
 #include "SDL/SDL.h"
 
-#include "HideEffect.h"
-
-#include "Entity.hpp"
 #include <list>
 #include <vector>
 
+#include "HideEffect.h"
+#include "Entity.hpp"
+#include "Timer.hpp"
 #include "Hero.hpp"
 #include "BurgerItem.hpp"
-
 #include "BurgerCreator.hpp"
 
 class Burger: public Entity {
-    friend class BurgerCreator;
 private:
     SDL_Surface* surface;
     
@@ -34,13 +32,18 @@ private:
     BurgerCreator creator;
     
     HideEffect effect;
+    
+    Timer moveTimer;
 private:
     void move();
     
     void drawBurgers(SDL_Surface* display);
     
+    // burgerLine access
     friend bool Hero::canCatch(const Burger& obj);
     friend void Hero::catchBurger(Burger& obj);
+    
+    friend void BurgerCreator::createBurger();
 public:
     Burger();
     

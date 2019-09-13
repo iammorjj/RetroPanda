@@ -24,11 +24,11 @@ private:
 public:
     BurgerCreator(Burger* burger);
     
+    void createBurger();
+    
     void start();
     void stop();
     void restartTimer();
-    
-    void createBurger();
     
     void changeDelay();
 };

@@ -46,6 +46,8 @@ private:
     SDL_Surface* display;
     bool running;
     
+    bool isGameOver;
+    
     Background background;
     
     CGameOverTitle  GameOverTitle;
@@ -72,7 +74,7 @@ public:
     int execute();
 public:
     bool init();
-    void event(SDL_Event* event);
+    void eventHandler(SDL_Event* event);
     void loop();
     void render();
     void cleanup();

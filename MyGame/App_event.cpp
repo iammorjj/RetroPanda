@@ -7,32 +7,36 @@
 //
 
 #include "App.hpp"
+#include "GlobalObjects.hpp"
 
-bool isNewGame() { return GLOBAL::GameOver; }
-bool isWaitingTimePassed();
-bool isQuitGame(SDL_Event* Event);
+bool isKeyboardDelayFinished() {
+    using namespace GlobalObjects;
+    return tKeyboardDelay.get_ticks() > keyboardDelay;
+}
 
-///#include "Location.hpp"
+bool isQuitGame(SDL_Event* event) {
+    return event->type == SDL_QUIT ||
+        event->key.keysym.sym == SDLK_q;
+}
 
-void App::event(SDL_Event* Event) {
+void App::eventHandler(SDL_Event* event) {
     
-    if(isQuitGame(Event)) {
+    if(isQuitGame(event)) {
         running = false;
-        //Location::RIGHT_UP;
         return;
     }
     
-    if(Event->type == SDL_KEYDOWN) {
+    if(event->type == SDL_KEYDOWN) {
         
-        if(isNewGame()) {
-            if(isWaitingTimePassed())
+        if(isGameOver) {
+            if(isKeyboardDelayFinished())
                 newGame();
             else
                 return;
         }
         
         // TODO: make sensible names for arcade machine
-        switch(Event->key.keysym.sym) {
+        switch(event->key.keysym.sym) {
             case SDLK_LCTRL:
             case SDLK_v:
                 hero.changeLocation(Location::LEFT_DOWN);
@@ -61,28 +65,4 @@ void App::event(SDL_Event* Event) {
             default:;
         }
     }
-}
-
-bool isQuitGame(SDL_Event* Event) {
-    return Event->type == SDL_QUIT ||
-        Event->key.keysym.sym == SDLK_q;
-}
-
-void App::newGame() {
-    GLOBAL::GameOver = false;
-    score.score = 0;
-    burger.newGame();
-}
-
-bool isWaitingTimePassed() {
-    if(GLOBAL::keyboardDelay) {
-        if(GLOBAL::timer.get_ticks() > 2000) {
-            GLOBAL::keyboardDelay = false;
-            return true;
-        }
-        
-        return false;
-    }
-    
-    return true;
 }
