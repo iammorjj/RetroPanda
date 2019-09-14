@@ -2,7 +2,7 @@
 //  Global.cpp
 //  MyGame
 //
-//  Created by Alexander Mordovsky on 13/09/2019.
+//  Created by Alexander Mordovsky on 14/09/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
 //
 

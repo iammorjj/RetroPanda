@@ -7,7 +7,7 @@
 //
 
 #include "App.hpp"
-#include "GlobalObjects.hpp"
+#include "Global.hpp"
 
 App::App() : display(nullptr), running(true), isGameOver(false) {}
 
@@ -40,18 +40,18 @@ void App::newGame() {
 }
 void App::gameOver() {
     isGameOver = true;
-    GlobalObjects::tKeyboardDelay.start();
+    Global::tKeyboardDelay.start();
     
     burger.gameOver();
     conveyor.gameOver();
 }
 
 bool App::isNewLevel() {
-    return score.score % GlobalObjects::speedLevelUp == 0 ||
-        score.score % GlobalObjects::appearanceLevelUp == 0;
+    return score.score % Global::speedLevelUp == 0 ||
+        score.score % Global::appearanceLevelUp == 0;
 }
 void App::newLevel() {
-    if(score.score % GlobalObjects::speedLevelUp == 0)
+    if(score.score % Global::speedLevelUp == 0)
         burger.newLevelMovementSpeed();
     else
         burger.newLevelAppearanceSpeed();

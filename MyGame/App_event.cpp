@@ -7,10 +7,10 @@
 //
 
 #include "App.hpp"
-#include "GlobalObjects.hpp"
+#include "Global.hpp"
 
 bool isKeyboardDelayFinished() {
-    using namespace GlobalObjects;
+    using namespace Global;
     return tKeyboardDelay.get_ticks() > keyboardDelay;
 }
 
