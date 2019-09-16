@@ -85,8 +85,8 @@ public:
     }
     
     ~Title() {
-        if(sFront) SDL_FreeSurface(sFront);
-        if(sShadow) SDL_FreeSurface(sShadow);
+        //if(sFront) SDL_FreeSurface(sFront);
+        //if(sShadow) SDL_FreeSurface(sShadow);
         // bad, very bad
         //if(font) TTF_CloseFont(font);
     }

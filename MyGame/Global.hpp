@@ -23,7 +23,7 @@ namespace Global {
     const int speedLevelUp = 3;
     const int appearanceLevelUp = 5;
     
-    bool isGameOver = false;
+    extern bool isGameOver;
     
     const std::string path =
 #ifdef MAC

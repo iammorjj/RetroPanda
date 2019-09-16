@@ -16,9 +16,7 @@ void App::render() {
         Entity::entityList[i]->render(display);
     }
     
-    GameOverTitle.OnRender(display);
-    
-    //Background.RenderSides(Surf_Display);
+    //GameOverTitle.OnRender(display);
     
     SDL_Flip(display);
 }

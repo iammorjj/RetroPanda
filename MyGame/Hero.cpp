@@ -10,17 +10,17 @@
 #include "Burger.hpp"
 #include <string>
 
-#include "Constants.h"
-using namespace CONSTANTS;
+#include "Global.hpp"
+using namespace Global;
 
 namespace {
-    const std::string file = PATH+"hero.png";
+    const std::string file = path+"hero.png";
     const int frameWidth = 400;
     const int frameHeight = 400;
     const int maxFrames = 4;
     
-    const int x = SCREEN_WIDTH / 2.0 - frameWidth / 2.0;
-    const int y = SCREEN_HEIGHT - frameHeight - 20;
+    const int xSpritePos = scrWidth / 2.0 - frameWidth / 2.0;
+    const int ySpritePos = scrHeight - frameHeight - 20;
 }
 
 Hero::Hero(): surface(nullptr) {}
@@ -30,7 +30,7 @@ void Hero::changeLocation(int location) {
 }
 
 bool Hero::canCatch(const Burger &obj) {
-    return true;
+    return false;
 }
 void Hero::catchBurger(Burger &obj) {
     obj.burgerLine[location].pop_back();
@@ -48,7 +48,7 @@ void Hero::loop() {
     animation.animate();
 }
 void Hero::render(SDL_Surface* display) {
-    animation.draw(display, surface, x, y);
+    animation.draw(display, surface, xSpritePos, ySpritePos);
 }
 void Hero::cleanup() {
     SDL_FreeSurface(surface);

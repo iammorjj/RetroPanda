@@ -34,7 +34,7 @@ void Score::render(SDL_Surface* display) {
     tScore.changeTitle(buf);
     tScore.OnRender();
     
-    if(GLOBAL::GameOver) {
+    if(Global::isGameOver) {
         if(score > bestScore) {
             isLeader = true;
             bestScore = score;

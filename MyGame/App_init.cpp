@@ -11,7 +11,7 @@
 using namespace CONSTANTS;
 
 bool App::init() {
-    if(windowInit() && recourceInit()) {
+    if(windowInit() && resourceInit()) {
         Entity::entityList.push_back(&background);
         Entity::entityList.push_back(&conveyor);
         Entity::entityList.push_back(&burger);
@@ -34,7 +34,7 @@ bool App::windowInit() {
     return true;
 }
 
-bool App::recourceInit() {
+bool App::resourceInit() {
     if( !music.load() ||
        
         !background.load() ||

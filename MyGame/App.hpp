@@ -59,7 +59,7 @@ private:
     Conveyor conveyor;
 private:
     bool windowInit();
-    bool recourceInit();
+    bool resourceInit();
     
     void newGame();
     void gameOver();

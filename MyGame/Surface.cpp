@@ -48,5 +48,5 @@ void Surface::draw(SDL_Surface* sDestination, SDL_Surface* sSource, int xDestina
     srcRect.w = width;
     srcRect.h = height;
     
-    SDL_BlitSurface(sDestination, &srcRect, sSource, &srcRect);
+    SDL_BlitSurface(sSource, &srcRect, sDestination, &destRect);
 }
