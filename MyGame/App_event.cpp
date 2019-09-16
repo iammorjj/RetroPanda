@@ -28,7 +28,7 @@ void App::eventHandler(SDL_Event* event) {
     
     if(event->type == SDL_KEYDOWN) {
         
-        if(Global::isGameOver) {
+        if(!Global::isFirstGame && Global::isGameOver) {
             if(isKeyboardDelayFinished())
                 newGame();
             else

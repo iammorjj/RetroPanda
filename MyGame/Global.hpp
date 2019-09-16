@@ -24,6 +24,7 @@ namespace Global {
     const int appearanceLevelUp = 5;
     
     extern bool isGameOver;
+    extern bool isFirstGame;
     
     const std::string path =
 #ifdef MAC

@@ -32,6 +32,7 @@ int App::execute() {
 }
 
 void App::newGame() {
+    Global::isFirstGame = false;
     Global::isGameOver = false;
     score.score = 0;
     
