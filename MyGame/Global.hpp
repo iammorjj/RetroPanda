@@ -13,11 +13,17 @@
 #include <string>
 
 namespace Global {
+    const int scrWidth = 1024;
+    const int scrHeight = 768;
+    const int scrBpp = 32;
+    
     extern Timer tKeyboardDelay;
     const int keyboardDelay = 2000;
     
     const int speedLevelUp = 3;
     const int appearanceLevelUp = 5;
+    
+    bool isGameOver = false;
     
     const std::string path =
 #ifdef MAC

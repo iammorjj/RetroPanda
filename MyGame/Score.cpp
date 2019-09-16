@@ -8,12 +8,14 @@
 
 #include "Score.hpp"
 #include <string>
-#include "Constants.h"
+#include "Global.hpp"
 
-using namespace CONSTANTS;
+using namespace Global;
+
+bool isLeader = false;
 
 namespace {
-    const std::string file = PATH+"acknowtt.ttf";
+    const std::string file = path+"acknowtt.ttf";
     const int fontSize = 200;
 }
 
@@ -34,15 +36,14 @@ void Score::render(SDL_Surface* display) {
     
     if(GLOBAL::GameOver) {
         if(score > bestScore) {
-            GLOBAL::isLeader = true;
+            isLeader = true;
             bestScore = score;
         }
         score = bestScore;
-    } else {
-        GLOBAL::isLeader = false;
-    }
+    } else
+        isLeader = false;
     
-    tScore.OnDraw(display, SCREEN_WIDTH / 2 - tScore.sFront->clip_rect.w / 2, 80, 16);
+    tScore.OnDraw(display, scrWidth / 2 - tScore.sFront->clip_rect.w / 2, 80, 16);
 }
 
 void Score::loop() {}

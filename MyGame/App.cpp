@@ -9,7 +9,7 @@
 #include "App.hpp"
 #include "Global.hpp"
 
-App::App() : display(nullptr), running(true), isGameOver(false) {}
+App::App() : display(nullptr), running(true) {}
 
 int App::execute() {
     if(init() == false)
@@ -32,14 +32,14 @@ int App::execute() {
 }
 
 void App::newGame() {
-    isGameOver = false;
+    Global::isGameOver = false;
     score.score = 0;
     
     burger.newGame();
     conveyor.newGame();
 }
 void App::gameOver() {
-    isGameOver = true;
+    Global::isGameOver = true;
     Global::tKeyboardDelay.start();
     
     burger.gameOver();

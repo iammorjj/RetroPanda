@@ -9,26 +9,25 @@
 #include "Background.hpp"
 #include "Surface.hpp"
 #include <string>
-#include "Constants.h"
+#include "Global.hpp"
 
-using namespace CONSTANTS;
+using namespace Global;
 
 namespace {
-    const std::string fCenter = PATH+"background.png";
-    const std::string fSides = PATH+"sidesBillys.png";
+    const std::string fCenter = path+"background.png";
+    const std::string fSides = path+"sidesBillys.png";
     
     const int backgroundWidth = 461;
-    const int backgroundHeight = SCREEN_HEIGHT;
     const int sidesWidth = 282;
-    const int sidesHeight = SCREEN_HEIGHT;
+    const int sidesHeight = scrHeight;
     const int sidesFrameRateMs = 200;
     const int maxFrames = 3;
     
-    const int xCenter = SCREEN_WIDTH / 2 - backgroundWidth / 2;
+    const int xCenter = scrWidth / 2 - backgroundWidth / 2;
     const int yCenter = 0;
     const int xLeftSide = 0;
     const int yLeftSide = 0;
-    const int xRightSide = SCREEN_WIDTH / 2 + backgroundWidth / 2;
+    const int xRightSide = scrWidth / 2 + backgroundWidth / 2;
     const int yRightSide = 0;
 }
 

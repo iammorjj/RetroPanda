@@ -46,8 +46,6 @@ private:
     SDL_Surface* display;
     bool running;
     
-    bool isGameOver;
-    
     Background background;
     
     CGameOverTitle  GameOverTitle;
