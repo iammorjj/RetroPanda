@@ -14,49 +14,28 @@
 using namespace Global;
 
 namespace {
-    const std::string fCenter = path+"background.png";
-    const std::string fSides = path+"sidesBillys.png";
+    const std::string file = path+"background.png";
     
     const int backgroundWidth = 461;
-    const int sidesWidth = 282;
-    const int sidesHeight = scrHeight;
-    const int sidesFrameRateMs = 200;
-    const int maxFrames = 3;
     
-    const int xCenter = scrWidth / 2 - backgroundWidth / 2;
-    const int yCenter = 0;
-    const int xLeftSide = 0;
-    const int yLeftSide = 0;
-    const int xRightSide = scrWidth / 2 + backgroundWidth / 2;
-    const int yRightSide = 0;
+    const int x = scrWidth / 2 - backgroundWidth / 2;
+    const int y = 0;
 }
 
-Background::Background() : sCenter(nullptr), sSides(nullptr) {}
+Background::Background() : surface(nullptr) {}
 
 bool Background::load() {
-    sCenter = Surface::load(fCenter.c_str());
-    sSides = Surface::load(fSides.c_str());
+    surface = Surface::load(file.c_str());
     
-    if(!sCenter || !sSides)
-        return false;
-    
-    sidesAnimation.setSpriteInfo(sidesWidth, sidesHeight, maxFrames);
-    sidesAnimation.setFrameRateMs(sidesFrameRateMs);
-    
-    return true;
+    return surface != nullptr;
 }
 
-void Background::loop() {
-    sidesAnimation.animate();
-}
+void Background::loop() {}
 
 void Background::render(SDL_Surface* display) {
-    Surface::draw(display, sCenter, xCenter, yCenter);
-    sidesAnimation.draw(display, sSides, xLeftSide, yLeftSide);
-    sidesAnimation.draw(display, sSides, xRightSide, yRightSide);
+    Surface::draw(display, surface, x, y);
 }
 
 void Background::cleanup() {
-    SDL_FreeSurface(sCenter);
-    SDL_FreeSurface(sSides);
+    SDL_FreeSurface(surface);
 }

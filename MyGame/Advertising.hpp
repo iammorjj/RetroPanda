@@ -1,22 +1,25 @@
 //
-//  Background.hpp
+//  Advertising.hpp
 //  MyGame
 //
-//  Created by Alexander Mordovsky on 10/09/2019.
+//  Created by Alexander Mordovsky on 17/09/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
 //
 
-#ifndef Background_hpp
-#define Background_hpp
+#ifndef Advertising_hpp
+#define Advertising_hpp
 
 #include "SDL/SDL.h"
 #include "Entity.hpp"
+#include "Animation.hpp"
 
-class Background : public Entity {
+class Advertising : public Entity {
 private:
     SDL_Surface* surface;
+    
+    Animation animation;
 public:
-    Background();
+    Advertising();
     
     bool load();
     void loop();
@@ -24,4 +27,4 @@ public:
     void cleanup();
 };
 
-#endif /* Background_hpp */
+#endif /* Advertising_hpp */

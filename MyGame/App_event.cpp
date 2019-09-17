@@ -9,12 +9,13 @@
 #include "App.hpp"
 #include "Global.hpp"
 
-bool isKeyboardDelayFinished() {
-    using namespace Global;
-    return tKeyboardDelay.get_ticks() > keyboardDelay;
+using namespace Global;
+
+inline bool isKeyboardDelayFinished() {
+    return tKeyboardDelay.get_ticks() > keyboardDelay || isFirstGame;
 }
 
-bool isQuitGame(SDL_Event* event) {
+inline bool isQuitGame(SDL_Event* event) {
     return event->type == SDL_QUIT ||
         event->key.keysym.sym == SDLK_q;
 }
@@ -28,7 +29,7 @@ void App::eventHandler(SDL_Event* event) {
     
     if(event->type == SDL_KEYDOWN) {
         
-        if(!Global::isFirstGame && Global::isGameOver) {
+        if(Global::isGameOver) {
             if(isKeyboardDelayFinished())
                 newGame();
             else

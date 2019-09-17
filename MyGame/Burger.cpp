@@ -7,14 +7,12 @@
 //
 
 #include "Burger.hpp"
-#include "Constants.h"
+#include "Global.hpp"
 
 #include "Surface.hpp"
 
-using namespace CONSTANTS;
-
 namespace {
-    const std::string file = PATH+"burger.png";
+    const std::string file = Global::path+"burger.png";
     
     const int lineNumber = 6;
     
@@ -26,7 +24,6 @@ Burger::Burger(): surface(nullptr), running(false),
     burgerLine(std::vector< std::list<BurgerItem> >(lineNumber)), creator(this) {}
 
 void Burger::move() {
-    // make it static or not?
     int deltaTicks = moveTimer.get_ticks();
     
     for(auto &line: burgerLine)

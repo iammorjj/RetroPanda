@@ -7,14 +7,16 @@
 //
 
 #include "App.hpp"
-
-using namespace CONSTANTS;
+#include "Global.hpp"
+using namespace Global;
 
 bool App::init() {
     if(windowInit() && resourceInit()) {
         Entity::entityList.push_back(&background);
         Entity::entityList.push_back(&conveyor);
         Entity::entityList.push_back(&burger);
+        // adv after burger cause we hide textures
+        Entity::entityList.push_back(&advertising);
         Entity::entityList.push_back(&hero);
         Entity::entityList.push_back(&score);
         
@@ -28,7 +30,7 @@ bool App::windowInit() {
     if(SDL_Init( SDL_INIT_EVERYTHING ) < 0)
         return false;
     
-    if( !(display = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_HWSURFACE | SDL_DOUBLEBUF)) )
+    if( !(display = SDL_SetVideoMode( scrWidth, scrHeight, scrBpp, SDL_HWSURFACE | SDL_DOUBLEBUF)) )
         return false;
     
     return true;
@@ -38,6 +40,8 @@ bool App::resourceInit() {
     if( !music.load() ||
        
         !background.load() ||
+       
+        !advertising.load() ||
        
         !score.load() ||
        

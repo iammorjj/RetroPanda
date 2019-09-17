@@ -24,7 +24,7 @@ namespace {
     
     // change background width
     const int leftSideCoord = SCREEN_WIDTH / 2. - BACKGROUND_WIDTH / 2. - 60;
-    const int rightSideCoord = SCREEN_WIDTH / 2. + 90;
+    const int rightSideCoord = SCREEN_WIDTH / 2. + 100;
     const int yUp = 200;
     
     enum { RIGHT, LEFT };

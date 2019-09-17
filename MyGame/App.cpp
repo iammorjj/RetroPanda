@@ -9,6 +9,8 @@
 #include "App.hpp"
 #include "Global.hpp"
 
+using namespace Global;
+
 App::App() : display(nullptr), running(true) {}
 
 int App::execute() {
@@ -32,16 +34,16 @@ int App::execute() {
 }
 
 void App::newGame() {
-    Global::isFirstGame = false;
-    Global::isGameOver = false;
+    isGameOver = false;
     score.score = 0;
     
     burger.newGame();
     conveyor.newGame();
 }
 void App::gameOver() {
-    Global::isGameOver = true;
-    Global::tKeyboardDelay.start();
+    isFirstGame = false;
+    isGameOver = true;
+    tKeyboardDelay.start();
     
     burger.gameOver();
     conveyor.gameOver();

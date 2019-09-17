@@ -33,6 +33,7 @@
 //#include "./OldVersion/CScoreOldVersion.hpp"
 //#include "./OldVersion/CBackgroundOldVersion.hpp"
 #include "Score.hpp"
+#include "Advertising.hpp"
 #include "Background.hpp"
 #include "CGameOverTitle.hpp"
 #include "Music.hpp"
@@ -47,6 +48,7 @@ private:
     bool running;
     
     Background background;
+    Advertising advertising;
     
     CGameOverTitle  GameOverTitle;
     

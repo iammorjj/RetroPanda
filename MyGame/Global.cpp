@@ -9,5 +9,5 @@
 #include "Global.hpp"
 
 Timer Global::tKeyboardDelay;
-bool Global::isGameOver = true;
 bool Global::isFirstGame = true;
+bool Global::isGameOver = true;
