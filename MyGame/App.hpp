@@ -36,6 +36,7 @@
 class App {
 private:
     SDL_Surface* display;
+    
     bool running;
     
     Background background;

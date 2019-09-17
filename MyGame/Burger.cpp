@@ -15,7 +15,6 @@ using namespace Global;
 namespace {
     const std::string file = Global::path+"burger.png";
     const int frameWidth = 192;
-    const int frameHeight = 192;
     
     const int lineNumber = 6;
     
@@ -61,6 +60,9 @@ bool Burger::isMissed() {
 bool Burger::canBeCaught(int location) const {
     return burgerLine[location].back().getXCoord() > xCanBeCaughtLeft &&
         burgerLine[location].back().getXCoord() < xCanBeCaughtRight;
+}
+void Burger::deleteBurger(int location) {
+    burgerLine[location].pop_back();
 }
 
 void Burger::newGame() {

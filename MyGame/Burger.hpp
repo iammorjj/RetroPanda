@@ -17,7 +17,6 @@
 #include "HideEffect.h"
 #include "Entity.hpp"
 #include "Timer.hpp"
-#include "Hero.hpp"
 #include "BurgerItem.hpp"
 #include "BurgerCreator.hpp"
 
@@ -39,10 +38,6 @@ private:
     
     void drawBurgers(SDL_Surface* display);
     
-    // burgerLine access
-    friend bool Hero::canCatch(const Burger& obj);
-    friend void Hero::catchBurger(Burger& obj);
-    
     friend void BurgerCreator::createBurger();
 public:
     Burger();
@@ -50,6 +45,7 @@ public:
     bool isMissed();
     
     bool canBeCaught(int location) const;
+    void deleteBurger(int location);
     
     void newGame();
     void gameOver();

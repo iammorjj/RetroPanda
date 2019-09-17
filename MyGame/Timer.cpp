@@ -29,7 +29,6 @@ void Timer::start()
     
     //Get the current clock time
     startTicks = SDL_GetTicks();
-    printf("ticks %d\n", startTicks);
 }
 
 void Timer::stop()

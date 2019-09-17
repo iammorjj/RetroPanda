@@ -20,6 +20,7 @@ class Burger;
 class Hero: public Entity, public Location {    
 private:
     SDL_Surface* surface;
+    
     Animation animation;
 public:
     Hero();
