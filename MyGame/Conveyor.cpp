@@ -9,12 +9,12 @@
 #include "Conveyor.h"
 #include "Location.hpp"
 #include <string>
+#include "Global.hpp"
 
-#include "Constants.h"
-using namespace CONSTANTS;
+using namespace Global;
 
 namespace {
-    const std::string file = PATH+"conveyor.png";
+    const std::string file = path+"conveyor.png";
     
     const int frameWidth = 192;
     const int frameHeight = 192;
@@ -22,9 +22,8 @@ namespace {
     
     const int yDistanceBetweenLines = 120;
     
-    // change background width
-    const int leftSideCoord = SCREEN_WIDTH / 2. - BACKGROUND_WIDTH / 2. - 60;
-    const int rightSideCoord = SCREEN_WIDTH / 2. + 100;
+    const int leftSideCoord = scrWidth / 2 - 290;
+    const int rightSideCoord = scrWidth / 2 + 100;
     const int yUp = 200;
     
     enum { RIGHT, LEFT };
@@ -46,6 +45,7 @@ void Conveyor::newGame() {
 
 void Conveyor::drawSide(SDL_Surface* display, int side) {
     animation.setCurrentFrameRow(side);
+    
     int location = (side == LEFT ? Location::LEFT_DOWN : Location::RIGHT_DOWN);
     for(int i = 0; i < 3; ++i, ++location)
         animation.draw(display, surface, x[location], y[location]);

@@ -51,11 +51,12 @@ void App::gameOver() {
 }
 
 bool App::isNewLevel() {
-    return score.score % speedLevelUp == 0 ||
-        score.score % appearanceLevelUp == 0;
+    int currentScore = score.getScore();
+    return currentScore % speedLevelUp == 0 ||
+        currentScore % appearanceLevelUp == 0;
 }
 void App::newLevel() {
-    if(score.score % speedLevelUp == 0)
+    if(score.getScore() % speedLevelUp == 0)
         burger.newLevelMovementSpeed();
     else
         burger.newLevelAppearanceSpeed();

@@ -7,7 +7,6 @@
 //
 
 #include "App.hpp"
-#include "LocationOldVersion.h"
 #include "Global.hpp"
 
 void App::loop() {
@@ -23,7 +22,7 @@ void App::loop() {
     
     if(hero.canCatch(burger)) {
         hero.catchBurger(burger);
-        score.score++;
+        score.incrScore();
         music.pointSoundPlay();
         if(isNewLevel())
             newLevel();

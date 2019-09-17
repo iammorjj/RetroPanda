@@ -21,12 +21,10 @@
 
 #include <stdio.h>
 
-#include "Constants.h"
 #include "Surface.hpp"
 #include "Score.hpp"
 #include "Advertising.hpp"
 #include "Background.hpp"
-#include "CGameOverTitle.hpp"
 #include "Music.hpp"
 #include "GameOverTitle.hpp"
 
@@ -43,8 +41,6 @@ private:
     Background background;
     Advertising advertising;
     
-    //Title title;
-    //CGameOverTitle GameOverTitle;
     GameOverTitle gameOverTitle;
     
     Music music;
@@ -70,6 +66,7 @@ public:
 public:
     bool init();
     void eventHandler(SDL_Event* event);
+    
     void loop();
     void render();
     void cleanup();

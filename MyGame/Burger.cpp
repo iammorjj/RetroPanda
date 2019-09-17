@@ -7,31 +7,16 @@
 //
 
 #include "Burger.hpp"
-#include "Global.hpp"
-using namespace Global;
-
 #include "Surface.hpp"
+#include "BurgerConstants.h"
 
-namespace {
-    const std::string file = Global::path+"burger.png";
-    const int frameWidth = 192;
-    
-    const int lineNumber = 6;
-    
-    const double xVelNewLevel = 7.;
-    const double yVelNewLevel = xVelNewLevel * 4./7.;
-    
-    const int xStopLeft = 300;
-    const int xStopRight = scrWidth - frameWidth - xStopLeft;
-    const int xCanBeCaughtLeft = xStopLeft - 15;
-    const int xCanBeCaughtRight = xStopRight + 15;
-}
+using namespace burgerConstants;
 
 Burger::Burger(): surface(nullptr), running(false),
     burgerLine(std::vector< std::list<BurgerItem> >(lineNumber)), creator(this) {}
 
 void Burger::move() {
-    int deltaTicks = moveTimer.get_ticks();
+    int deltaTicks = moveTimer.getTicks();
     
     for(auto &line: burgerLine)
         for(auto &burger: line)
@@ -70,7 +55,11 @@ void Burger::deleteBurger(int location) {
 
 void Burger::newGame() {
     cleanBurgers();
+    
+    BurgerItem::resetVelocity();
+    creator.resetDelay();
     creator.start();
+    
     moveTimer.start();
     running = true;
 }
@@ -112,5 +101,6 @@ void Burger::render(SDL_Surface* display) {
 }
 
 void Burger::cleanup() {
+    cleanBurgers();
     SDL_FreeSurface(surface);
 }

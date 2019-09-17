@@ -9,50 +9,76 @@
 #include "Score.hpp"
 #include <string>
 #include "Global.hpp"
+#include <fstream>
 
 using namespace Global;
 
 namespace {
+    const std::string file = path+"bestScore.txt";
+    std::ifstream ifScore;
+    std::ofstream ofScore;
+    
     const int fontSize = 200;
     
     const int yTitle = 80;
 }
 
-Score::Score() : bestScore(2), score(bestScore) {}
+Score::Score() : bestScore(0), score(0) {
+    ifScore.open(file);
+    if(ifScore.is_open())
+        ifScore >> bestScore;
+    score = bestScore;
+    ifScore.close();
+}
 
 void Score::newGame() {
     score = 0;
-    ttScore.setFrontColor(whiteColor);
+    tScore.setFrontColor(whiteColor);
+}
+
+void Score::incrScore() {
+    score++;
+}
+int Score::getScore() {
+    return score;
+}
+
+void Score::writeBestScore() {
+    bestScore = score;
+    ofScore.open(file);
+    ofScore << bestScore;
+    ofScore.close();
 }
 
 bool Score::load() {
-    if(!ttScore.load(fontSize))
+    if(!tScore.load(fontSize))
         return false;
     
-    ttScore.setYCoordinate(yTitle);
-    ttScore.setFrontColor(whiteColor);
+    tScore.setYCoordinate(yTitle);
+    tScore.setFrontColor(whiteColor);
     
     return true;
 }
 
 void Score::render(SDL_Surface* display) {
     sprintf(buf, "%d", score);
-    ttScore.setText(buf);
+    tScore.setText(buf);
 
     if(isGameOver) {
         if(score > bestScore) {
             isLeader = true;
-            bestScore = score;
-            ttScore.setFrontColor(goldColor);
+            writeBestScore();
+            tScore.setFrontColor(goldColor);
         }
         score = bestScore;
     } else
         isLeader = false;
     
-    ttScore.render(display);
+    tScore.render(display);
 }
 
 void Score::loop() {}
+
 void Score::cleanup() {
-    ttScore.cleanup();
+    tScore.cleanup();
 }

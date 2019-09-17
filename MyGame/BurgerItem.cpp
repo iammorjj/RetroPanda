@@ -7,30 +7,16 @@
 //
 
 #include "BurgerItem.hpp"
-#include "Constants.h"
-using namespace CONSTANTS;
+#include "BurgerConstants.h"
+using namespace burgerConstants;
 
-namespace {
-    const int xStartLeft = 160;
-    const int xStartRight = SCREEN_WIDTH - BURGER::BURGER_WIDTH - xStartLeft;
-    const int xStopLeft = 300;
-    const int xStopRight = SCREEN_WIDTH - BURGER::BURGER_WIDTH - xStopLeft;
-    
-    const int yDistanceBetweenLines = 120;
-    const int yStartUp = 140;
-    const int yStartMid = yStartUp + yDistanceBetweenLines;
-    const int yStartDown = yStartMid + yDistanceBetweenLines;
-    const int yStopUp = 265;
-    const int yStopMid = yStopUp + yDistanceBetweenLines;
-    const int yStopDown = yStopMid + yDistanceBetweenLines;
-    
-    const int gravity = 50;
-    const int xVelStart = 70;
-    const int yVelStart = 40;
+int BurgerItem::xVel = xVelStart;
+int BurgerItem::yVel = yVelStart;
+
+void BurgerItem::resetVelocity() {
+    xVel = xVelStart;
+    yVel = yVelStart;
 }
-
-double BurgerItem::xVel = xVelStart;
-double BurgerItem::yVel = yVelStart;
 
 BurgerItem::BurgerItem(int location) {
     this->location = location;
@@ -58,7 +44,7 @@ BurgerItem::BurgerItem(int location) {
     }
 }
 
-bool BurgerItem::canMoveSideway() {
+inline bool BurgerItem::canMoveSideway() {
     return !(x > xStopLeft && x < xStopRight);
 }
 
@@ -73,9 +59,8 @@ void BurgerItem::move(double deltaTicks) {
     if(canMoveSideway()) {
         x += xVel * ( deltaTicks / 1000.0 ) * xDirectionSign();
         y += yVel * ( deltaTicks / 1000.0 );
-    } else {
+    } else
         y += gravity * ( deltaTicks / 1000.0 );
-    }
 }
 
 bool BurgerItem::canMoveDown() {

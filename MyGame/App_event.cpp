@@ -12,7 +12,7 @@
 using namespace Global;
 
 inline bool isKeyboardDelayFinished() {
-    return tKeyboardDelay.get_ticks() > keyboardDelay || isFirstGame;
+    return tKeyboardDelay.getTicks() > keyboardDelay || isFirstGame;
 }
 
 inline bool isQuitGame(SDL_Event* event) {
@@ -36,7 +36,6 @@ void App::eventHandler(SDL_Event* event) {
                 return;
         }
         
-        // TODO: make sensible names for arcade machine
         switch(event->key.keysym.sym) {
             case SDLK_LCTRL:
             case SDLK_v:

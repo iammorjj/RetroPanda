@@ -20,6 +20,9 @@
 #include "BurgerItem.hpp"
 #include "BurgerCreator.hpp"
 
+#include "Global.hpp"
+using namespace Global;
+
 class Burger: public Entity {
 private:
     SDL_Surface* surface;

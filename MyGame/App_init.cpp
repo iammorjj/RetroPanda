@@ -52,7 +52,6 @@ bool App::resourceInit() {
        
         !burger.load() ||
        
-        //!GameOverTitle.OnLoad() )
         !gameOverTitle.load() )
         return false;
     

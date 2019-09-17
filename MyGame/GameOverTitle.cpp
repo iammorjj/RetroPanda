@@ -17,6 +17,8 @@ namespace {
     const int welcomeFontSize = 35;
     const int leaderFontSize = 30;
     
+    const int leaderLines = 3;
+    
     const std::string bestScoreText = "best score";
     const std::string welcomeText = "press f to pay for burger";
     const std::string leaderText[] =
@@ -34,10 +36,11 @@ void GameOverTitle::gameOver() {
     bestScore.setFrontColor(goldColor);
 }
 
-bool GameOverTitle::loadLeader() {
-    for(int i = 0; i < 3; ++i)
+inline bool GameOverTitle::loadLeader() {
+    for(int i = 0; i < leaderLines; ++i)
         if(!leader[i].load(leaderFontSize))
             return false;
+    
     return true;
 }
 
@@ -49,17 +52,17 @@ bool GameOverTitle::load() {
     
     bestScore.setYCoordinate(yBestScore);
     welcome.setYCoordinate(yWelcome);
-    for(int i = 0; i < 3; ++i)
+    for(int i = 0; i < leaderLines; ++i)
         leader[i].setYCoordinate(yLeader[i]);
     
     bestScore.setFrontColor(whiteColor);
     welcome.setFrontColor(whiteColor);
-    for(int i = 0; i < 3; ++i)
+    for(int i = 0; i < leaderLines; ++i)
         leader[i].setFrontColor(goldColor);
     
     bestScore.setText(bestScoreText.c_str());
     welcome.setText(welcomeText.c_str());
-    for(int i = 0; i < 3; ++i)
+    for(int i = 0; i < leaderLines; ++i)
         leader[i].setText(leaderText[i].c_str());
     
     return true;
@@ -75,13 +78,13 @@ void GameOverTitle::render(SDL_Surface *display) {
     if(static_cast<void>(welcomeEffect.hide()), !welcomeEffect.isHide)
         welcome.render(display);
     if(isLeader)
-        for(int i = 0; i < 3; ++i)
+        for(int i = 0; i < leaderLines; ++i)
             leader[i].render(display);
 }
 
 void GameOverTitle::cleanup() {
     bestScore.cleanup();
     welcome.cleanup();
-    for(int i = 0; i < 3; ++i)
+    for(int i = 0; i < leaderLines; ++i)
         leader[i].cleanup();
 }

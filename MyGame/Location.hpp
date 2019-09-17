@@ -10,19 +10,16 @@
 #define Location_hpp
 
 class Location {
+protected:
+    double x = 0, y = 0;
+    int location = LEFT_DOWN;
 public:
     enum { LEFT_DOWN, LEFT_MID, LEFT_UP,
         RIGHT_DOWN, RIGHT_MID, RIGHT_UP
     };
     
-protected:
-    double x = 0, y = 0;
-    int location = LEFT_DOWN;
-    
-public:
     double getXCoord() const { return x; }
     double getYCoord() const { return y; }
-    
 };
 
 #endif /* Location_hpp */

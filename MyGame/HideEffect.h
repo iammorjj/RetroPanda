@@ -12,9 +12,9 @@
 #include "SDl/SDL.h"
 
 class HideEffect {
+private:
     int oldTime = 0;
     int frameRateMs = 500;
-    
 public:
     bool isHide = false;
     

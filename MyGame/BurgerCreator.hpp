@@ -26,6 +26,8 @@ public:
     
     void createBurger();
     
+    void resetDelay();
+    
     void start();
     void stop();
     void restartTimer();

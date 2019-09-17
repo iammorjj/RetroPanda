@@ -18,7 +18,9 @@ namespace {
     const int linesNum = 6;
 }
 
-BurgerCreator::BurgerCreator(Burger* burger) : timer(nullptr), delay(startDelayMs), isDelayChanged(false), burger(burger) {}
+BurgerCreator::BurgerCreator(Burger* burger) : timer(nullptr), delay(startDelayMs), isDelayChanged(false), burger(burger) {
+    srand(static_cast<unsigned>(time(0)));
+}
 
 void BurgerCreator::createBurger() {
     int location = rand() % linesNum;
@@ -26,6 +28,11 @@ void BurgerCreator::createBurger() {
     
     if(isDelayChanged)
         restartTimer();
+}
+
+void BurgerCreator::resetDelay() {
+    isDelayChanged = false;
+    delay = startDelayMs;
 }
 
 void BurgerCreator::changeDelay() {

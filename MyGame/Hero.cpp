@@ -42,6 +42,7 @@ bool Hero::load() {
         return false;
     
     animation.setSpriteInfo(frameWidth, frameHeight, maxFrames);
+    
     return true;
 }
 void Hero::loop() {

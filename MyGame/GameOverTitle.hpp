@@ -11,12 +11,12 @@
 
 #include "HideEffect.h"
 #include "Entity.hpp"
-#include "TitleTmp.hpp"
+#include "Title.hpp"
 
 class GameOverTitle : public Entity {
-    TitleTmp bestScore;
-    TitleTmp welcome;
-    TitleTmp leader[3];
+    Title bestScore;
+    Title welcome;
+    Title leader[3];
     
     bool loadLeader(); 
     

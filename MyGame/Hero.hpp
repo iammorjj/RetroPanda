@@ -29,7 +29,7 @@ public:
     
     bool canCatch(const Burger& obj);
     void catchBurger(Burger& obj);
-public:
+    
     bool load();
     void loop();
     void render(SDL_Surface* display);

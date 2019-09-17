@@ -15,10 +15,12 @@ class BurgerItem: public Location {
 private:
     int xDirectionSign();
 public:
-    BurgerItem(int location = LEFT_DOWN);
+    BurgerItem(int location);
     
-    static double xVel;
-    static double yVel;
+    static int xVel;
+    static int yVel;
+    
+    static void resetVelocity();
     
     bool canMoveSideway();
     bool canMoveDown();

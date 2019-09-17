@@ -26,4 +26,4 @@ public:
                      int XSource, int ySource, int width, int height);
 };
 
-#endif
+#endif /* Surface_hpp */
