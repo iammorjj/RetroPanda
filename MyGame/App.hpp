@@ -6,10 +6,8 @@
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
 //
 
-#ifndef _CAPP_H_
-#define _CAPP_H_
-
-
+#ifndef _APP_H_
+#define _APP_H_
 
 #include <SDL/SDL.h>
 
@@ -25,13 +23,6 @@
 
 #include "Constants.h"
 #include "Surface.hpp"
-//#include "CAnimationOldVersion.hpp"
-//#include "CConveyorOldVersion.hpp"
-//#include "CEntityOldVersion.hpp"
-//#include "CHeroOldVersion.hpp"
-//#include "CBurgerOldVersion.hpp"
-//#include "./OldVersion/CScoreOldVersion.hpp"
-//#include "./OldVersion/CBackgroundOldVersion.hpp"
 #include "Score.hpp"
 #include "Advertising.hpp"
 #include "Background.hpp"
@@ -50,7 +41,8 @@ private:
     Background background;
     Advertising advertising;
     
-    CGameOverTitle  GameOverTitle;
+    //Title title;
+    CGameOverTitle GameOverTitle;
     
     Music music;
     
@@ -80,4 +72,4 @@ public:
     void cleanup();
 };
 
-#endif
+#endif /* App_hpp */

@@ -29,8 +29,13 @@ void Hero::changeLocation(int location) {
     animation.setCurrentFrameRow(this->location = location);
 }
 
+namespace {
+    namespace ValidCatching {
+        
+    }
+}
 bool Hero::canCatch(const Burger &obj) {
-    return false;
+    return obj.canBeCaught(location);
 }
 void Hero::catchBurger(Burger &obj) {
     obj.burgerLine[location].pop_back();

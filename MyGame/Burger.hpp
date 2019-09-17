@@ -49,6 +49,8 @@ public:
     
     bool isMissed();
     
+    bool canBeCaught(int location) const;
+    
     void newGame();
     void gameOver();
     

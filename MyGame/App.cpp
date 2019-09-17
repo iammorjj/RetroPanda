@@ -50,11 +50,11 @@ void App::gameOver() {
 }
 
 bool App::isNewLevel() {
-    return score.score % Global::speedLevelUp == 0 ||
-        score.score % Global::appearanceLevelUp == 0;
+    return score.score % speedLevelUp == 0 ||
+        score.score % appearanceLevelUp == 0;
 }
 void App::newLevel() {
-    if(score.score % Global::speedLevelUp == 0)
+    if(score.score % speedLevelUp == 0)
         burger.newLevelMovementSpeed();
     else
         burger.newLevelAppearanceSpeed();

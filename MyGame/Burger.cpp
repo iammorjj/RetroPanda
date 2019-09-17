@@ -8,16 +8,24 @@
 
 #include "Burger.hpp"
 #include "Global.hpp"
+using namespace Global;
 
 #include "Surface.hpp"
 
 namespace {
     const std::string file = Global::path+"burger.png";
+    const int frameWidth = 192;
+    const int frameHeight = 192;
     
     const int lineNumber = 6;
     
     const double xVelNewLevel = 7.;
     const double yVelNewLevel = xVelNewLevel * 4./7.;
+    
+    const int xStopLeft = 300;
+    const int xStopRight = scrWidth - frameWidth - xStopLeft;
+    const int xCanBeCaughtLeft = xStopLeft - 15;
+    const int xCanBeCaughtRight = xStopRight + 15;
 }
 
 Burger::Burger(): surface(nullptr), running(false),
@@ -48,6 +56,11 @@ bool Burger::isMissed() {
         }
     
     return false;
+}
+
+bool Burger::canBeCaught(int location) const {
+    return burgerLine[location].back().getXCoord() > xCanBeCaughtLeft &&
+        burgerLine[location].back().getXCoord() < xCanBeCaughtRight;
 }
 
 void Burger::newGame() {

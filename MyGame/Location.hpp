@@ -20,8 +20,8 @@ protected:
     int location = LEFT_DOWN;
     
 public:
-    double getXCoord() { return x; }
-    double getYCoord() { return y; }
+    double getXCoord() const { return x; }
+    double getYCoord() const { return y; }
     
 };
 

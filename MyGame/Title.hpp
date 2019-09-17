@@ -17,22 +17,23 @@
 #endif
 
 #include "Surface.hpp"
+#include <string>
 
 struct Title {
 private:
-    char*       title;
+    std::string title;
     
-    SDL_Color   frontColor = whiteColor;
-    TTF_Font*   font;
+    SDL_Color frontColor = whiteColor;
+    TTF_Font* font;
     
     bool isLoad() {
-        return ( sFront = TTF_RenderText_Solid( font, title, frontColor) ) &&
-        ( sShadow = TTF_RenderText_Solid( font, title, shadowColor) );
+        return ( sFront = TTF_RenderText_Solid( font, title.c_str(), frontColor) ) &&
+        ( sShadow = TTF_RenderText_Solid( font, title.c_str(), shadowColor) );
     }
     
     bool isRender() {
-        return ( sFront = TTF_RenderText_Solid( font, title, frontColor) ) &&
-        ( sShadow = TTF_RenderText_Solid( font, title, shadowColor) );
+        return ( sFront = TTF_RenderText_Solid( font, title.c_str(), frontColor) ) &&
+        ( sShadow = TTF_RenderText_Solid( font, title.c_str(), shadowColor) );
     }
     
 public:
