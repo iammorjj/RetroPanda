@@ -16,18 +16,30 @@
 #include <SDL_ttf/SDL_ttf.h>
 #endif
 
-//class Title {
-//private:
-//    TTF_Font* font;
-//    
-//    SDL_Surface* sFront;
-//    SDL_Surface* sShadow;
-//    
-//    const static SDL_Color whiteColor;
-//    const static SDL_Color goldColor;
-//    const static SDL_Color shadowColor;
-//public:
-//    bool load(int fontSize);
-//};
+#include <string>
+
+class TitleTmp {
+private:
+    TTF_Font* font;
+    
+    SDL_Surface* sFront;
+    SDL_Surface* sShadow;
+    
+    int xFront, yFront;
+    int xShadow, yShadow;
+    
+    SDL_Color frontColor;
+    
+    int offset;
+    inline int xCenterCalc();
+public:
+    void setText(const char* text);
+    void setFrontColor(SDL_Color frontColor);
+    void setYCoordinate(int y);
+    
+    bool load(int fontSize);
+    void render(SDL_Surface* display);
+    void cleanup();
+};
 
 #endif /* TitleTmp_hpp */

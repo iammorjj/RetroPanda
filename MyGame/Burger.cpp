@@ -58,6 +58,9 @@ bool Burger::isMissed() {
 }
 
 bool Burger::canBeCaught(int location) const {
+    if(burgerLine[location].empty())
+        return false;
+    
     return burgerLine[location].back().getXCoord() > xCanBeCaughtLeft &&
         burgerLine[location].back().getXCoord() < xCanBeCaughtRight;
 }
@@ -66,13 +69,20 @@ void Burger::deleteBurger(int location) {
 }
 
 void Burger::newGame() {
+    cleanBurgers();
     creator.start();
+    moveTimer.start();
     running = true;
 }
 void Burger::gameOver() {
     creator.stop();
     moveTimer.stop();
     running = false;
+}
+
+void Burger::cleanBurgers() {
+    for(auto& line: burgerLine)
+        line.clear();
 }
 
 void Burger::newLevelMovementSpeed() {

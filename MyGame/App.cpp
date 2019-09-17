@@ -35,14 +35,15 @@ int App::execute() {
 
 void App::newGame() {
     isGameOver = false;
-    score.score = 0;
     
+    score.newGame();
     burger.newGame();
     conveyor.newGame();
 }
 void App::gameOver() {
     isFirstGame = false;
     isGameOver = true;
+    
     tKeyboardDelay.start();
     
     burger.gameOver();

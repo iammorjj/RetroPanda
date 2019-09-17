@@ -11,3 +11,4 @@
 Timer Global::tKeyboardDelay;
 bool Global::isFirstGame = true;
 bool Global::isGameOver = true;
+bool Global::isLeader = false;

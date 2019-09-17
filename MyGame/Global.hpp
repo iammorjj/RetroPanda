@@ -9,6 +9,7 @@
 #ifndef GlobalObjects_hpp
 #define GlobalObjects_hpp
 
+#include "SDL/SDL.h"
 #include "Timer.hpp"
 #include <string>
 
@@ -25,6 +26,11 @@ namespace Global {
     
     extern bool isFirstGame;
     extern bool isGameOver;
+    extern bool isLeader;
+    
+    const SDL_Color whiteColor = {255, 255, 255};
+    const SDL_Color goldColor = {255, 215, 0};
+    const SDL_Color shadowColor = {0, 0, 0};;
     
     const std::string path =
 #ifdef MAC

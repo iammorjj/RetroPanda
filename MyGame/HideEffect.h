@@ -9,6 +9,8 @@
 #ifndef HideEffect_h
 #define HideEffect_h
 
+#include "SDl/SDL.h"
+
 class HideEffect {
     int oldTime = 0;
     int frameRateMs = 500;

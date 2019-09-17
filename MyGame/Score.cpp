@@ -12,39 +12,47 @@
 
 using namespace Global;
 
-bool isLeader = false;
-
 namespace {
-    const std::string file = path+"acknowtt.ttf";
     const int fontSize = 200;
+    
+    const int yTitle = 80;
 }
 
 Score::Score() : bestScore(2), score(bestScore) {}
 
+void Score::newGame() {
+    score = 0;
+    ttScore.setFrontColor(whiteColor);
+}
+
 bool Score::load() {
-    if(!TTF_WasInit() && TTF_Init() < 0)
+    if(!ttScore.load(fontSize))
         return false;
     
-    return tScore.OnLoadFont(TTF_OpenFont(file.c_str(), fontSize));
+    ttScore.setYCoordinate(yTitle);
+    ttScore.setFrontColor(whiteColor);
+    
+    return true;
 }
 
 void Score::render(SDL_Surface* display) {
     sprintf(buf, "%d", score);
-    
-    tScore.changeTitle(buf);
-    tScore.OnRender();
-    
+    ttScore.setText(buf);
+
     if(isGameOver) {
         if(score > bestScore) {
             isLeader = true;
             bestScore = score;
+            ttScore.setFrontColor(goldColor);
         }
         score = bestScore;
     } else
         isLeader = false;
     
-    tScore.OnDraw(display, scrWidth / 2 - tScore.sFront->clip_rect.w / 2, 80, 16);
+    ttScore.render(display);
 }
 
 void Score::loop() {}
-void Score::cleanup() {}
+void Score::cleanup() {
+    ttScore.cleanup();
+}

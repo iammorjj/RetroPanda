@@ -11,7 +11,7 @@
 using namespace Global;
 
 bool App::init() {
-    if(windowInit() && resourceInit()) {
+    if(windowInit() && TTF_Init() != -1 && resourceInit()) {
         Entity::entityList.push_back(&background);
         Entity::entityList.push_back(&conveyor);
         Entity::entityList.push_back(&burger);
@@ -19,6 +19,7 @@ bool App::init() {
         Entity::entityList.push_back(&advertising);
         Entity::entityList.push_back(&hero);
         Entity::entityList.push_back(&score);
+        Entity::entityList.push_back(&gameOverTitle);
         
         return true;
     }
@@ -51,7 +52,8 @@ bool App::resourceInit() {
        
         !burger.load() ||
        
-        !GameOverTitle.OnLoad() )
+        //!GameOverTitle.OnLoad() )
+        !gameOverTitle.load() )
         return false;
     
     return true;

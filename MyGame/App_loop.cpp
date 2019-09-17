@@ -8,6 +8,7 @@
 
 #include "App.hpp"
 #include "LocationOldVersion.h"
+#include "Global.hpp"
 
 void App::loop() {
     for(int i = 0; i < Entity::entityList.size(); i++) {
@@ -16,6 +17,9 @@ void App::loop() {
         
         Entity::entityList[i]->loop();
     }
+    
+    if(Global::isGameOver)
+        return;
     
     if(hero.canCatch(burger)) {
         hero.catchBurger(burger);

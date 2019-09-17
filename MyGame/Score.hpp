@@ -11,16 +11,21 @@
 
 #include "Entity.hpp"
 #include "Title.hpp"
+#include "TitleTmp.hpp"
 
 class Score : public Entity {
 private:
     int bestScore;
-    Title tScore;
+    // offset is 16
+    TitleTmp ttScore;
+    
     char buf[5];
 public:
     int score;
 public:
     Score();
+    
+    void newGame();
     
     bool load();
     void loop();

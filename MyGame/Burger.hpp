@@ -50,6 +50,8 @@ public:
     void newGame();
     void gameOver();
     
+    void cleanBurgers();
+    
     void newLevelMovementSpeed();
     void newLevelAppearanceSpeed();
     

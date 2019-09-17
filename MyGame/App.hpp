@@ -28,6 +28,7 @@
 #include "Background.hpp"
 #include "CGameOverTitle.hpp"
 #include "Music.hpp"
+#include "GameOverTitle.hpp"
 
 #include "Hero.hpp"
 #include "Burger.hpp"
@@ -43,7 +44,8 @@ private:
     Advertising advertising;
     
     //Title title;
-    CGameOverTitle GameOverTitle;
+    //CGameOverTitle GameOverTitle;
+    GameOverTitle gameOverTitle;
     
     Music music;
     
