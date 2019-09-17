@@ -2,79 +2,105 @@
 //  Burger.cpp
 //  MyGame
 //
-//  Created by Alexander Mordovsky on 08/08/2019.
+//  Created by Alexander Mordovsky on 03/09/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
 //
 
 #include "Burger.hpp"
+#include "Surface.hpp"
+#include "BurgerConstants.h"
 
-double Burger::xVel = X_VEL_START;
-double Burger::yVel = Y_VEL_START;
+using namespace burgerConstants;
 
-Burger::Burger(Location location) {
-    this->location = location;
+Burger::Burger(): surface(nullptr), running(false),
+    burgerLine(std::vector< std::list<BurgerItem> >(lineNumber)), creator(this) {}
+
+void Burger::move() {
+    int deltaTicks = moveTimer.getTicks();
     
-    switch(location) {
-        case LEFT_DOWN:
-            x = START_BURGER_X_LEFT; y = START_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS * 2;
-            break;
-        case LEFT_MID:
-            x = START_BURGER_X_LEFT; y = START_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS;
-            break;
-        case LEFT_UP:
-            x = START_BURGER_X_LEFT; y = START_BURGER_Y_UP;
-            break;
-            
-        case RIGHT_DOWN:
-            x = START_BURGER_X_RIGHT; y = START_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS * 2;
-            break;
-        case RIGHT_MID:
-            x = START_BURGER_X_RIGHT; y = START_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS;
-            break;
-        case RIGHT_UP:
-            x = START_BURGER_X_RIGHT; y = START_BURGER_Y_UP;
-            break;
-    }
-}
-
-bool Burger::canMoveSideway() {
-    return !(x > STOP_BURGER_X_LEFT && x < STOP_BURGER_X_RIGHT);
-}
-
-int Burger::xDirectionSign() {
-    if(location == LEFT_DOWN || location == LEFT_MID || location == LEFT_UP)
-        return 1;
+    for(auto &line: burgerLine)
+        for(auto &burger: line)
+            burger.move(deltaTicks);
     
-    return -1;
+    moveTimer.start();
 }
 
-void Burger::move(double deltaTicks) {
-    if(canMoveSideway()) {
-        x += xVel * ( deltaTicks / 1000.0 ) * xDirectionSign();
-        y += yVel * ( deltaTicks / 1000.0 );
-    } else {
-        y += GRAVITY * ( deltaTicks / 1000.0 );
-    }
+void Burger::drawBurgers(SDL_Surface* display) {
+    for(auto line: burgerLine)
+        for(auto burger: line)
+            Surface::draw(display, surface, burger.getXCoord(), burger.getYCoord());
 }
 
-bool Burger::canMoveDown() {
-    switch(this->location) {
-        case LEFT_DOWN:
-        case RIGHT_DOWN:
-            if(y < STOP_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS * 2) return true;
-            return false;
-        case LEFT_MID:
-        case RIGHT_MID:
-            if(y < STOP_BURGER_Y_UP + VERTICAL_DISTANCE_BETWEEN_BURGERS) return true;
-            return false;
-        case LEFT_UP:
-        case RIGHT_UP:
-            if(y < STOP_BURGER_Y_UP) return true;
-            return false;
-            
-    }
+bool Burger::isMissed() {
+    for(auto line: burgerLine)
+        if(!line.empty()) {
+            auto burger = line.back();
+            if(!burger.canMoveDown())
+                return true;
+        }
+    
+    return false;
 }
 
-bool Burger::isGameOver() {
-    return !canMoveDown();
+bool Burger::canBeCaught(int location) const {
+    if(burgerLine[location].empty())
+        return false;
+    
+    return burgerLine[location].back().getXCoord() > xCanBeCaughtLeft &&
+        burgerLine[location].back().getXCoord() < xCanBeCaughtRight;
+}
+void Burger::deleteBurger(int location) {
+    burgerLine[location].pop_back();
+}
+
+void Burger::newGame() {
+    cleanBurgers();
+    
+    BurgerItem::resetVelocity();
+    creator.resetDelay();
+    creator.start();
+    
+    moveTimer.start();
+    running = true;
+}
+void Burger::gameOver() {
+    creator.stop();
+    moveTimer.stop();
+    running = false;
+}
+
+void Burger::cleanBurgers() {
+    for(auto& line: burgerLine)
+        line.clear();
+}
+
+void Burger::newLevelMovementSpeed() {
+    BurgerItem::xVel += xVelNewLevel;
+    BurgerItem::yVel += yVelNewLevel;
+}
+void Burger::newLevelAppearanceSpeed() {
+    creator.changeDelay();
+}
+
+bool Burger::load() {
+    surface = Surface::load(file.c_str());
+    if(!surface)
+        return false;
+    
+    return true;
+}
+
+void Burger::loop() {
+    if(running)
+        move();
+}
+
+void Burger::render(SDL_Surface* display) {
+    if(running || (static_cast<void>(effect.hide()), !effect.isHide))
+        drawBurgers(display);
+}
+
+void Burger::cleanup() {
+    cleanBurgers();
+    SDL_FreeSurface(surface);
 }

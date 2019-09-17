@@ -2,34 +2,66 @@
 //  Burger.hpp
 //  MyGame
 //
-//  Created by Alexander Mordovsky on 08/08/2019.
+//  Created by Alexander Mordovsky on 28/08/2019.
 //  Copyright © 2019 Alexander Mordovsky. All rights reserved.
 //
 
 #ifndef Burger_hpp
 #define Burger_hpp
 
-#include "Constants.h"
-#include "Location.h"
+#include "SDL/SDL.h"
 
-using namespace CONSTANTS::BURGER;
+#include <list>
+#include <vector>
 
-class Burger: public LocationClass {
+#include "HideEffect.h"
+#include "Entity.hpp"
+#include "Timer.hpp"
+#include "BurgerItem.hpp"
+#include "BurgerCreator.hpp"
+
+#include "Global.hpp"
+using namespace Global;
+
+class Burger: public Entity {
 private:
-    int xDirectionSign();
+    SDL_Surface* surface;
+    
+    bool running;
+    
+    std::vector< std::list<BurgerItem> > burgerLine;
+    
+    BurgerCreator creator;
+    
+    HideEffect effect;
+    
+    Timer moveTimer;
+private:
+    void move();
+    
+    void drawBurgers(SDL_Surface* display);
+    
+    friend void BurgerCreator::createBurger();
 public:
-    static double xVel;
-    static double yVel;
+    Burger();
     
-    Burger(Location location = LEFT_DOWN);
+    bool isMissed();
     
-    bool canMoveSideway();
+    bool canBeCaught(int location) const;
+    void deleteBurger(int location);
     
-    bool canMoveDown();
+    void newGame();
+    void gameOver();
     
-    bool isGameOver();
+    void cleanBurgers();
     
-    void move(double deltaTicks);
+    void newLevelMovementSpeed();
+    void newLevelAppearanceSpeed();
+    
+    bool load();
+    void loop();
+    void render(SDL_Surface* display);
+    void cleanup();
 };
 
 #endif /* Burger_hpp */
