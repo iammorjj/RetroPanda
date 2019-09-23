@@ -13,7 +13,7 @@
 #include "global.h"
 
 namespace {
-const char* const kFile = GLOBAL_ASSETS_PATH"bestScore.txt";
+const char* const kFile = GLOBAL_ASSETS_PATH"best_score.txt";
 
 const int kFontSize = 200;
 
@@ -44,10 +44,10 @@ void Score::ShowBestScore() {
 bool Score::Load() {
   if (!t_score_.Load(kFontSize))
     return false;
-  
+
   t_score_.set_y_front(kYTitle);
   t_score_.set_front_color(global::kWhiteColor);
-  
+
   return true;
 }
 
@@ -65,7 +65,7 @@ void Score::Render(SDL_Surface* display) {
   } else {
     global::is_leader = false;
   }
-  
+
   t_score_.Render(display);
 }
 
