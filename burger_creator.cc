@@ -28,7 +28,7 @@ BurgerCreator::BurgerCreator(Burger* burger)
 void BurgerCreator::CreateBurger() {
   int location = rand() % global::kLineAmount;
   burger_->burger_line_[location].push_front(BurgerItem(location));
-  
+
   if (is_delay_changed_)
     RestartTimer();
 }
@@ -40,9 +40,9 @@ void BurgerCreator::ResetDelay() {
 
 void BurgerCreator::Start() {
   timer_ = SDL_AddTimer(delay_, [](Uint32 interval, void* param) -> Uint32 {
-    BurgerCreator* creator = (BurgerCreator*)param;
+    BurgerCreator* creator = static_cast<BurgerCreator*>param;
     creator->CreateBurger();
-  
+
     return interval;
   }, this);
 }
@@ -61,6 +61,6 @@ void BurgerCreator::RestartTimer() {
 void BurgerCreator::ChangeDelay() {
   if (delay_ > kMinDelayMs)
     delay_ -= kDelayDecrementMs;
-  
+
   is_delay_changed_ = true;
 }
