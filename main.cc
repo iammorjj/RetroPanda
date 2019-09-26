@@ -9,7 +9,7 @@
 #include "app.h"
 
 int main(int argc, char* argv[]) {
-  App theApp;
-  
-  return theApp.Execute();
+  App app;
+
+  return app.Execute();
 }
