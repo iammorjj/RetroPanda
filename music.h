@@ -9,20 +9,20 @@
 #ifndef MY_GAME_MUSIC_H_
 #define MY_GAME_MUSIC_H_
 
-#include <SDL_mixer/SDL_mixer.h>
+#include "SDL_mixer.h"
 
 class Music {
- public:
+public:
   Music();
-  
+
   inline void PlayPointSound() { Mix_PlayChannel(-1, point_, 0); }
-  
+
   bool Load();
   void Cleanup();
-  
- private:
-  Mix_Music* music_;
-  Mix_Chunk* point_;
+
+private:
+  Mix_Music *music_;
+  Mix_Chunk *point_;
 };
 
-#endif  // MY_GAME_MUSIC_H_
+#endif // MY_GAME_MUSIC_H_

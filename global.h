@@ -11,7 +11,7 @@
 
 #include <string>
 
-#include <SDL/SDL.h>
+#include "SDL.h"
 
 #include "timer.h"
 
@@ -30,7 +30,7 @@ extern bool is_leader;
 const SDL_Color kWhiteColor = {255, 255, 255};
 const SDL_Color kGoldColor = {255, 215, 0};
 const SDL_Color kShadowColor = {0, 0, 0};
-  
+
 extern Timer keyboard_delay_timer;
 const int kKeyboardDelay = 2000;
 inline bool IsKeyboardDelayFinished() {
@@ -41,6 +41,6 @@ inline bool IsKeyboardDelayFinished() {
 const int kLineAmount = 6;
 
 #define GLOBAL_ASSETS_PATH "./Assets/"
-}  // namespace global
+} // namespace global
 
-#endif  // MY_GAME_GLOBAL_H_
+#endif // MY_GAME_GLOBAL_H_

@@ -9,23 +9,23 @@
 #ifndef MY_GAME_HIDEEFFECT_H_
 #define MY_GAME_HIDEEFFECT_H_
 
-#include <SDl/SDL.h>
+#include "SDL.h"
 
 class HideEffect {
- public:
+public:
   bool is_hide_ = false;
-  
+
   inline void Hide() {
     if (old_time_ + frame_rate_ms_ > SDL_GetTicks())
       return;
-    
+
     is_hide_ = !is_hide_;
     old_time_ = SDL_GetTicks();
   }
-  
+
 private:
   int old_time_ = 0;
   int frame_rate_ms_ = 500;
 };
 
-#endif  // MY_GAME_HIDEEFFECT_H_
+#endif // MY_GAME_HIDEEFFECT_H_

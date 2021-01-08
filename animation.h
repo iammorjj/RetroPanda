@@ -9,12 +9,12 @@
 #ifndef MY_GAME_ANIMATION_H_
 #define MY_GAME_ANIMATION_H_
 
-#include <SDL/SDL.h>
+#include "SDL.h"
 
 #include "surface.h"
 
 class Animation {
- public:
+public:
   Animation();
 
   void set_current_frame_row(int row) { current_frame_row_ = row; }
@@ -25,24 +25,24 @@ class Animation {
 
   void Animate();
 
-  void Draw(SDL_Surface* display, SDL_Surface* surface,
-            int x_display, int y_display);
-  
- private:
+  void Draw(SDL_Surface *display, SDL_Surface *surface, int x_display,
+            int y_display);
+
+private:
   int frame_width_;
   int frame_height_;
-  
+
   int max_frames_;
   int current_frame_;
   int frame_inc_;
-  
+
   int frame_rate_ms_;
   int old_time_ms_;
-  
+
   int current_frame_row_;
 
   inline int GetXCurrentFrame() { return current_frame_ * frame_width_; }
   inline int GetYCurrentFrame() { return current_frame_row_ * frame_height_; }
 };
 
-#endif  // MY_GAME_ANIMATION_H_
+#endif // MY_GAME_ANIMATION_H_

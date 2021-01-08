@@ -8,13 +8,11 @@
 
 #include "timer.h"
 
-#include <SDL/SDL.h>
+#include "SDL.h"
 
 Timer::Timer()
-    : start_ticks_(0),
-      paused_ticks_(0),
-      is_paused_(false),
-      is_started_(false) {}
+    : start_ticks_(0), paused_ticks_(0), is_paused_(false), is_started_(false) {
+}
 
 void Timer::Start() {
   is_started_ = true;
@@ -35,6 +33,6 @@ int Timer::GetTicks() {
       return SDL_GetTicks() - start_ticks_;
     }
   }
-  
+
   return 0;
 }

@@ -9,21 +9,21 @@
 #ifndef MY_GAME_BACKGROUND_H_
 #define MY_GAME_BACKGROUND_H_
 
-#include <SDL/SDL.h>
+#include "SDL.h"
 
 #include "entity.h"
 
 class Background : public Entity {
- public:
+public:
   Background();
-  
+
   bool Load();
   void Loop();
-  void Render(SDL_Surface* display);
+  void Render(SDL_Surface *display);
   void Cleanup();
-  
- private:
-  SDL_Surface* surface_;
+
+private:
+  SDL_Surface *surface_;
 };
 
-#endif  // MY_GAME_BACKGROUND_H_
+#endif // MY_GAME_BACKGROUND_H_

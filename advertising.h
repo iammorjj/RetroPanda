@@ -9,24 +9,24 @@
 #ifndef MY_GAME_ADVERTISING_H_
 #define MY_GAME_ADVERTISING_H_
 
-#include <SDL/SDL.h>
+#include "SDL.h"
 
 #include "animation.h"
 #include "entity.h"
 
 class Advertising : public Entity {
- public:
+public:
   Advertising();
-  
+
   bool Load();
   void Loop();
-  void Render(SDL_Surface* display);
+  void Render(SDL_Surface *display);
   void Cleanup();
-  
- private:
-  SDL_Surface* surface_;
-  
+
+private:
+  SDL_Surface *surface_;
+
   Animation animation_;
 };
 
-#endif  // MY_GAME_ADVERTISING_H_
+#endif // MY_GAME_ADVERTISING_H_

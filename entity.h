@@ -11,18 +11,18 @@
 
 #include <vector>
 
-#include <SDL/SDL.h>
+#include "SDL.h"
 
 class Entity {
- public:
-  static std::vector<Entity*> entity_list_;
-  
+public:
+  static std::vector<Entity *> entity_list_;
+
   virtual ~Entity() {}
-  
+
   virtual bool Load() = 0;
   virtual void Loop() = 0;
-  virtual void Render(SDL_Surface* display) = 0;
+  virtual void Render(SDL_Surface *display) = 0;
   virtual void Cleanup() = 0;
 };
 
-#endif  // MY_GAME_ENTITY_H_
+#endif // MY_GAME_ENTITY_H_

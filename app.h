@@ -9,7 +9,7 @@
 #ifndef MY_GAME_APP_H_
 #define MY_GAME_APP_H_
 
-#include <SDL/SDL.h>
+#include "SDL.h"
 
 #include "advertising.h"
 #include "background.h"
@@ -21,30 +21,30 @@
 #include "score.h"
 
 class App {
- public:
+public:
   App();
-  
+
   int Execute();
-  
+
   bool Init();
-  void EventHandler(SDL_Event* event);
-  
+  void EventHandler(SDL_Event *event);
+
   void Loop();
   void Render();
   void Cleanup();
-  
- private:
-  SDL_Surface* display_;
-  
+
+private:
+  SDL_Surface *display_;
+
   bool is_running_;
-  
+
   Background background_;
   Advertising advertising_;
-  
+
   GameOverTitle game_over_title_;
-  
+
   Music music_;
-  
+
   Score score_;
 
   Hero hero_;
@@ -53,12 +53,12 @@ class App {
 
   bool WindowInit();
   bool ResourceInit();
-  
+
   void NewGame();
   void GameOver();
-  
+
   bool IsNewLevel();
   void NewLevel();
 };
 
-#endif  // MY_GAME_APP_H_
+#endif // MY_GAME_APP_H_
