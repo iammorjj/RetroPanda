@@ -40,7 +40,7 @@ inline bool IsKeyboardDelayFinished() {
 
 const int kLineAmount = 6;
 
-#define GLOBAL_ASSETS_PATH "./Assets/"
+#define GLOBAL_ASSETS_PATH "../Assets/" // application at build dir
 } // namespace global
 
 #endif // MY_GAME_GLOBAL_H_

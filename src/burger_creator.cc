@@ -15,12 +15,10 @@ namespace {
 const int kStartDelayMs = 3000;
 const int kMinDelayMs = 700;
 const int kDelayDecrementMs = 300;
-}  // namespace
+} // namespace
 
-BurgerCreator::BurgerCreator(Burger* burger)
-    : timer_(nullptr),
-      delay_(kStartDelayMs),
-      is_delay_changed_(false),
+BurgerCreator::BurgerCreator(Burger *burger)
+    : timer_(nullptr), delay_(kStartDelayMs), is_delay_changed_(false),
       burger_(burger) {
   srand(static_cast<unsigned>(time(0)));
 }
@@ -39,12 +37,15 @@ void BurgerCreator::ResetDelay() {
 }
 
 void BurgerCreator::Start() {
-  timer_ = SDL_AddTimer(delay_, [](Uint32 interval, void* param) -> Uint32 {
-    BurgerCreator* creator = static_cast<BurgerCreator*>param;
-    creator->CreateBurger();
+  timer_ = SDL_AddTimer(
+      delay_,
+      [](Uint32 interval, void *param) -> Uint32 {
+        BurgerCreator *creator = static_cast<BurgerCreator *>(param);
+        creator->CreateBurger();
 
-    return interval;
-  }, this);
+        return interval;
+      },
+      this);
 }
 
 void BurgerCreator::Stop() {

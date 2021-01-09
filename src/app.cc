@@ -13,9 +13,11 @@
 App::App() : display_(nullptr), is_running_(true) {}
 
 int App::Execute() {
-  if (Init() == false)
+  if (Init() == false) {
+    printf("smt goes wrong\n");
     return -1;
-  
+  }
+
   SDL_Event event;
   while (is_running_) {
     while (SDL_PollEvent(&event))
@@ -23,7 +25,7 @@ int App::Execute() {
     Loop();
     Render();
   }
-  
+
   Cleanup();
 
   return 0;
@@ -31,7 +33,7 @@ int App::Execute() {
 
 void App::NewGame() {
   global::is_game_over = false;
-  
+
   score_.NewGame();
   burger_.NewGame();
   conveyor_.NewGame();
@@ -40,7 +42,7 @@ void App::NewGame() {
 void App::GameOver() {
   global::is_first_game = false;
   global::is_game_over = true;
-  
+
   global::keyboard_delay_timer.Start();
   burger_.GameOver();
   conveyor_.GameOver();
@@ -49,7 +51,7 @@ void App::GameOver() {
 bool App::IsNewLevel() {
   int current_score = score_.score();
   return current_score % global::kSpeedLevelUp == 0 ||
-      current_score % global::kAppearanceLevelUp == 0;
+         current_score % global::kAppearanceLevelUp == 0;
 }
 
 void App::NewLevel() {
